@@ -5,9 +5,6 @@ import axios from 'axios'
 
 export const loadOracleData = async (dispatch, contract) => {
   getCoingeckoPrice(dispatch)
-  getChainlinkPrice(dispatch, contract)
-  getCompoundPrice(dispatch, contract)
-  getUniswapPrice(dispatch, contract)
   getMedianPrice(dispatch, contract)
 }
 
@@ -19,24 +16,6 @@ export const getCoingeckoPrice = async (dispatch) => {
     .catch(function (error) {
       console.log(error);
     })
-}
-
-export const getChainlinkPrice = async (dispatch, contract) => {
-  const price = await contract.latestChainlinkPrice()
-  const formattedPrice = ethers.utils.formatEther(price)
-  dispatch(setLatestOraclePrice(chainlink, formattedPrice))
-}
-
-export const getCompoundPrice = async (dispatch, contract) => {
-  const price = await contract.latestCompoundPrice()
-  const formattedPrice = ethers.utils.formatEther(price)
-  dispatch(setLatestOraclePrice(compound, formattedPrice))
-}
-
-export const getUniswapPrice = async (dispatch, contract) => {
-  const price = await contract.latestUniswapTWAPPrice()
-  const formattedPrice = ethers.utils.formatEther(price)
-  dispatch(setLatestOraclePrice(uniswap, formattedPrice))
 }
 
 export const getMedianPrice = async (dispatch, contract) => {
