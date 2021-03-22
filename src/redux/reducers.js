@@ -6,6 +6,8 @@ function app(state = {}, action) {
       return { ...state, provider: action.provider }
     case 'USM_LOADED':
       return { ...state, usm: action.usm }
+    case 'USMVIEW_LOADED':
+      return { ...state, usm: action.usmView }
     case 'FUM_LOADED':
       return { ...state, fum: action.fum }
     case 'METAMASK_LOADED':

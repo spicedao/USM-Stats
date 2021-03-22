@@ -19,7 +19,9 @@ export const getCoingeckoPrice = async (dispatch) => {
 }
 
 export const getMedianPrice = async (dispatch, contract) => {
-  const price = await contract.latestPrice()
+  // TODO: show latest price update time, perhaps?
+  const price = (await contract.latestPrice())[0]
   const formattedPrice = ethers.utils.formatEther(price)
+  // TODO: should call both the method in the oracle and in the contract
   dispatch(setLatestOraclePrice(median, formattedPrice))
 }

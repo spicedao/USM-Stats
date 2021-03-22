@@ -11,7 +11,7 @@ export const usm = {
   },
 };
 
-export const USMView = {
+export const usmview = {
   name: "USMView",
   abi: USMViewABI,
   address: {

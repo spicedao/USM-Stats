@@ -56,6 +56,13 @@ export function usmLoaded(usm) {
   }
 }
 
+export function usmViewLoaded(usmView) {
+  return {
+    type: 'USMVIEW_LOADED',
+    usmView
+  }
+}
+
 export function fumLoaded(fum) {
   return {
     type: 'FUM_LOADED',

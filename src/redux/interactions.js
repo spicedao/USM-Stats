@@ -1,32 +1,44 @@
 import { ethers } from "ethers"
-import { fum, usm } from "../tokens"
-import { fumLoaded, metamaskError, metamaskLoaded, networkLoaded, usmLoaded } from "./actions"
+import { fum, usm, usmview } from "../tokens"
+import { fumLoaded, metamaskError, metamaskLoaded, networkLoaded, usmLoaded, usmViewLoaded } from "./actions"
 import { loadCollateralData } from "./interactions/cdp"
 import { loadERC20Data } from "./interactions/erc20"
 import { loadOracleData } from "./interactions/oracles"
 
+const getNetwork = async() => ({chainId: '42'})
+
 export const loadNetwork = async (dispatch) => {
   const provider = new ethers.providers.JsonRpcProvider("https://kovan.infura.io/v3/1be1f8b7b85a47e4949bc1057660a81d")
   dispatch(networkLoaded(provider))
-  loadUSM(dispatch, provider)
+  const usmContract = await loadUSM(dispatch, provider)
+  loadUSMView(dispatch, provider, usmContract)
   loadFUM(dispatch, provider)
 }
 
 export const loadUSM = async (dispatch, provider) => {
-  const network = await provider.getNetwork()
+  const network = await getNetwork()
   const abi = usm.abi
-  const address = usm.address['42']
+  const address = usm.address[network.chainId]
   const usmContract = new ethers.Contract(address, abi, provider)
   dispatch(usmLoaded(usmContract))
+  loadOracleData(dispatch, usmContract)
   loadERC20Data(dispatch, usm, usmContract)
-  // loadCollateralData(dispatch, usmContract)
-  // loadOracleData(dispatch, usmContract)
+  return usmContract
+}
+
+export const loadUSMView = async (dispatch, provider, usmContract) => {
+  const network = await getNetwork()
+  const abi = usmview.abi
+  const address = usmview.address[network.chainId]
+  const usmViewContract = new ethers.Contract(address, abi, provider)
+  dispatch(usmViewLoaded(usmViewContract))
+  loadCollateralData(dispatch, usmViewContract, usmContract)
 }
 
 export const loadFUM = async (dispatch, provider) => {
-  const network = await provider.getNetwork()
+  const network = await getNetwork()
   const abi = fum.abi
-  const address = fum.address['42']
+  const address = fum.address[network.chainId]
   const fumContract = new ethers.Contract(address, abi, provider)
   dispatch(fumLoaded(fumContract))
   loadERC20Data(dispatch, fum, fumContract)
@@ -37,7 +49,7 @@ export const loadMetamask = async (dispatch) => {
     await window.ethereum.enable()
     const provider = await new ethers.providers.Web3Provider(window.ethereum)
     const signer = await provider.getSigner()
-    const network = await provider.getNetwork()
+    const network = await getNetwork()
 
     if (network.chainId != 42) {
       throw new Error("Must be on kovan. Please alter Metamask network and refresh the page.")
@@ -45,11 +57,11 @@ export const loadMetamask = async (dispatch) => {
 
     //load USM with Metamask
     const usmAbi = usm.abi
-    const usmAddress = usm.address['42']
+    const usmAddress = usm.address[network.chainId]
     const usmContract = new ethers.Contract(usmAddress, usmAbi, signer)
     //load FUM with Metamask
     const fumAbi = fum.abi
-    const fumAddress = fum.address['42']
+    const fumAddress = fum.address[network.chainId]
     const fumContract = new ethers.Contract(fumAddress, fumAbi, signer)
     dispatch(metamaskLoaded(provider, signer, usmContract, fumContract))
   }
