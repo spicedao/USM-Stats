@@ -69,14 +69,12 @@ function fum(state = {}, action) {
 
 function oracle(state = {}, action) {
   switch (action.type) {
-    case 'ORACLE_PRICE_CHAINLINK':
-      return { ...state, chainlinkPrice: action.price }
-    case 'ORACLE_PRICE_COMPOUND':
-      return { ...state, compoundPrice: action.price }
-    case 'ORACLE_PRICE_UNISWAP':
-      return { ...state, uniswapPrice: action.price }
     case 'ORACLE_PRICE_COINGECKO':
       return { ...state, coingeckoPrice: action.price }
+    case 'ORACLE_PRICE_ETH_COINGECKO':
+      return { ...state, coingeckoETHPrice: action.price }
+    case 'ORACLE_PRICE_SYNTH_COINGECKO':
+      return { ...state, coingeckoSYNTHPrice: action.price }
     case 'ORACLE_PRICE_MEDIAN':
       return { ...state, medianPrice: action.price }
     default:

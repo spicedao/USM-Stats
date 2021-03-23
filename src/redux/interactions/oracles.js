@@ -1,22 +1,38 @@
 import { ethers } from "ethers"
-import { chainlink, coingecko, compound, median, uniswap } from "../../oracles"
+import { coingecko, coingeckoETH, coingeckoSYNTH, median } from "../../oracles"
 import { setLatestOraclePrice } from "../actions"
 import axios from 'axios'
 
 export const loadOracleData = async (dispatch, contract) => {
-  getCoingeckoPrice(dispatch)
+  const ethprice = await getCoingeckoETHPrice(dispatch)
+  const synthprice = await getCoingeckoSYNTHPrice(dispatch)
+  dispatch(setLatestOraclePrice(coingecko, ethprice/synthprice))
   getMedianPrice(dispatch, contract)
 }
 
-export const getCoingeckoPrice = async (dispatch) => {
-  axios.get('https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd')
-    .then(function (response) {
-      dispatch(setLatestOraclePrice(coingecko, response.data.ethereum.usd))
-    })
-    .catch(function (error) {
-      console.log(error);
-    })
-}
+export const getCoingeckoETHPrice = (dispatch) => axios.get('https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd')
+  .then(function (response) {
+    const price = response.data.ethereum.usd
+    dispatch(setLatestOraclePrice(coingeckoETH, price))
+    return price
+  })
+  .catch(function (error) {
+    console.log(error);
+  })
+
+
+export const getCoingeckoSYNTHPrice = (dispatch) => axios.get('https://api.coingecko.com/api/v3/simple/price?ids=spice-finance&vs_currencies=usd')
+  .then(function (response) {
+    const price = response.data["spice-finance"].usd
+    console.log(response.data)
+    console.log(price)
+    dispatch(setLatestOraclePrice(coingeckoSYNTH, price))
+    return price
+  })
+  .catch(function (error) {
+    console.log(error);
+  })
+
 
 export const getMedianPrice = async (dispatch, contract) => {
   // TODO: show latest price update time, perhaps?

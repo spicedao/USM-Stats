@@ -1,21 +1,27 @@
-import { Component } from 'react';
-import { connect } from 'react-redux';
-import { chainlinkPriceSelector, medianPriceSelector, coingeckoPriceSelector, compoundPriceSelector, uniswapPriceSelector } from './redux/selectors';
-import { Card, Table } from 'react-bootstrap';
-import { decimalPlaces, oracleHighlight } from './utils';
+import { Component } from "react";
+import { connect } from "react-redux";
+import {
+  medianPriceSelector,
+  coingeckoETHPriceSelector,
+  coingeckoSYNTHPriceSelector,
+  coingeckoPriceSelector,
+} from "./redux/selectors";
+import { Card, Table } from "react-bootstrap";
+import { decimalPlaces, oracleHighlight } from "./utils";
 
 class OracleCard extends Component {
   render() {
-
-    const {chainlinkPrice, compoundPrice, uniswapPrice, coingeckoPrice, medianPrice} = this.props;
+    const {
+      coingeckoETHPrice,
+      coingeckoSYNTHPrice,
+      coingeckoPrice,
+      medianPrice,
+    } = this.props;
 
     return (
       <Card>
-        <Card.Header as="h5">
-          Oracle Performance
-        </Card.Header>
+        <Card.Header as="h5">Oracle Performance</Card.Header>
         <Card.Body>
-          
           <Table striped hover size="sm">
             <tbody>
               <tr>
@@ -23,46 +29,46 @@ class OracleCard extends Component {
               </tr>
               <tr>
                 <td>Coingecko - ETH</td>
+                <td>$ {decimalPlaces(coingeckoETHPrice)}</td>
+              </tr>
+              <tr>
+                <td>Coingecko - SYNTH</td>
+                <td>$ {decimalPlaces(coingeckoSYNTHPrice)}</td>
+              </tr>
+              <tr>
+                <td>Coingecko - expected price from oracle</td>
                 <td>$ {decimalPlaces(coingeckoPrice)}</td>
               </tr>
               <tr>
                 <th colSpan={2}>USMFUM ETH Price</th>
               </tr>
-              <tr className="text-dark" style={{backgroundColor: oracleHighlight(coingeckoPrice, medianPrice)}}>
+              <tr
+                className="text-dark"
+                style={{
+                  backgroundColor: oracleHighlight(coingeckoETHPrice, medianPrice),
+                }}
+              >
                 <td>Medianized Oracle</td>
                 <td>$ {decimalPlaces(medianPrice)}</td>
               </tr>
               <tr>
                 <th colSpan={2}>Median Sources</th>
               </tr>
-              <tr className="text-dark" style={{backgroundColor: oracleHighlight(coingeckoPrice, chainlinkPrice)}}>
-                <td>Chainlink</td>
-                <td>$ {decimalPlaces(chainlinkPrice)}</td>
-              </tr>
-              <tr className="text-dark" style={{backgroundColor: oracleHighlight(coingeckoPrice, compoundPrice)}}>
-                <td>Compound</td>
-                <td>$ {decimalPlaces(compoundPrice)}</td>
-              </tr>
-              <tr className="text-dark" style={{backgroundColor: oracleHighlight(coingeckoPrice, uniswapPrice)}}>
-                <td>Uniswap TWAP</td>
-                <td>$ {decimalPlaces(uniswapPrice)}</td>
-              </tr>
             </tbody>
           </Table>
         </Card.Body>
       </Card>
-    )
+    );
   }
 }
 
 function mapStateToProps(state) {
   return {
+    coingeckoETHPrice: coingeckoETHPriceSelector(state),
+    coingeckoSYNTHPrice: coingeckoSYNTHPriceSelector(state),
     coingeckoPrice: coingeckoPriceSelector(state),
-    chainlinkPrice: chainlinkPriceSelector(state),
-    compoundPrice: compoundPriceSelector(state),
-    uniswapPrice: uniswapPriceSelector(state),
-    medianPrice: medianPriceSelector(state)
-  }
+    medianPrice: medianPriceSelector(state),
+  };
 }
 
-export default connect(mapStateToProps)(OracleCard)
+export default connect(mapStateToProps)(OracleCard);
