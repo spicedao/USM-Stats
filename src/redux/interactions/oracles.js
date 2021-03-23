@@ -1,5 +1,5 @@
 import { ethers } from "ethers"
-import { coingecko, coingeckoETH, coingeckoSYNTH, median } from "../../oracles"
+import { coingecko, coingeckoETH, coingeckoSYNTH, cachedInContract } from "../../oracles"
 import { setLatestOraclePrice } from "../actions"
 import axios from 'axios'
 
@@ -39,5 +39,5 @@ export const getMedianPrice = async (dispatch, contract) => {
   const price = (await contract.latestPrice())[0]
   const formattedPrice = ethers.utils.formatEther(price)
   // TODO: should call both the method in the oracle and in the contract
-  dispatch(setLatestOraclePrice(median, formattedPrice))
+  dispatch(setLatestOraclePrice(cachedInContract, formattedPrice))
 }

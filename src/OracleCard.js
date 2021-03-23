@@ -1,7 +1,7 @@
 import { Component } from "react";
 import { connect } from "react-redux";
 import {
-  medianPriceSelector,
+  cachedPriceSelector,
   coingeckoETHPriceSelector,
   coingeckoSYNTHPriceSelector,
   coingeckoPriceSelector,
@@ -15,7 +15,7 @@ class OracleCard extends Component {
       coingeckoETHPrice,
       coingeckoSYNTHPrice,
       coingeckoPrice,
-      medianPrice,
+      cachedPrice,
     } = this.props;
 
     return (
@@ -45,11 +45,11 @@ class OracleCard extends Component {
               <tr
                 className="text-dark"
                 style={{
-                  backgroundColor: oracleHighlight(coingeckoETHPrice, medianPrice),
+                  backgroundColor: oracleHighlight(coingeckoETHPrice, cachedPrice),
                 }}
               >
-                <td>Medianized Oracle</td>
-                <td>$ {decimalPlaces(medianPrice)}</td>
+                <td>Price cached in the contract</td>
+                <td>$ {decimalPlaces(cachedPrice)}</td>
               </tr>
               <tr>
                 <th colSpan={2}>Median Sources</th>
@@ -67,7 +67,7 @@ function mapStateToProps(state) {
     coingeckoETHPrice: coingeckoETHPriceSelector(state),
     coingeckoSYNTHPrice: coingeckoSYNTHPriceSelector(state),
     coingeckoPrice: coingeckoPriceSelector(state),
-    medianPrice: medianPriceSelector(state),
+    cachedPrice: cachedPriceSelector(state),
   };
 }
 

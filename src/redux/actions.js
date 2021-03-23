@@ -1,4 +1,4 @@
-import { coingecko, coingeckoETH, median, coingeckoSYNTH } from "../oracles";
+import { coingecko, coingeckoETH, cachedInContract, coingeckoSYNTH } from "../oracles";
 import { fum, usm } from "../tokens";
 
 export function setInputAmount(token, amount) {
@@ -87,9 +87,9 @@ export function setLatestOraclePrice(source, price) {
         type: 'ORACLE_PRICE_SYNTH_COINGECKO',
         price
       }
-    case median:
+    case cachedInContract:
       return {
-        type: 'ORACLE_PRICE_MEDIAN',
+        type: 'ORACLE_PRICE_CACHED',
         price
       }
     default:

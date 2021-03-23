@@ -75,8 +75,8 @@ function oracle(state = {}, action) {
       return { ...state, coingeckoETHPrice: action.price }
     case 'ORACLE_PRICE_SYNTH_COINGECKO':
       return { ...state, coingeckoSYNTHPrice: action.price }
-    case 'ORACLE_PRICE_MEDIAN':
-      return { ...state, medianPrice: action.price }
+    case 'ORACLE_PRICE_CACHED':
+      return { ...state, cachedPrice: action.price }
     default:
       return state;
   }
