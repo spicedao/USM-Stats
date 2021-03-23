@@ -2,6 +2,7 @@ const { abi: USMABI } = require("./external/abi/USM.json");
 const { abi: USMViewABI } = require("./external/abi/USMView.json");
 const { abi: FUMABI } = require("./external/abi/FUM.json");
 const { abi: OracleABI } = require("./external/abi/Oracle.json");
+const { abi: DiaOracleABI } = require("./external/abi/DiaOracle.json");
 
 export const usm = {
   name: "usm",
@@ -24,6 +25,14 @@ export const oracle = {
   abi: OracleABI,
   address: {
     42: "0x2Eba759603729b61Fb57B14F9C9f2e678c09C00c",
+  },
+};
+
+export const diaOracle = {
+  name: "diaOracle",
+  abi: DiaOracleABI,
+  address: {
+    42: "0x637c1b5d57b5b0d40b1868b8cc2034525f5f61cf",
   },
 };
 

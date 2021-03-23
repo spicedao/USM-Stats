@@ -1,6 +1,6 @@
 import { ethers } from "ethers"
-import { fum, usm, usmview } from "../tokens"
-import { fumLoaded, metamaskError, metamaskLoaded, networkLoaded, usmLoaded, usmViewLoaded } from "./actions"
+import { fum, usm, usmview, diaOracle } from "../tokens"
+import { fumLoaded, metamaskError, metamaskLoaded, networkLoaded, usmLoaded, usmViewLoaded, rawOracleLoaded } from "./actions"
 import { loadCollateralData } from "./interactions/cdp"
 import { loadERC20Data } from "./interactions/erc20"
 import { loadOracleData } from "./interactions/oracles"
@@ -11,8 +11,19 @@ export const loadNetwork = async (dispatch) => {
   const provider = new ethers.providers.JsonRpcProvider("https://kovan.infura.io/v3/1be1f8b7b85a47e4949bc1057660a81d")
   dispatch(networkLoaded(provider))
   const usmContract = await loadUSM(dispatch, provider)
+  const rawOracleContract = await loadRawOracle(dispatch, provider)
+  loadOracleData(dispatch, usmContract, rawOracleContract)
   loadUSMView(dispatch, provider, usmContract)
   loadFUM(dispatch, provider)
+}
+
+export const loadRawOracle = async (dispatch, provider) => {
+  const network = await getNetwork()
+  const abi = diaOracle.abi
+  const address = diaOracle.address[network.chainId]
+  const rawOracleContract = new ethers.Contract(address, abi, provider)
+  dispatch(rawOracleLoaded(rawOracleContract))
+  return rawOracleContract
 }
 
 export const loadUSM = async (dispatch, provider) => {
@@ -21,7 +32,6 @@ export const loadUSM = async (dispatch, provider) => {
   const address = usm.address[network.chainId]
   const usmContract = new ethers.Contract(address, abi, provider)
   dispatch(usmLoaded(usmContract))
-  loadOracleData(dispatch, usmContract)
   loadERC20Data(dispatch, usm, usmContract)
   return usmContract
 }

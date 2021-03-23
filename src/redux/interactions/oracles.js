@@ -1,16 +1,17 @@
 import { ethers } from "ethers"
-import { coingecko, coingeckoETH, coingeckoSYNTH, cachedInContract } from "../../oracles"
+import { coingecko, coingeckoETH, coingeckoSYNTH, cachedInContract, latestFromContract, rawETH, rawSYNTH } from "../../oracles"
 import { setLatestOraclePrice } from "../actions"
 import axios from 'axios'
 
-export const loadOracleData = async (dispatch, contract) => {
+export const loadOracleData = async (dispatch, usmContract, rawOracle) => {
   const ethprice = await getCoingeckoETHPrice(dispatch)
   const synthprice = await getCoingeckoSYNTHPrice(dispatch)
   dispatch(setLatestOraclePrice(coingecko, ethprice/synthprice))
-  getMedianPrice(dispatch, contract)
+  getPricesFromUSMContract(dispatch, usmContract)
+  getPricesFromRawOracle(dispatch, rawOracle)
 }
 
-export const getCoingeckoETHPrice = (dispatch) => axios.get('https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd')
+const getCoingeckoETHPrice = (dispatch) => axios.get('https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd')
   .then(function (response) {
     const price = response.data.ethereum.usd
     dispatch(setLatestOraclePrice(coingeckoETH, price))
@@ -21,7 +22,7 @@ export const getCoingeckoETHPrice = (dispatch) => axios.get('https://api.coingec
   })
 
 
-export const getCoingeckoSYNTHPrice = (dispatch) => axios.get('https://api.coingecko.com/api/v3/simple/price?ids=spice-finance&vs_currencies=usd')
+const getCoingeckoSYNTHPrice = (dispatch) => axios.get('https://api.coingecko.com/api/v3/simple/price?ids=spice-finance&vs_currencies=usd')
   .then(function (response) {
     const price = response.data["spice-finance"].usd
     console.log(response.data)
@@ -33,11 +34,17 @@ export const getCoingeckoSYNTHPrice = (dispatch) => axios.get('https://api.coing
     console.log(error);
   })
 
-
-export const getMedianPrice = async (dispatch, contract) => {
+const getPricesFromUSMContract = async (dispatch, usmContract) => {
   // TODO: show latest price update time, perhaps?
-  const price = (await contract.latestPrice())[0]
-  const formattedPrice = ethers.utils.formatEther(price)
-  // TODO: should call both the method in the oracle and in the contract
-  dispatch(setLatestOraclePrice(cachedInContract, formattedPrice))
+  const cachedPrice = (await usmContract.latestPrice())[0]
+  const latestPrice = (await usmContract.latestOraclePrice())[0]
+  dispatch(setLatestOraclePrice(cachedInContract, ethers.utils.formatEther(cachedPrice)))
+  dispatch(setLatestOraclePrice(latestFromContract, ethers.utils.formatEther(latestPrice)))
+}
+
+const getPricesFromRawOracle = async (dispatch, rawOracleContract) => {
+  const rawEth = (await rawOracleContract.getValue('ETH'))[0].toNumber()
+  const rawSynth = (await rawOracleContract.getValue('SPICE'))[0].toNumber()
+  dispatch(setLatestOraclePrice(rawETH, rawEth/(10**5)))
+  dispatch(setLatestOraclePrice(rawSYNTH, rawSynth/(10**5)))
 }

@@ -1,4 +1,4 @@
-import { coingecko, coingeckoETH, cachedInContract, coingeckoSYNTH } from "../oracles";
+import { rawETH, rawSYNTH, coingecko, coingeckoETH, cachedInContract, coingeckoSYNTH, latestFromContract } from "../oracles";
 import { fum, usm } from "../tokens";
 
 export function setInputAmount(token, amount) {
@@ -56,6 +56,13 @@ export function usmLoaded(usm) {
   }
 }
 
+export function rawOracleLoaded(rawOracle) {
+  return {
+    type: 'RAW_ORACLE_LOADED',
+    rawOracle
+  }
+}
+
 export function usmViewLoaded(usmView) {
   return {
     type: 'USMVIEW_LOADED',
@@ -90,6 +97,21 @@ export function setLatestOraclePrice(source, price) {
     case cachedInContract:
       return {
         type: 'ORACLE_PRICE_CACHED',
+        price
+      }
+    case latestFromContract:
+      return {
+        type: 'ORACLE_PRICE_LATEST',
+        price
+      }
+    case rawETH:
+      return {
+        type: 'ORACLE_PRICE_RAW_ETH',
+        price
+      }
+    case rawSYNTH:
+      return {
+        type: 'ORACLE_PRICE_RAW_SYNTH',
         price
       }
     default:

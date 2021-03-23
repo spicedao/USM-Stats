@@ -82,3 +82,12 @@ export const coingeckoSYNTHPriceSelector = createSelector(coingeckoSYNTHPrice, w
 
 const cachedPrice = state => get(state, 'oracle.cachedPrice', 0);
 export const cachedPriceSelector = createSelector(cachedPrice, w => w);
+
+const latestPrice = state => get(state, 'oracle.latestPrice', 0);
+export const latestPriceSelector = createSelector(latestPrice, w => w);
+
+const rawETHPrice = state => get(state, 'oracle.rawEthPrice', 0);
+export const rawETHPriceSelector = createSelector(rawETHPrice, w => w);
+
+const rawSYNTHPrice = state => get(state, 'oracle.rawSynthPrice', 0);
+export const rawSYNTHPriceSelector = createSelector(rawSYNTHPrice, w => w);

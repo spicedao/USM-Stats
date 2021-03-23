@@ -6,6 +6,8 @@ function app(state = {}, action) {
       return { ...state, provider: action.provider }
     case 'USM_LOADED':
       return { ...state, usm: action.usm }
+    case 'RAW_ORACLE_LOADED':
+      return { ...state, rawOracle: action.rawOracle }
     case 'USMVIEW_LOADED':
       return { ...state, usm: action.usmView }
     case 'FUM_LOADED':
@@ -77,6 +79,12 @@ function oracle(state = {}, action) {
       return { ...state, coingeckoSYNTHPrice: action.price }
     case 'ORACLE_PRICE_CACHED':
       return { ...state, cachedPrice: action.price }
+    case 'ORACLE_PRICE_LATEST':
+      return { ...state, latestPrice: action.price }
+    case 'ORACLE_PRICE_RAW_ETH':
+      return { ...state, rawEthPrice: action.price }
+    case 'ORACLE_PRICE_RAW_SYNTH':
+      return { ...state, rawSynthPrice: action.price }
     default:
       return state;
   }

@@ -2,6 +2,9 @@ import { Component } from "react";
 import { connect } from "react-redux";
 import {
   cachedPriceSelector,
+  latestPriceSelector,
+  rawSYNTHPriceSelector,
+  rawETHPriceSelector,
   coingeckoETHPriceSelector,
   coingeckoSYNTHPriceSelector,
   coingeckoPriceSelector,
@@ -16,6 +19,9 @@ class OracleCard extends Component {
       coingeckoSYNTHPrice,
       coingeckoPrice,
       cachedPrice,
+      latestPrice,
+      rawETHPrice,
+      rawSYNTHPrice
     } = this.props;
 
     return (
@@ -45,14 +51,41 @@ class OracleCard extends Component {
               <tr
                 className="text-dark"
                 style={{
-                  backgroundColor: oracleHighlight(coingeckoETHPrice, cachedPrice),
+                  backgroundColor: oracleHighlight(coingeckoPrice, cachedPrice),
                 }}
               >
                 <td>Price cached in the contract</td>
                 <td>$ {decimalPlaces(cachedPrice)}</td>
               </tr>
+              <tr
+                className="text-dark"
+                style={{
+                  backgroundColor: oracleHighlight(coingeckoPrice, latestPrice),
+                }}
+              >
+                <td>Price straight from the oracle</td>
+                <td>$ {decimalPlaces(latestPrice)}</td>
+              </tr>
               <tr>
-                <th colSpan={2}>Median Sources</th>
+                <th colSpan={2}>Raw prices from DIA oracle</th>
+              </tr>
+              <tr
+                className="text-dark"
+                style={{
+                  backgroundColor: oracleHighlight(coingeckoETHPrice, rawETHPrice),
+                }}
+              >
+                <td>oracle ETH price</td>
+                <td>$ {decimalPlaces(rawETHPrice)}</td>
+              </tr>
+              <tr
+                className="text-dark"
+                style={{
+                  backgroundColor: oracleHighlight(coingeckoSYNTHPrice, rawSYNTHPrice),
+                }}
+              >
+                <td>oracle SYNTH price</td>
+                <td>$ {decimalPlaces(rawSYNTHPrice)}</td>
               </tr>
             </tbody>
           </Table>
@@ -68,6 +101,9 @@ function mapStateToProps(state) {
     coingeckoSYNTHPrice: coingeckoSYNTHPriceSelector(state),
     coingeckoPrice: coingeckoPriceSelector(state),
     cachedPrice: cachedPriceSelector(state),
+    latestPrice: latestPriceSelector(state),
+    rawETHPrice: rawETHPriceSelector(state),
+    rawSYNTHPrice: rawSYNTHPriceSelector(state),
   };
 }
 
