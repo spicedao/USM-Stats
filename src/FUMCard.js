@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { coingeckoPriceSelector, fumBurnsSelector, fumBuyPriceSelector, fumInputAmountSelector, fumMintsSelector, fumSellPriceSelector, fumSupplySelector, metamaskSelector, metamaskSignerSelector, metamaskUSMSelector } from './redux/selectors';
+import { coingeckoETHPriceSelector, fumBurnsSelector, fumBuyPriceSelector, fumInputAmountSelector, fumMintsSelector, fumSellPriceSelector, fumSupplySelector, metamaskSelector, metamaskSignerSelector, metamaskUSMSelector } from './redux/selectors';
 import { Button, Card, Table } from 'react-bootstrap';
 import { decimalPlaces, stringMul } from './utils';
 import { buyFUM, loadMetamask, sellFUM } from './redux/interactions';
@@ -94,16 +94,16 @@ class FUMCard extends Component {
 }
 
 function mapStateToProps(state) {
-  const coingeckoPrice = coingeckoPriceSelector(state)
+  const coingeckoETHPrice = coingeckoETHPriceSelector(state)
 
   const fumSupply = fumSupplySelector(state)
   const fumBuyPrice = fumBuyPriceSelector(state)
   const fumSellPrice = fumSellPriceSelector(state)
   const fumMarketCap = fumSupply * fumBuyPrice
 
-  const fumBuyPriceUSD = stringMul(fumBuyPrice, coingeckoPrice)
-  const fumSellPriceUSD = stringMul(fumSellPrice, coingeckoPrice)
-  const fumMarketCapUSD = stringMul(fumMarketCap, coingeckoPrice)
+  const fumBuyPriceUSD = stringMul(fumBuyPrice, coingeckoETHPrice)
+  const fumSellPriceUSD = stringMul(fumSellPrice, coingeckoETHPrice)
+  const fumMarketCapUSD = stringMul(fumMarketCap, coingeckoETHPrice)
 
   const metamask = metamaskSelector(state)
   const metamaskConnected = (metamask != null);
@@ -118,7 +118,6 @@ function mapStateToProps(state) {
     fumBuyPriceUSD,
     fumSellPrice,
     fumSellPriceUSD,
-    coingeckoPrice,
     metamaskConnected,
     metamaskSigner: metamaskSignerSelector(state),
     metamaskUSM: metamaskUSMSelector(state)

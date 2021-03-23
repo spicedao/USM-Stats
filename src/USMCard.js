@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { coingeckoPriceSelector, metamaskSelector, usmInputAmountSelector, metamaskSignerSelector, metamaskUSMSelector, usmBurnsSelector, usmBuyPriceSelector, usmMintsSelector, usmSellPriceSelector, usmSupplySelector } from './redux/selectors';
+import { coingeckoETHPriceSelector, metamaskSelector, usmInputAmountSelector, metamaskSignerSelector, metamaskUSMSelector, usmBurnsSelector, usmBuyPriceSelector, usmMintsSelector, usmSellPriceSelector, usmSupplySelector } from './redux/selectors';
 import { Button, Card, Table } from 'react-bootstrap';
 import { decimalPlaces, stringMul, usmPriceHighlight } from './utils';
 import { buyUSM, loadMetamask, sellUSM } from './redux/interactions';
@@ -94,15 +94,15 @@ class USMCard extends Component {
 }
 
 function mapStateToProps(state) {
-  const coingeckoPrice = coingeckoPriceSelector(state)
+  const coingeckoETHPrice = coingeckoETHPriceSelector(state)
 
   const usmSupply = usmSupplySelector(state)
   const usmBuyPrice = usmBuyPriceSelector(state)
   const usmSellPrice = usmSellPriceSelector(state)
   const usmMarketCap = usmSupply * usmBuyPrice
-  const usmBuyPriceUSD = stringMul(usmBuyPrice, coingeckoPrice)
-  const usmSellPriceUSD = stringMul(usmSellPrice, coingeckoPrice)
-  const usmMarketCapUSD = stringMul(usmMarketCap, coingeckoPrice)
+  const usmBuyPriceUSD = stringMul(usmBuyPrice, coingeckoETHPrice)
+  const usmSellPriceUSD = stringMul(usmSellPrice, coingeckoETHPrice)
+  const usmMarketCapUSD = stringMul(usmMarketCap, coingeckoETHPrice)
 
   const metamask = metamaskSelector(state)
   const metamaskConnected = (metamask != null);
