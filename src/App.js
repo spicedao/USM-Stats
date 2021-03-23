@@ -28,9 +28,8 @@ class App extends Component {
     return (
       <div className="App">
         <Container>
-          <Alert variant="success">
-            <b><a href="https://twitter.com/usmfum/status/1339323408618835969" target="_blank" rel="noreferrer">Baby-USM</a> protocol is now withdraw-only and read-only.</b>
-            Minting Baby-USM or Baby-FUM is now permanently disabled. Thanks to everyone who took part!
+          <Alert variant="info">
+            This is a test of a USM fork using DIA oracles to synthetize SPICE, and it only works on kovan.
           </Alert>
           <Row>
             <Col sm="12" md="6">
