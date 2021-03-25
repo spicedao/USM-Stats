@@ -1,5 +1,5 @@
 import { ethers } from "ethers"
-import { fum, usm, usmview, diaOracle } from "../tokens"
+import ecosystems from "../tokens"
 import { fumLoaded, metamaskError, metamaskLoaded, networkLoaded, usmLoaded, usmViewLoaded, rawOracleLoaded } from "./actions"
 import { loadCollateralData } from "./interactions/cdp"
 import { loadERC20Data } from "./interactions/erc20"
@@ -7,51 +7,52 @@ import { loadOracleData } from "./interactions/oracles"
 
 const getNetwork = async() => ({chainId: '42'})
 
-export const loadNetwork = async (dispatch) => {
+export const loadNetwork = async (dispatch, ecosystemName) => {
   const provider = new ethers.providers.JsonRpcProvider("https://kovan.infura.io/v3/1be1f8b7b85a47e4949bc1057660a81d")
   dispatch(networkLoaded(provider))
-  const usmContract = await loadUSM(dispatch, provider)
-  const rawOracleContract = await loadRawOracle(dispatch, provider)
-  loadOracleData(dispatch, usmContract, rawOracleContract)
-  loadUSMView(dispatch, provider, usmContract)
-  loadFUM(dispatch, provider)
+  const ecosystem = ecosystems[ecosystemName];
+  const usmContract = await loadUSM(dispatch, provider, ecosystem)
+  const rawOracleContract = await loadRawOracle(dispatch, provider, ecosystem)
+  loadOracleData(dispatch, usmContract, rawOracleContract, ecosystem)
+  loadUSMView(dispatch, provider, usmContract, ecosystem)
+  loadFUM(dispatch, provider, ecosystem)
 }
 
-export const loadRawOracle = async (dispatch, provider) => {
+const loadRawOracle = async (dispatch, provider, ecosystem) => {
   const network = await getNetwork()
-  const abi = diaOracle.abi
-  const address = diaOracle.address[network.chainId]
+  const abi = ecosystem.diaOracle.abi
+  const address = ecosystem.diaOracle.address[network.chainId]
   const rawOracleContract = new ethers.Contract(address, abi, provider)
   dispatch(rawOracleLoaded(rawOracleContract))
   return rawOracleContract
 }
 
-export const loadUSM = async (dispatch, provider) => {
+const loadUSM = async (dispatch, provider, ecosystem) => {
   const network = await getNetwork()
-  const abi = usm.abi
-  const address = usm.address[network.chainId]
+  const abi = ecosystem.usm.abi
+  const address = ecosystem.usm.address[network.chainId]
   const usmContract = new ethers.Contract(address, abi, provider)
   dispatch(usmLoaded(usmContract))
-  loadERC20Data(dispatch, usm, usmContract)
+  loadERC20Data(dispatch, ecosystem.usm, usmContract)
   return usmContract
 }
 
-export const loadUSMView = async (dispatch, provider, usmContract) => {
+const loadUSMView = async (dispatch, provider, usmContract, ecosystem) => {
   const network = await getNetwork()
-  const abi = usmview.abi
-  const address = usmview.address[network.chainId]
+  const abi = ecosystem.usmview.abi
+  const address = ecosystem.usmview.address[network.chainId]
   const usmViewContract = new ethers.Contract(address, abi, provider)
   dispatch(usmViewLoaded(usmViewContract))
   loadCollateralData(dispatch, usmViewContract, usmContract)
 }
 
-export const loadFUM = async (dispatch, provider) => {
+const loadFUM = async (dispatch, provider, ecosystem) => {
   const network = await getNetwork()
-  const abi = fum.abi
-  const address = fum.address[network.chainId]
+  const abi = ecosystem.fum.abi
+  const address = ecosystem.fum.address[network.chainId]
   const fumContract = new ethers.Contract(address, abi, provider)
   dispatch(fumLoaded(fumContract))
-  loadERC20Data(dispatch, fum, fumContract)
+  loadERC20Data(dispatch, ecosystem.fum, fumContract)
 }
 
 export const loadMetamask = async (dispatch) => {
@@ -66,14 +67,15 @@ export const loadMetamask = async (dispatch) => {
     }
 
     //load USM with Metamask
-    const usmAbi = usm.abi
-    const usmAddress = usm.address[network.chainId]
-    const usmContract = new ethers.Contract(usmAddress, usmAbi, signer)
-    //load FUM with Metamask
-    const fumAbi = fum.abi
-    const fumAddress = fum.address[network.chainId]
-    const fumContract = new ethers.Contract(fumAddress, fumAbi, signer)
-    dispatch(metamaskLoaded(provider, signer, usmContract, fumContract))
+    //const usmAbi = usm.abi
+    //const usmAddress = usm.address[network.chainId]
+    //const usmContract = new ethers.Contract(usmAddress, usmAbi, signer)
+    ////load FUM with Metamask
+    //const fumAbi = fum.abi
+    //const fumAddress = fum.address[network.chainId]
+    //const fumContract = new ethers.Contract(fumAddress, fumAbi, signer)
+    // dispatch(metamaskLoaded(provider, signer, usmContract, fumContract))
+    dispatch(metamaskLoaded(provider, signer, {}, {}))
   }
   catch (e) {
     dispatch(metamaskError(e))

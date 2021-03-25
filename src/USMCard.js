@@ -5,7 +5,7 @@ import { Button, Card, Table } from 'react-bootstrap';
 import { decimalPlaces, stringMul, usmPriceHighlight } from './utils';
 import { buyUSM, loadMetamask, sellUSM } from './redux/interactions';
 import { setInputAmount } from './redux/actions';
-import { usm } from './tokens';
+const usm = {name: 'usm'}
 
 function printButtons(metamaskConnected, buy, sell, connect, inputChange) {
   if (metamaskConnected) {

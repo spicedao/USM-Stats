@@ -1,5 +1,6 @@
 import { rawETH, rawSYNTH, coingecko, coingeckoETH, cachedInContract, coingeckoSYNTH, latestFromContract } from "../oracles";
-import { fum, usm } from "../tokens";
+const usm = {name: 'usm'}
+const fum = {name: 'fum'}
 
 export function setInputAmount(token, amount) {
   switch (token) {
@@ -26,6 +27,13 @@ export function metamaskLoaded(metamask, signer, usm, fum) {
     signer,
     usm,
     fum
+  }
+}
+
+export function ecosystemChanged(ecosystem) {
+  return {
+    type: 'ECOSYSTEM_CHANGED',
+    ecosystem
   }
 }
 
