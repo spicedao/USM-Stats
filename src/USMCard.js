@@ -4,6 +4,8 @@ import {
   coingeckoETHPriceSelector,
   coingeckoSYNTHPriceSelector,
   metamaskSelector,
+  ecosystemSelector,
+  networkProviderSelector,
   usmInputAmountSelector,
   metamaskSignerSelector,
   metamaskUSMSelector,
@@ -13,59 +15,18 @@ import {
   usmSellPriceSelector,
   usmSupplySelector,
 } from "./redux/selectors";
-import { Button, Card, Table } from "react-bootstrap";
+import { Card, Table } from "react-bootstrap";
 import { decimalPlaces, stringMul, usmPriceHighlight } from "./utils";
-import { buyUSM, loadMetamask, sellUSM } from "./redux/interactions";
-import { setInputAmount } from "./redux/actions";
-const usm = { name: "usm" };
-
-function printButtons(metamaskConnected, buy, sell, connect, inputChange) {
-  if (metamaskConnected) {
-    return (
-      <>
-        <Button
-          onClick={sell}
-          variant="warning"
-          size="sm"
-          className="float-right ml-1"
-        >
-          Burn (USM)
-        </Button>
-        <Button
-          onClick={buy}
-          variant="success"
-          size="sm"
-          className="float-right ml-1"
-        >
-          Mint (ETH)
-        </Button>
-        <input
-          className="form-control"
-          style={{ width: 100 }}
-          onChange={inputChange}
-          placeholder="Amount"
-          type="number"
-          size="sm"
-          className="float-right ml-1"
-        ></input>
-      </>
-    );
-  } else {
-    return (
-      <Button
-        onClick={connect}
-        variant="success"
-        size="sm"
-        className="float-right ml-1"
-      >
-        Connect
-      </Button>
-    );
-  }
-}
+import { loadMetamask } from "./redux/interactions";
+import { buyUsmBuilder, sellUsmBuilder } from "./blockchainInteractions";
+import ecosystems from "./tokens";
+import BlockchainWriteButtons from "./BlockchainWriteButtons";
 
 const USMCard = ({
   dispatch,
+  usm,
+  provider,
+  ecosystem,
   usmSupply,
   usmMints,
   usmBurns,
@@ -77,37 +38,24 @@ const USMCard = ({
   usmSellPriceUSD,
   metamaskSigner,
   metamaskConnected,
-  metamaskUSM,
   inputAmount,
   coingeckoSYNTHPrice,
 }) => {
-  const connectMetamask = (e) => {
+  const connect = (e) => {
     loadMetamask(dispatch);
   };
 
-  const buyUsm = (e) => {
-    buyUSM(dispatch, metamaskUSM, metamaskSigner, inputAmount);
-  };
+  const buy = buyUsmBuilder(dispatch, provider, metamaskSigner, ecosystem);
 
-  const setAmount = (e) => {
-    dispatch(setInputAmount(usm.name, e.target.value));
-  };
-
-  const sellUsm = (e) => {
-    sellUSM(dispatch, metamaskUSM, metamaskSigner, inputAmount);
-  };
+  const sell = sellUsmBuilder(dispatch, provider, metamaskSigner, ecosystem);
 
   return (
     <Card>
       <Card.Header as="h5">
         <span>USM</span>
-        {printButtons(
-          metamaskConnected,
-          buyUsm,
-          sellUsm,
-          connectMetamask,
-          setAmount
-        )}
+        <BlockchainWriteButtons
+          {...{ buy, sell, connect, metamaskConnected }}
+        />
       </Card.Header>
       <Card.Body>
         <Table striped hover size="sm">
@@ -179,8 +127,14 @@ function mapStateToProps(state) {
 
   const metamask = metamaskSelector(state);
   const metamaskConnected = metamask != null;
+  const ecosystem = ecosystemSelector(state);
+  const provider = networkProviderSelector(state);
+  const usm = ecosystems[ecosystem].usm;
   return {
     inputAmount: usmInputAmountSelector(state),
+    usm,
+    provider,
+    ecosystem,
     usmMarketCap,
     usmMarketCapUSD,
     usmSupply,
@@ -193,7 +147,6 @@ function mapStateToProps(state) {
     metamaskConnected,
     coingeckoSYNTHPrice,
     metamaskSigner: metamaskSignerSelector(state),
-    metamaskUSM: metamaskUSMSelector(state),
   };
 }
 

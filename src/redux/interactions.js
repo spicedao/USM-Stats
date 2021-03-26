@@ -4,11 +4,10 @@ import { fumLoaded, metamaskError, metamaskLoaded, networkLoaded, usmLoaded, usm
 import { loadCollateralData } from "./interactions/cdp"
 import { loadERC20Data } from "./interactions/erc20"
 import { loadOracleData } from "./interactions/oracles"
-
-const getNetwork = async() => ({chainId: '42'})
+import { getNetwork } from "../blockchainInteractions"
 
 export const loadNetwork = async (dispatch, ecosystemName) => {
-  const provider = new ethers.providers.JsonRpcProvider("https://kovan.infura.io/v3/1be1f8b7b85a47e4949bc1057660a81d")
+  const provider = new ethers.providers.JsonRpcProvider("https://kovan.infura.io/v3/2f525eb4037d4ce2a63343669a45f1d0")
   dispatch(networkLoaded(provider))
   const ecosystem = ecosystems[ecosystemName];
   const usmContract = await loadUSM(dispatch, provider, ecosystem)
@@ -66,37 +65,12 @@ export const loadMetamask = async (dispatch) => {
       throw new Error("Must be on kovan. Please alter Metamask network and refresh the page.")
     }
 
-    //load USM with Metamask
-    //const usmAbi = usm.abi
-    //const usmAddress = usm.address[network.chainId]
-    //const usmContract = new ethers.Contract(usmAddress, usmAbi, signer)
-    ////load FUM with Metamask
-    //const fumAbi = fum.abi
-    //const fumAddress = fum.address[network.chainId]
-    //const fumContract = new ethers.Contract(fumAddress, fumAbi, signer)
-    // dispatch(metamaskLoaded(provider, signer, usmContract, fumContract))
-    dispatch(metamaskLoaded(provider, signer, {}, {}))
+    dispatch(metamaskLoaded(provider, signer))
   }
   catch (e) {
     dispatch(metamaskError(e))
     return (false, false)
   }
-}
-
-export const buyUSM = async (dispatch, usm, signer, amount) => {
-  const weiAmount = ethers.utils.parseEther(amount)
-  const address = await signer.getAddress()
-  usm.mint(address, 0, {value: weiAmount})
-    .then(() => console.log("minting USM"))
-    .catch((error) => dispatch(metamaskError(error)))
-}
-
-export const sellUSM = async (dispatch, usm, signer, amount) => {
-  const weiAmount = ethers.utils.parseEther(amount)
-  const address = await signer.getAddress()
-  usm.burn(address, address, weiAmount, 0)
-    .then(() => console.log("burning USM"))
-    .catch((error) => dispatch(metamaskError(error)))
 }
 
 export const buyFUM = async (dispatch, usm, signer, amount) => {

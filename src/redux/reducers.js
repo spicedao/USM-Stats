@@ -18,8 +18,6 @@ function app(state = { ecosystem: defaultEcosystem }, action) {
         ...state,
         metamask: action.metamask,
         metamaskSigner: action.signer,
-        metamaskUSM: action.usm,
-        metamaskFUM: action.fum,
       };
     case "METAMASK_ERROR":
       return { ...state, metamaskError: action.error };

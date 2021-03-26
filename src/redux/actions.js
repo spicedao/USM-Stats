@@ -20,13 +20,11 @@ export function setInputAmount(token, amount) {
   
 }
 
-export function metamaskLoaded(metamask, signer, usm, fum) {
+export function metamaskLoaded(metamask, signer) {
   return {
     type: 'METAMASK_LOADED',
     metamask,
-    signer,
-    usm,
-    fum
+    signer
   }
 }
 
