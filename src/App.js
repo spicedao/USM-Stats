@@ -20,6 +20,11 @@ const App = ({ dispatch, networkProvider, metamaskError, ecosystem }) => {
     loadNetwork(dispatch, ecosystem);
   }
 
+  const onEcosystemChanged = ({target: { value }}) => {
+    dispatch(ecosystemChanged(value))
+    loadNetwork(dispatch, ecosystem)
+  }
+
   if (metamaskError) {
     alert(metamaskError.toString());
     dispatch(clearMetamaskError());
@@ -40,9 +45,7 @@ const App = ({ dispatch, networkProvider, metamaskError, ecosystem }) => {
                 <Form.Control
                   as="select"
                   value={ecosystem}
-                  onChange={({ target: { value } }) =>
-                    dispatch(ecosystemChanged(value))
-                  }
+                  onChange={onEcosystemChanged}
                 >
                   {Object.keys(ecosystems).map(key => (<option>{key}</option>))}
                 </Form.Control>

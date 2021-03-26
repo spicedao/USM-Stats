@@ -101,7 +101,27 @@ function oracle(state = {}, action) {
   }
 }
 
-const rootReducer = new combineReducers({
+// This strongly depends on the state management being synchronous.
+// The moment someone runs `yarn add redux-thunk` this becomes a
+// problem
+const combineReducersFilteredByEcosystem = (reducers) => {
+  return (state = {}, action) => {
+    const nextState = {...state}
+    const activeEcosystem = state.app && state.app.ecosystem
+    Object.keys(reducers).forEach(key => {
+      const runReducer = !Object.keys(ecosystems).includes(key) || activeEcosystem === key
+      if(runReducer){
+          const reducer = reducers[key]
+          const previousStateForKey = state[key]
+          const nextStateForKey = reducer(previousStateForKey, action)
+          nextState[key] = nextStateForKey
+      }
+    })
+    return nextState
+  }
+}
+
+const rootReducer = combineReducersFilteredByEcosystem({
   app,
   ...Object.keys(ecosystems).reduce(
     (acc, key) => ({
