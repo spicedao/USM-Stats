@@ -34,7 +34,7 @@ const App = ({ dispatch, networkProvider, metamaskError, ecosystem }) => {
     <div className="App">
       <Container>
         <Alert variant="info">
-          This is a test of a USM fork using DIA oracles to synthetize SPICE,
+          This is a test of a USM fork using DIA oracles to synthetize SPICE, WBTC and USDC,
           and it only works on kovan.
         </Alert>
         <Row>
