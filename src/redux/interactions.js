@@ -72,20 +72,3 @@ export const loadMetamask = async (dispatch) => {
     return (false, false)
   }
 }
-
-export const buyFUM = async (dispatch, usm, signer, amount) => {
-  console.log(usm, signer, amount)
-  const weiAmount = ethers.utils.parseEther(amount)
-  const address = await signer.getAddress()
-  usm.fund(address, 0, {value: weiAmount})
-    .then(() => console.log("minting FUM"))
-    .catch((error) => dispatch(metamaskError(error)))
-}
-
-export const sellFUM = async (dispatch, usm, signer, amount) => {
-  const weiAmount = ethers.utils.parseEther(amount)
-  const address = await signer.getAddress()
-  usm.defund(address, address, weiAmount, 0)
-    .then(() => console.log("burning FUM"))
-    .catch((error) => dispatch(metamaskError(error)))
-}
