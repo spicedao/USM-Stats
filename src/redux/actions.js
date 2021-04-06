@@ -1,24 +1,6 @@
 import { rawETH, rawSYNTH, coingecko, coingeckoETH, cachedInContract, coingeckoSYNTH, latestFromContract } from "../oracles";
-const usm = {name: 'usm'}
-const fum = {name: 'fum'}
-
-export function setInputAmount(token, amount) {
-  switch (token) {
-    case usm.name:
-      return {
-        type: 'SET_USM_INPUT_AMOUNT',
-        amount
-      }
-    case fum.name:
-      return {
-        type: 'SET_FUM_INPUT_AMOUNT',
-        amount
-      }
-    default:
-      break;
-  }
-  
-}
+const usm = 'usm'
+const fum ='fum'
 
 export function metamaskLoaded(metamask, signer) {
   return {
@@ -164,12 +146,12 @@ export function setFUMPrice(buyPrice, sellPrice) {
 
 export function setTotalSupply(tokenName, supply) {
   switch (tokenName) {
-    case usm.name:
+    case usm:
       return {
         type: 'USM_TOTAL_SUPPLY',
         supply
       }
-    case fum.name:
+    case fum:
       return {
         type: 'FUM_TOTAL_SUPPLY',
         supply
@@ -181,12 +163,12 @@ export function setTotalSupply(tokenName, supply) {
 
 export function setMints(tokenName, mints) {
   switch (tokenName) {
-    case usm.name:
+    case usm:
       return {
         type: 'USM_MINTS',
         mints
       }
-    case fum.name:
+    case fum:
       return {
         type: 'FUM_MINTS',
         mints
@@ -198,12 +180,12 @@ export function setMints(tokenName, mints) {
 
 export function setBurns(tokenName, burns) {
   switch (tokenName) {
-    case usm.name:
+    case usm:
       return {
         type: 'USM_BURNS',
         burns
       }
-    case fum.name:
+    case fum:
       return {
         type: 'FUM_BURNS',
         burns

@@ -7,7 +7,7 @@ const { abi: DiaOracleABI } = require("./external/abi/DiaOracle.json");
 const ecosystems = {
   SPICE: {
     usm: {
-      name: "usm",
+      name: "SPICE synth",
       abi: USMABI,
       address: {
         42: "0xa9bBf88eccFBB2be0dca7DeDee9D68C38DFAbE75",
@@ -35,7 +35,7 @@ const ecosystems = {
       },
     },
     fum: {
-      name: "fum",
+      name: "SPICE funder",
       abi: FUMABI,
       address: {
         42: "0xF48D8c02202A2D159B0Dd156d7E2E4559C038633",
@@ -44,7 +44,7 @@ const ecosystems = {
   },
   WBTC: {
     usm: {
-      name: "usm",
+      name: "WBTC synth",
       abi: USMABI,
       address: {
         42: "0x89a1da2EF2A1d925860aBEfABaD9606Dd1254cB7",
@@ -72,7 +72,7 @@ const ecosystems = {
       },
     },
     fum: {
-      name: "fum",
+      name: "WBTC funder",
       abi: FUMABI,
       address: {
         42: "0x7E9F45CCeC05b85417Edd989C911B1c5F605098f",
@@ -81,7 +81,7 @@ const ecosystems = {
   },
   USDC: {
     usm: {
-      name: "usm",
+      name: "USDC synth",
       abi: USMABI,
       address: {
         42: "0xe7A14bFE55b4497B7Fb1f7A180aF9876B9f4181a",
@@ -109,7 +109,7 @@ const ecosystems = {
       },
     },
     fum: {
-      name: "fum",
+      name: "USDC funder",
       abi: FUMABI,
       address: {
         42: "0x8B4122D7E308fAEe02890efD591213542ee6B8eb",

@@ -16,6 +16,7 @@ import { Card, Table } from "react-bootstrap";
 import { decimalPlaces, stringMul } from "./utils";
 import { loadMetamask } from "./redux/interactions";
 import { buyFumBuilder, sellFumBuilder } from "./blockchainInteractions";
+import ecosystems from "./tokens";
 import BlockchainWriteButtons from "./BlockchainWriteButtons";
 
 const FUMCard = ({
@@ -29,6 +30,7 @@ const FUMCard = ({
   fumBuyPriceUSD,
   fumSellPrice,
   fumSellPriceUSD,
+  fum,
   metamaskSigner,
   metamaskConnected,
   metamaskUSM,
@@ -46,7 +48,7 @@ const FUMCard = ({
   return (
     <Card>
       <Card.Header as="h5">
-        FUM
+        {fum.name}
         <BlockchainWriteButtons
           {...{ buy, sell, connect, metamaskConnected }}
         />
@@ -106,9 +108,11 @@ function mapStateToProps(state) {
   const metamask = metamaskSelector(state);
   const ecosystem = ecosystemSelector(state);
   const metamaskConnected = metamask != null;
+  const fum = ecosystems[ecosystem].fum;
   return {
     inputAmount: fumInputAmountSelector(state),
     ecosystem,
+    fum,
     fumMarketCap,
     fumMarketCapUSD,
     fumSupply,

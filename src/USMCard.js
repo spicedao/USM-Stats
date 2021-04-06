@@ -8,7 +8,6 @@ import {
   networkProviderSelector,
   usmInputAmountSelector,
   metamaskSignerSelector,
-  metamaskUSMSelector,
   usmBurnsSelector,
   usmBuyPriceSelector,
   usmMintsSelector,
@@ -52,7 +51,7 @@ const USMCard = ({
   return (
     <Card>
       <Card.Header as="h5">
-        <span>USM</span>
+        <span>{usm.name}</span>
         <BlockchainWriteButtons
           {...{ buy, sell, connect, metamaskConnected }}
         />

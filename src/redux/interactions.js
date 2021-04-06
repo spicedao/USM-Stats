@@ -32,7 +32,7 @@ const loadUSM = async (dispatch, provider, ecosystem) => {
   const address = ecosystem.usm.address[network.chainId]
   const usmContract = new ethers.Contract(address, abi, provider)
   dispatch(usmLoaded(usmContract))
-  loadERC20Data(dispatch, ecosystem.usm, usmContract)
+  loadERC20Data(dispatch, 'usm', usmContract)
   return usmContract
 }
 
@@ -51,7 +51,7 @@ const loadFUM = async (dispatch, provider, ecosystem) => {
   const address = ecosystem.fum.address[network.chainId]
   const fumContract = new ethers.Contract(address, abi, provider)
   dispatch(fumLoaded(fumContract))
-  loadERC20Data(dispatch, ecosystem.fum, fumContract)
+  loadERC20Data(dispatch, 'fum', fumContract)
 }
 
 export const loadMetamask = async (dispatch) => {
