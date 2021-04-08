@@ -17,7 +17,7 @@ import { Card, Table } from "react-bootstrap";
 import { decimalPlaces, stringMul, usmPriceHighlight } from "./utils";
 import { loadMetamask } from "./redux/interactions";
 import { buyUsmBuilder, sellUsmBuilder } from "./blockchainInteractions";
-import ecosystems from "./tokens";
+import ecosystems from "./ecosystems";
 import BlockchainWriteButtons from "./BlockchainWriteButtons";
 
 const USMCard = ({

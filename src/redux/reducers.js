@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import ecosystems, { defaultEcosystem } from "../tokens.js";
+import ecosystems, { defaultEcosystem } from "../ecosystems";
 
 function app(state = { ecosystem: defaultEcosystem }, action) {
   switch (action.type) {

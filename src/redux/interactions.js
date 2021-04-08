@@ -1,5 +1,5 @@
 import { ethers } from "ethers";
-import ecosystems from "../tokens";
+import ecosystems from "../ecosystems";
 import { metamaskError, metamaskLoaded, networkLoaded } from "./actions";
 import { loadCollateralData } from "./interactions/cdp";
 import { loadERC20Data } from "./interactions/erc20";

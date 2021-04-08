@@ -1,5 +1,5 @@
 import { ethers } from "ethers"
-import ecosystems from './tokens';
+import ecosystems from './ecosystems';
 import {curry} from 'lodash';
 import { metamaskError } from "./redux/actions"
 export const getNetwork = async() => ({chainId: '42'})

@@ -13,7 +13,7 @@ import OracleCard from "./OracleCard";
 import USMCard from "./USMCard";
 import FUMCard from "./FUMCard";
 import { clearMetamaskError, ecosystemChanged } from "./redux/actions";
-import ecosystems from './tokens'
+import ecosystems from './ecosystems'
 
 const App = ({ dispatch, networkProvider, metamaskError, ecosystem }) => {
   if (!networkProvider) {
