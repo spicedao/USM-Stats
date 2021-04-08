@@ -7,7 +7,7 @@ const { abi: DiaOracleABI } = require("./external/abi/DiaOracle.json");
 const ecosystems = {
   SPICE: {
     usm: {
-      name: "SPICE synth",
+      name: "SPICE",
       abi: USMABI,
       address: {
         42: "0xa9bBf88eccFBB2be0dca7DeDee9D68C38DFAbE75",
@@ -44,7 +44,7 @@ const ecosystems = {
   },
   WBTC: {
     usm: {
-      name: "WBTC synth",
+      name: "WBTC",
       abi: USMABI,
       address: {
         42: "0x89a1da2EF2A1d925860aBEfABaD9606Dd1254cB7",
@@ -81,7 +81,7 @@ const ecosystems = {
   },
   USDC: {
     usm: {
-      name: "USDC synth",
+      name: "USDC",
       abi: USMABI,
       address: {
         42: "0xe7A14bFE55b4497B7Fb1f7A180aF9876B9f4181a",

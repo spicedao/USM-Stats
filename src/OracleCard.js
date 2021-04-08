@@ -5,12 +5,14 @@ import {
   latestPriceSelector,
   rawSYNTHPriceSelector,
   rawETHPriceSelector,
+  ecosystemSelector,
   coingeckoETHPriceSelector,
   coingeckoSYNTHPriceSelector,
   coingeckoPriceSelector,
 } from "./redux/selectors";
 import { Card, Table } from "react-bootstrap";
 import { decimalPlaces, oracleHighlight } from "./utils";
+import ecosystems from "./ecosystems";
 
 class OracleCard extends Component {
   render() {
@@ -19,6 +21,7 @@ class OracleCard extends Component {
       coingeckoSYNTHPrice,
       coingeckoPrice,
       cachedPrice,
+      synthName,
       latestPrice,
       rawETHPrice,
       rawSYNTHPrice
@@ -38,7 +41,7 @@ class OracleCard extends Component {
                 <td>$ {decimalPlaces(coingeckoETHPrice)}</td>
               </tr>
               <tr>
-                <td>Coingecko - SYNTH</td>
+                <td>Coingecko - {synthName}</td>
                 <td>$ {decimalPlaces(coingeckoSYNTHPrice)}</td>
               </tr>
               <tr>
@@ -46,7 +49,7 @@ class OracleCard extends Component {
                 <td>$ {decimalPlaces(coingeckoPrice)}</td>
               </tr>
               <tr>
-                <th colSpan={2}>USMFUM ETH Price</th>
+                <th colSpan={2}>{synthName} ETH Price</th>
               </tr>
               <tr
                 className="text-dark"
@@ -84,7 +87,7 @@ class OracleCard extends Component {
                   backgroundColor: oracleHighlight(coingeckoSYNTHPrice, rawSYNTHPrice),
                 }}
               >
-                <td>oracle SYNTH price</td>
+                <td>oracle {synthName} price</td>
                 <td>$ {decimalPlaces(rawSYNTHPrice)}</td>
               </tr>
             </tbody>
@@ -96,10 +99,12 @@ class OracleCard extends Component {
 }
 
 function mapStateToProps(state) {
+  const ecosystem =ecosystems[ecosystemSelector(state)]
   return {
     coingeckoETHPrice: coingeckoETHPriceSelector(state),
     coingeckoSYNTHPrice: coingeckoSYNTHPriceSelector(state),
     coingeckoPrice: coingeckoPriceSelector(state),
+    synthName: ecosystem && ecosystem.usm && ecosystem.usm.name,
     cachedPrice: cachedPriceSelector(state),
     latestPrice: latestPriceSelector(state),
     rawETHPrice: rawETHPriceSelector(state),

@@ -49,7 +49,7 @@ const USMCard = ({
   return (
     <Card>
       <Card.Header as="h5">
-        <span>{usm.name}</span>
+        <span>{usm.name} synth</span>
         <BlockchainWriteButtons
           {...{ buy, sell, connect, metamaskConnected }}
         />
