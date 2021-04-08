@@ -37,34 +37,6 @@ export function networkLoaded(provider){
   }
 }
 
-export function usmLoaded(usm) {
-  return {
-    type: 'USM_LOADED',
-    usm
-  }
-}
-
-export function rawOracleLoaded(rawOracle) {
-  return {
-    type: 'RAW_ORACLE_LOADED',
-    rawOracle
-  }
-}
-
-export function usmViewLoaded(usmView) {
-  return {
-    type: 'USMVIEW_LOADED',
-    usmView
-  }
-}
-
-export function fumLoaded(fum) {
-  return {
-    type: 'FUM_LOADED',
-    fum
-  }
-}
-
 export function setLatestOraclePrice(source, price) {
   switch (source) {
     case coingecko:

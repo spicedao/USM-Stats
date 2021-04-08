@@ -6,7 +6,6 @@ import {
   metamaskSelector,
   ecosystemSelector,
   networkProviderSelector,
-  usmInputAmountSelector,
   metamaskSignerSelector,
   usmBurnsSelector,
   usmBuyPriceSelector,
@@ -37,7 +36,6 @@ const USMCard = ({
   usmSellPriceUSD,
   metamaskSigner,
   metamaskConnected,
-  inputAmount,
   coingeckoSYNTHPrice,
 }) => {
   const connect = (e) => {
@@ -130,7 +128,6 @@ function mapStateToProps(state) {
   const provider = networkProviderSelector(state);
   const usm = ecosystems[ecosystem].usm;
   return {
-    inputAmount: usmInputAmountSelector(state),
     usm,
     provider,
     ecosystem,

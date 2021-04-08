@@ -5,9 +5,6 @@ import {createSelector} from 'reselect';
 const networkProvider = state => get(state, 'app.provider', null);
 export const networkProviderSelector = createSelector(networkProvider, w => w);
 
-const usmContract = state => get(state, 'app.usm', null);
-export const usmContractSelector = createSelector(usmContract, w => w);
-
 const metamask = state => get(state, 'app.metamask', null);
 export const metamaskSelector = createSelector(metamask, w => w);
 
@@ -19,18 +16,6 @@ export const metamaskErrorSelector = createSelector(metamaskError, w => w);
 
 const ecosystem = state => get(state, 'app.ecosystem', null);
 export const ecosystemSelector = createSelector(ecosystem, w => w);
-
-const metamaskUSM = state => get(state, 'app.metamaskUSM', null);
-export const metamaskUSMSelector = createSelector(metamaskUSM, w => w);
-
-const metamaskFUM = state => get(state, 'app.metamaskFUM', null);
-export const metamaskFUMSelector = createSelector(metamaskFUM, w => w);
-
-const usmInputAmount = state => get(state, 'app.usmInputAmount', null);
-export const usmInputAmountSelector = createSelector(usmInputAmount, w => w);
-
-const fumInputAmount = state => get(state, 'app.fumInputAmount', null);
-export const fumInputAmountSelector = createSelector(fumInputAmount, w => w);
 
 //USM
 const usmSupply = state => get(state, `${state.app.ecosystem}.usm.supply`, 0);

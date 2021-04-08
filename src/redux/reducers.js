@@ -5,14 +5,6 @@ function app(state = { ecosystem: defaultEcosystem }, action) {
   switch (action.type) {
     case "NETWORK_LOADED":
       return { ...state, provider: action.provider };
-    case "USM_LOADED":
-      return { ...state, usm: action.usm };
-    case "RAW_ORACLE_LOADED":
-      return { ...state, rawOracle: action.rawOracle };
-    case "USMVIEW_LOADED":
-      return { ...state, usm: action.usmView };
-    case "FUM_LOADED":
-      return { ...state, fum: action.fum };
     case "METAMASK_LOADED":
       return {
         ...state,
@@ -25,10 +17,6 @@ function app(state = { ecosystem: defaultEcosystem }, action) {
       return { ...state, ecosystem: action.ecosystem };
     case "CLEAR_METAMASK_ERROR":
       return { ...state, metamaskError: null };
-    case "SET_USM_INPUT_AMOUNT":
-      return { ...state, usmInputAmount: action.amount };
-    case "SET_FUM_INPUT_AMOUNT":
-      return { ...state, fumInputAmount: action.amount };
     default:
       return state;
   }

@@ -5,7 +5,6 @@ import {
   ecosystemSelector,
   fumBurnsSelector,
   fumBuyPriceSelector,
-  fumInputAmountSelector,
   fumMintsSelector,
   fumSellPriceSelector,
   fumSupplySelector,
@@ -110,7 +109,6 @@ function mapStateToProps(state) {
   const metamaskConnected = metamask != null;
   const fum = ecosystems[ecosystem].fum;
   return {
-    inputAmount: fumInputAmountSelector(state),
     ecosystem,
     fum,
     fumMarketCap,
