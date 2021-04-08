@@ -4,7 +4,7 @@ import {curry} from 'lodash';
 import { metamaskError } from "./redux/actions"
 export const getNetwork = async() => ({chainId: '42'})
 
-const callFunctionOnUsm = (functionName, dispatch, provider, signer, ecosystem) => async (amount) => {
+const callFunctionOnUsm = (functionName, provider, signer, ecosystem, dispatch) => async (amount) => {
   const weiAmount = ethers.utils.parseEther(amount)
   console.log(`attempting to ${functionName} on usm in ${ecosystem} for ${amount}`)
   const address = await signer.getAddress()

@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import {
   coingeckoETHPriceSelector,
+  networkProviderSelector,
   ecosystemSelector,
   fumBurnsSelector,
   fumBuyPriceSelector,
@@ -20,6 +21,8 @@ import BlockchainWriteButtons from "./BlockchainWriteButtons";
 
 const FUMCard = ({
   dispatch,
+  buy,
+  sell,
   fumMarketCap,
   fumMarketCapUSD,
   fumSupply,
@@ -34,22 +37,17 @@ const FUMCard = ({
   metamaskConnected,
   metamaskUSM,
   ecosystem,
-  provider,
 }) => {
   const connect = (e) => {
     loadMetamask(dispatch);
   };
-
-  const buy = buyFumBuilder(dispatch, provider, metamaskSigner, ecosystem);
-
-  const sell = sellFumBuilder(dispatch, provider, metamaskSigner, ecosystem);
 
   return (
     <Card>
       <Card.Header as="h5">
         {fum.name}
         <BlockchainWriteButtons
-          {...{ buy, sell, connect, metamaskConnected }}
+          {...{ buy: buy(dispatch), sell: sell(dispatch), connect, metamaskConnected }}
         />
       </Card.Header>
       <Card.Body>
@@ -107,7 +105,9 @@ function mapStateToProps(state) {
   const metamask = metamaskSelector(state);
   const ecosystem = ecosystemSelector(state);
   const metamaskConnected = metamask != null;
+  const metamaskSigner = metamaskSignerSelector(state);
   const fum = ecosystems[ecosystem].fum;
+  const provider = networkProviderSelector(state);
   return {
     ecosystem,
     fum,
@@ -121,7 +121,9 @@ function mapStateToProps(state) {
     fumSellPrice,
     fumSellPriceUSD,
     metamaskConnected,
-    metamaskSigner: metamaskSignerSelector(state),
+    metamaskSigner,
+    buy: buyFumBuilder(provider, metamaskSigner, ecosystem),
+    sell: sellFumBuilder(provider, metamaskSigner, ecosystem),
   };
 }
 

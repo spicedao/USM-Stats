@@ -23,7 +23,8 @@ import BlockchainWriteButtons from "./BlockchainWriteButtons";
 const USMCard = ({
   dispatch,
   usm,
-  provider,
+  buy,
+  sell,
   ecosystem,
   usmSupply,
   usmMints,
@@ -42,16 +43,12 @@ const USMCard = ({
     loadMetamask(dispatch);
   };
 
-  const buy = buyUsmBuilder(dispatch, provider, metamaskSigner, ecosystem);
-
-  const sell = sellUsmBuilder(dispatch, provider, metamaskSigner, ecosystem);
-
   return (
     <Card>
       <Card.Header as="h5">
         <span>{usm.name} synth</span>
         <BlockchainWriteButtons
-          {...{ buy, sell, connect, metamaskConnected }}
+          {...{ buy: buy(dispatch), sell: sell(dispatch), connect, metamaskConnected }}
         />
       </Card.Header>
       <Card.Body>
@@ -127,9 +124,9 @@ function mapStateToProps(state) {
   const ecosystem = ecosystemSelector(state);
   const provider = networkProviderSelector(state);
   const usm = ecosystems[ecosystem].usm;
+  const metamaskSigner = metamaskSignerSelector(state);
   return {
     usm,
-    provider,
     ecosystem,
     usmMarketCap,
     usmMarketCapUSD,
@@ -142,7 +139,9 @@ function mapStateToProps(state) {
     usmSellPriceUSD,
     metamaskConnected,
     coingeckoSYNTHPrice,
-    metamaskSigner: metamaskSignerSelector(state),
+    buy: buyUsmBuilder(provider, metamaskSigner, ecosystem),
+    sell : sellUsmBuilder(provider, metamaskSigner, ecosystem),
+    metamaskSigner,
   };
 }
 
