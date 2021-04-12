@@ -6,6 +6,10 @@ function app(state = {}, action) {
       return { ...state, provider: action.provider }
     case 'USM_LOADED':
       return { ...state, usm: action.usm }
+    case 'RAW_ORACLE_LOADED':
+      return { ...state, rawOracle: action.rawOracle }
+    case 'USMVIEW_LOADED':
+      return { ...state, usm: action.usmView }
     case 'FUM_LOADED':
       return { ...state, fum: action.fum }
     case 'METAMASK_LOADED':
@@ -67,16 +71,20 @@ function fum(state = {}, action) {
 
 function oracle(state = {}, action) {
   switch (action.type) {
-    case 'ORACLE_PRICE_CHAINLINK':
-      return { ...state, chainlinkPrice: action.price }
-    case 'ORACLE_PRICE_COMPOUND':
-      return { ...state, compoundPrice: action.price }
-    case 'ORACLE_PRICE_UNISWAP':
-      return { ...state, uniswapPrice: action.price }
     case 'ORACLE_PRICE_COINGECKO':
       return { ...state, coingeckoPrice: action.price }
-    case 'ORACLE_PRICE_MEDIAN':
-      return { ...state, medianPrice: action.price }
+    case 'ORACLE_PRICE_ETH_COINGECKO':
+      return { ...state, coingeckoETHPrice: action.price }
+    case 'ORACLE_PRICE_SYNTH_COINGECKO':
+      return { ...state, coingeckoSYNTHPrice: action.price }
+    case 'ORACLE_PRICE_CACHED':
+      return { ...state, cachedPrice: action.price }
+    case 'ORACLE_PRICE_LATEST':
+      return { ...state, latestPrice: action.price }
+    case 'ORACLE_PRICE_RAW_ETH':
+      return { ...state, rawEthPrice: action.price }
+    case 'ORACLE_PRICE_RAW_SYNTH':
+      return { ...state, rawSynthPrice: action.price }
     default:
       return state;
   }

@@ -1,46 +1,50 @@
 import { ethers } from "ethers"
-import { chainlink, coingecko, compound, median, uniswap } from "../../oracles"
+import { coingecko, coingeckoETH, coingeckoSYNTH, cachedInContract, latestFromContract, rawETH, rawSYNTH } from "../../oracles"
 import { setLatestOraclePrice } from "../actions"
 import axios from 'axios'
 
-export const loadOracleData = async (dispatch, contract) => {
-  getCoingeckoPrice(dispatch)
-  getChainlinkPrice(dispatch, contract)
-  getCompoundPrice(dispatch, contract)
-  getUniswapPrice(dispatch, contract)
-  getMedianPrice(dispatch, contract)
+export const loadOracleData = async (dispatch, usmContract, rawOracle) => {
+  const ethprice = await getCoingeckoETHPrice(dispatch)
+  const synthprice = await getCoingeckoSYNTHPrice(dispatch)
+  dispatch(setLatestOraclePrice(coingecko, ethprice/synthprice))
+  getPricesFromUSMContract(dispatch, usmContract)
+  getPricesFromRawOracle(dispatch, rawOracle)
 }
 
-export const getCoingeckoPrice = async (dispatch) => {
-  axios.get('https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd')
-    .then(function (response) {
-      dispatch(setLatestOraclePrice(coingecko, response.data.ethereum.usd))
-    })
-    .catch(function (error) {
-      console.log(error);
-    })
+const getCoingeckoETHPrice = (dispatch) => axios.get('https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd')
+  .then(function (response) {
+    const price = response.data.ethereum.usd
+    dispatch(setLatestOraclePrice(coingeckoETH, price))
+    return price
+  })
+  .catch(function (error) {
+    console.log(error);
+  })
+
+
+const getCoingeckoSYNTHPrice = (dispatch) => axios.get('https://api.coingecko.com/api/v3/simple/price?ids=spice-finance&vs_currencies=usd')
+  .then(function (response) {
+    const price = response.data["spice-finance"].usd
+    console.log(response.data)
+    console.log(price)
+    dispatch(setLatestOraclePrice(coingeckoSYNTH, price))
+    return price
+  })
+  .catch(function (error) {
+    console.log(error);
+  })
+
+const getPricesFromUSMContract = async (dispatch, usmContract) => {
+  // TODO: show latest price update time, perhaps?
+  const cachedPrice = (await usmContract.latestPrice())[0]
+  const latestPrice = (await usmContract.latestOraclePrice())[0]
+  dispatch(setLatestOraclePrice(cachedInContract, ethers.utils.formatEther(cachedPrice)))
+  dispatch(setLatestOraclePrice(latestFromContract, ethers.utils.formatEther(latestPrice)))
 }
 
-export const getChainlinkPrice = async (dispatch, contract) => {
-  const price = await contract.latestChainlinkPrice()
-  const formattedPrice = ethers.utils.formatEther(price)
-  dispatch(setLatestOraclePrice(chainlink, formattedPrice))
-}
-
-export const getCompoundPrice = async (dispatch, contract) => {
-  const price = await contract.latestCompoundPrice()
-  const formattedPrice = ethers.utils.formatEther(price)
-  dispatch(setLatestOraclePrice(compound, formattedPrice))
-}
-
-export const getUniswapPrice = async (dispatch, contract) => {
-  const price = await contract.latestUniswapTWAPPrice()
-  const formattedPrice = ethers.utils.formatEther(price)
-  dispatch(setLatestOraclePrice(uniswap, formattedPrice))
-}
-
-export const getMedianPrice = async (dispatch, contract) => {
-  const price = await contract.latestPrice()
-  const formattedPrice = ethers.utils.formatEther(price)
-  dispatch(setLatestOraclePrice(median, formattedPrice))
+const getPricesFromRawOracle = async (dispatch, rawOracleContract) => {
+  const rawEth = (await rawOracleContract.getValue('ETH'))[0].toNumber()
+  const rawSynth = (await rawOracleContract.getValue('SPICE'))[0].toNumber()
+  dispatch(setLatestOraclePrice(rawETH, rawEth/(10**5)))
+  dispatch(setLatestOraclePrice(rawSYNTH, rawSynth/(10**5)))
 }

@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { coingeckoPriceSelector, usmCollateralSelector, usmDebtRatioSelector, usmEthBufferSelector } from './redux/selectors';
+import { coingeckoETHPriceSelector, usmCollateralSelector, usmDebtRatioSelector, usmEthBufferSelector } from './redux/selectors';
 import { Button, Card, Table } from 'react-bootstrap';
 import { debtRatioHighlight, decimalPlaces, toPercentage } from './utils';
 
@@ -41,13 +41,13 @@ class HealthCard extends Component {
 }
 
 function mapStateToProps(state) {
-  const coingeckoPrice = coingeckoPriceSelector(state)
+  const coingeckoETHPrice = coingeckoETHPriceSelector(state)
   const usmCollateral = usmCollateralSelector(state)
-  const usmCollateralUSD = usmCollateral * coingeckoPrice
+  const usmCollateralUSD = usmCollateral * coingeckoETHPrice
   const usmEthBuffer = usmEthBufferSelector(state)
-  const usmEthBufferUSD = usmEthBuffer * coingeckoPrice
+  const usmEthBufferUSD = usmEthBuffer * coingeckoETHPrice
   return {
-    coingeckoPrice,
+    coingeckoETHPrice,
     usmCollateral,
     usmCollateralUSD,
     usmEthBuffer,

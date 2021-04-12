@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { coingeckoPriceSelector, metamaskSelector, usmInputAmountSelector, metamaskSignerSelector, metamaskUSMSelector, usmBurnsSelector, usmBuyPriceSelector, usmMintsSelector, usmSellPriceSelector, usmSupplySelector } from './redux/selectors';
+import { coingeckoETHPriceSelector, coingeckoSYNTHPriceSelector, metamaskSelector, usmInputAmountSelector, metamaskSignerSelector, metamaskUSMSelector, usmBurnsSelector, usmBuyPriceSelector, usmMintsSelector, usmSellPriceSelector, usmSupplySelector } from './redux/selectors';
 import { Button, Card, Table } from 'react-bootstrap';
 import { decimalPlaces, stringMul, usmPriceHighlight } from './utils';
 import { buyUSM, loadMetamask, sellUSM } from './redux/interactions';
@@ -26,7 +26,7 @@ class USMCard extends Component {
   render () {
     const {dispatch, usmSupply, usmMints, usmBurns, usmMarketCap, usmMarketCapUSD,
       usmBuyPrice, usmBuyPriceUSD, usmSellPrice, usmSellPriceUSD,
-      metamaskSigner, metamaskConnected, metamaskUSM, inputAmount
+      metamaskSigner, metamaskConnected, metamaskUSM, inputAmount, coingeckoSYNTHPrice
     } = this.props
 
     const connectMetamask = (e) => {
@@ -60,12 +60,12 @@ class USMCard extends Component {
                 <td>Ξ {decimalPlaces(usmMarketCap)}</td>
                 <td>$ {decimalPlaces(usmMarketCapUSD)}</td>
               </tr>
-              <tr className="text-dark" style={{backgroundColor: usmPriceHighlight(usmBuyPriceUSD)}}>
+              <tr className="text-dark" style={{backgroundColor: usmPriceHighlight(usmBuyPriceUSD, coingeckoSYNTHPrice)}}>
                 <td>Mint Price</td>
                 <td>Ξ {decimalPlaces(usmBuyPrice, 5)}</td>
                 <td>$ {decimalPlaces(usmBuyPriceUSD)}</td>
               </tr>
-              <tr className="text-dark" style={{backgroundColor: usmPriceHighlight(usmSellPriceUSD)}}>
+              <tr className="text-dark" style={{backgroundColor: usmPriceHighlight(usmSellPriceUSD, coingeckoSYNTHPrice)}}>
                 <td>Burn Price</td>
                 <td>Ξ {decimalPlaces(usmSellPrice, 5)}</td>
                 <td>$ {decimalPlaces(usmSellPriceUSD)}</td>
@@ -94,15 +94,16 @@ class USMCard extends Component {
 }
 
 function mapStateToProps(state) {
-  const coingeckoPrice = coingeckoPriceSelector(state)
+  const coingeckoSYNTHPrice = coingeckoSYNTHPriceSelector(state)
+  const coingeckoETHPrice = coingeckoETHPriceSelector(state)
 
   const usmSupply = usmSupplySelector(state)
   const usmBuyPrice = usmBuyPriceSelector(state)
   const usmSellPrice = usmSellPriceSelector(state)
   const usmMarketCap = usmSupply * usmBuyPrice
-  const usmBuyPriceUSD = stringMul(usmBuyPrice, coingeckoPrice)
-  const usmSellPriceUSD = stringMul(usmSellPrice, coingeckoPrice)
-  const usmMarketCapUSD = stringMul(usmMarketCap, coingeckoPrice)
+  const usmBuyPriceUSD = stringMul(usmBuyPrice, coingeckoETHPrice)
+  const usmSellPriceUSD = stringMul(usmSellPrice, coingeckoETHPrice)
+  const usmMarketCapUSD = stringMul(usmMarketCap, coingeckoSYNTHPrice)
 
   const metamask = metamaskSelector(state)
   const metamaskConnected = (metamask != null);
@@ -118,6 +119,7 @@ function mapStateToProps(state) {
     usmSellPrice,
     usmSellPriceUSD,
     metamaskConnected,
+    coingeckoSYNTHPrice,
     metamaskSigner: metamaskSignerSelector(state),
     metamaskUSM: metamaskUSMSelector(state)
   }

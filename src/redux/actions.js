@@ -1,4 +1,4 @@
-import { chainlink, coingecko, compound, median, uniswap } from "../oracles";
+import { rawETH, rawSYNTH, coingecko, coingeckoETH, cachedInContract, coingeckoSYNTH, latestFromContract } from "../oracles";
 import { fum, usm } from "../tokens";
 
 export function setInputAmount(token, amount) {
@@ -56,6 +56,20 @@ export function usmLoaded(usm) {
   }
 }
 
+export function rawOracleLoaded(rawOracle) {
+  return {
+    type: 'RAW_ORACLE_LOADED',
+    rawOracle
+  }
+}
+
+export function usmViewLoaded(usmView) {
+  return {
+    type: 'USMVIEW_LOADED',
+    usmView
+  }
+}
+
 export function fumLoaded(fum) {
   return {
     type: 'FUM_LOADED',
@@ -65,29 +79,39 @@ export function fumLoaded(fum) {
 
 export function setLatestOraclePrice(source, price) {
   switch (source) {
-    case chainlink:
-      return {
-        type: 'ORACLE_PRICE_CHAINLINK',
-        price
-      }
-    case compound:
-      return {
-        type: 'ORACLE_PRICE_COMPOUND',
-        price
-      }
-    case uniswap:
-      return {
-        type: 'ORACLE_PRICE_UNISWAP',
-        price
-      }
     case coingecko:
       return {
         type: 'ORACLE_PRICE_COINGECKO',
         price
       }
-    case median:
+    case coingeckoETH:
       return {
-        type: 'ORACLE_PRICE_MEDIAN',
+        type: 'ORACLE_PRICE_ETH_COINGECKO',
+        price
+      }
+    case coingeckoSYNTH:
+      return {
+        type: 'ORACLE_PRICE_SYNTH_COINGECKO',
+        price
+      }
+    case cachedInContract:
+      return {
+        type: 'ORACLE_PRICE_CACHED',
+        price
+      }
+    case latestFromContract:
+      return {
+        type: 'ORACLE_PRICE_LATEST',
+        price
+      }
+    case rawETH:
+      return {
+        type: 'ORACLE_PRICE_RAW_ETH',
+        price
+      }
+    case rawSYNTH:
+      return {
+        type: 'ORACLE_PRICE_RAW_SYNTH',
         price
       }
     default:

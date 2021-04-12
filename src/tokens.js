@@ -1,52 +1,45 @@
-export const usm = {
-  name: 'usm',
-  abi: [
-    "function mint(address to, uint minUsmOut) external payable returns (uint)",
-    "function burn(address from, address payable to, uint usmToBurn, uint minEthOut) external returns (uint)",
-    "function fund(address to, uint minFumOut) external payable returns (uint)",
-    "function defund(address from, address payable to, uint fumToBurn, uint minEthOut) external returns (uint)",
-    "function defundFromFUM(address from, address payable to, uint fumToBurn, uint minEthOut) external returns (uint)",
-    "function ethPool() public view returns (uint pool)",
-    "function minFumBuyPrice() public view returns (uint mfbp)",
-    "function buySellAdjustment() public view returns (uint adjustment)",
-    "function ethBuffer(uint8 upOrDown) external view returns (int buffer)",
-    "function ethToUsm(uint ethAmount, uint8 upOrDown) external view returns (uint usmOut)",
-    "function usmToEth(uint usmAmount, uint8 upOrDown) external view returns (uint ethOut)",
-    "function debtRatio() external view returns (uint ratio)",
-    "function usmPrice(uint8 side) external view returns (uint price)",
-    "function fumPrice(uint8 side) external view returns (uint price)",
-    "function latestChainlinkPrice() public view returns (uint price)",
-    "function latestCompoundPrice() public view returns (uint price)",
-    "function latestUniswapTWAPPrice() public view returns (uint price)",
-    "function latestPrice() public virtual view returns (uint price)",
+const { abi: USMABI } = require("./external/abi/USM.json");
+const { abi: USMViewABI } = require("./external/abi/USMView.json");
+const { abi: FUMABI } = require("./external/abi/FUM.json");
+const { abi: OracleABI } = require("./external/abi/Oracle.json");
+const { abi: DiaOracleABI } = require("./external/abi/DiaOracle.json");
 
-    "function receive() external payable",
-    
-    "event MinFumBuyPriceChanged(uint previous, uint latest)",
-    "event BuySellAdjustmentChanged(uint previous, uint latest)",
-  
-    "function totalSupply() external view returns (uint256)",
-    "function balanceOf(address account) external view returns (uint256)",
-    "function transfer(address recipient, uint256 amount) external returns (bool)",
-    "function allowance(address owner, address spender) external view returns (uint256)",
-    "function approve(address spender, uint256 amount) external returns (bool)",
-    "function transferFrom(address sender, address recipient, uint256 amount) external returns (bool)",
-    "event Transfer(address indexed from, address indexed to, uint256 value)",
-  ],
+export const usm = {
+  name: "usm",
+  abi: USMABI,
   address: {
-    1: '0x03eb7Ce2907e202bB70BAE3D7B0C588573d3cECC',
-    42: '0x21453979384f21D09534f8801467BDd5d90eCD6C'
-  }
-}
+    42: "0xa9bBf88eccFBB2be0dca7DeDee9D68C38DFAbE75",
+  },
+};
+
+export const usmview = {
+  name: "USMView",
+  abi: USMViewABI,
+  address: {
+    42: "0x4D90474F581B0411Ad213eC0ec09166d4FcdfD78",
+  },
+};
+
+export const oracle = {
+  name: "oracle",
+  abi: OracleABI,
+  address: {
+    42: "0x2Eba759603729b61Fb57B14F9C9f2e678c09C00c",
+  },
+};
+
+export const diaOracle = {
+  name: "diaOracle",
+  abi: DiaOracleABI,
+  address: {
+    42: "0x637c1b5d57b5b0d40b1868b8cc2034525f5f61cf",
+  },
+};
 
 export const fum = {
-  name: 'fum',
-  abi: [
-    "function totalSupply() external view returns (uint256)",
-    "event Transfer(address indexed from, address indexed to, uint256 value)"
-  ],
+  name: "fum",
+  abi: FUMABI,
   address: {
-    1: '0xf04a5D82ff8a801f7d45e9C14CDcf73defF1a394',
-    42: '0x96F8F5323Aa6CB0e6F311bdE6DEEFb1c81Cb1898'
-  }
-}
+    42: "0xF48D8c02202A2D159B0Dd156d7E2E4559C038633",
+  },
+};

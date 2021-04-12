@@ -1,21 +1,33 @@
-import { Component } from 'react';
-import { connect } from 'react-redux';
-import { chainlinkPriceSelector, medianPriceSelector, coingeckoPriceSelector, compoundPriceSelector, uniswapPriceSelector } from './redux/selectors';
-import { Card, Table } from 'react-bootstrap';
-import { decimalPlaces, oracleHighlight } from './utils';
+import { Component } from "react";
+import { connect } from "react-redux";
+import {
+  cachedPriceSelector,
+  latestPriceSelector,
+  rawSYNTHPriceSelector,
+  rawETHPriceSelector,
+  coingeckoETHPriceSelector,
+  coingeckoSYNTHPriceSelector,
+  coingeckoPriceSelector,
+} from "./redux/selectors";
+import { Card, Table } from "react-bootstrap";
+import { decimalPlaces, oracleHighlight } from "./utils";
 
 class OracleCard extends Component {
   render() {
-
-    const {chainlinkPrice, compoundPrice, uniswapPrice, coingeckoPrice, medianPrice} = this.props;
+    const {
+      coingeckoETHPrice,
+      coingeckoSYNTHPrice,
+      coingeckoPrice,
+      cachedPrice,
+      latestPrice,
+      rawETHPrice,
+      rawSYNTHPrice
+    } = this.props;
 
     return (
       <Card>
-        <Card.Header as="h5">
-          Oracle Performance
-        </Card.Header>
+        <Card.Header as="h5">Oracle Performance</Card.Header>
         <Card.Body>
-          
           <Table striped hover size="sm">
             <tbody>
               <tr>
@@ -23,46 +35,76 @@ class OracleCard extends Component {
               </tr>
               <tr>
                 <td>Coingecko - ETH</td>
+                <td>$ {decimalPlaces(coingeckoETHPrice)}</td>
+              </tr>
+              <tr>
+                <td>Coingecko - SYNTH</td>
+                <td>$ {decimalPlaces(coingeckoSYNTHPrice)}</td>
+              </tr>
+              <tr>
+                <td>Coingecko - expected price from oracle</td>
                 <td>$ {decimalPlaces(coingeckoPrice)}</td>
               </tr>
               <tr>
                 <th colSpan={2}>USMFUM ETH Price</th>
               </tr>
-              <tr className="text-dark" style={{backgroundColor: oracleHighlight(coingeckoPrice, medianPrice)}}>
-                <td>Medianized Oracle</td>
-                <td>$ {decimalPlaces(medianPrice)}</td>
+              <tr
+                className="text-dark"
+                style={{
+                  backgroundColor: oracleHighlight(coingeckoPrice, cachedPrice),
+                }}
+              >
+                <td>Price cached in the contract</td>
+                <td>$ {decimalPlaces(cachedPrice)}</td>
+              </tr>
+              <tr
+                className="text-dark"
+                style={{
+                  backgroundColor: oracleHighlight(coingeckoPrice, latestPrice),
+                }}
+              >
+                <td>Price straight from the oracle</td>
+                <td>$ {decimalPlaces(latestPrice)}</td>
               </tr>
               <tr>
-                <th colSpan={2}>Median Sources</th>
+                <th colSpan={2}>Raw prices from DIA oracle</th>
               </tr>
-              <tr className="text-dark" style={{backgroundColor: oracleHighlight(coingeckoPrice, chainlinkPrice)}}>
-                <td>Chainlink</td>
-                <td>$ {decimalPlaces(chainlinkPrice)}</td>
+              <tr
+                className="text-dark"
+                style={{
+                  backgroundColor: oracleHighlight(coingeckoETHPrice, rawETHPrice),
+                }}
+              >
+                <td>oracle ETH price</td>
+                <td>$ {decimalPlaces(rawETHPrice)}</td>
               </tr>
-              <tr className="text-dark" style={{backgroundColor: oracleHighlight(coingeckoPrice, compoundPrice)}}>
-                <td>Compound</td>
-                <td>$ {decimalPlaces(compoundPrice)}</td>
-              </tr>
-              <tr className="text-dark" style={{backgroundColor: oracleHighlight(coingeckoPrice, uniswapPrice)}}>
-                <td>Uniswap TWAP</td>
-                <td>$ {decimalPlaces(uniswapPrice)}</td>
+              <tr
+                className="text-dark"
+                style={{
+                  backgroundColor: oracleHighlight(coingeckoSYNTHPrice, rawSYNTHPrice),
+                }}
+              >
+                <td>oracle SYNTH price</td>
+                <td>$ {decimalPlaces(rawSYNTHPrice)}</td>
               </tr>
             </tbody>
           </Table>
         </Card.Body>
       </Card>
-    )
+    );
   }
 }
 
 function mapStateToProps(state) {
   return {
+    coingeckoETHPrice: coingeckoETHPriceSelector(state),
+    coingeckoSYNTHPrice: coingeckoSYNTHPriceSelector(state),
     coingeckoPrice: coingeckoPriceSelector(state),
-    chainlinkPrice: chainlinkPriceSelector(state),
-    compoundPrice: compoundPriceSelector(state),
-    uniswapPrice: uniswapPriceSelector(state),
-    medianPrice: medianPriceSelector(state)
-  }
+    cachedPrice: cachedPriceSelector(state),
+    latestPrice: latestPriceSelector(state),
+    rawETHPrice: rawETHPriceSelector(state),
+    rawSYNTHPrice: rawSYNTHPriceSelector(state),
+  };
 }
 
-export default connect(mapStateToProps)(OracleCard)
+export default connect(mapStateToProps)(OracleCard);

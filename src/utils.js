@@ -40,9 +40,9 @@ export const colorisor = (actualNumber, ranges) => {
   }
 }
 
-export const usmPriceHighlight = (price) => {
-  const difference = Math.abs(1.00 - Number.parseFloat(price))
-  const ranges = [.01, .02, .03, .04, .05, .06, .07, .08]
+export const usmPriceHighlight = (price, referencePrice) => {
+  const difference = Math.abs(1 - referencePrice / Number.parseFloat(price))
+  const ranges = [.02, .04, .06, .09, .12, .18, .22, .27]
   return colorisor(difference, ranges)
 }
 
@@ -52,8 +52,8 @@ export const debtRatioHighlight = (debtRatio) => {
 }
 
 export const oracleHighlight = (referencePrice, actualPrice) => {
-  const difference = Math.abs(Number.parseFloat(referencePrice) - Number.parseFloat(actualPrice))
-  const ranges = [2, 4, 6, 8, 10, 12, 14, 20]
+  const difference = Math.abs(1 - Number.parseFloat(referencePrice) / Number.parseFloat(actualPrice))
+  const ranges = [.02, .04, .06, .08, .1, .14, .18, .25]
   return colorisor(difference, ranges)
 }
 

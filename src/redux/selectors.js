@@ -71,17 +71,23 @@ const fumSellPrice = state => get(state, 'fum.sellPrice', 0);
 export const fumSellPriceSelector = createSelector(fumSellPrice, w => w);
 
 //ORACLE
-const chainlinkPrice = state => get(state, 'oracle.chainlinkPrice', 0);
-export const chainlinkPriceSelector = createSelector(chainlinkPrice, w => w);
-
-const compoundPrice = state => get(state, 'oracle.compoundPrice', 0);
-export const compoundPriceSelector = createSelector(compoundPrice, w => w);
-
-const uniswapPrice = state => get(state, 'oracle.uniswapPrice', 0);
-export const uniswapPriceSelector = createSelector(uniswapPrice, w => w);
-
 const coingeckoPrice = state => get(state, 'oracle.coingeckoPrice', 0);
 export const coingeckoPriceSelector = createSelector(coingeckoPrice, w => w);
 
-const medianPrice = state => get(state, 'oracle.medianPrice', 0);
-export const medianPriceSelector = createSelector(medianPrice, w => w);
+const coingeckoETHPrice = state => get(state, 'oracle.coingeckoETHPrice', 0);
+export const coingeckoETHPriceSelector = createSelector(coingeckoETHPrice, w => w);
+
+const coingeckoSYNTHPrice = state => get(state, 'oracle.coingeckoSYNTHPrice', 0);
+export const coingeckoSYNTHPriceSelector = createSelector(coingeckoSYNTHPrice, w => w);
+
+const cachedPrice = state => get(state, 'oracle.cachedPrice', 0);
+export const cachedPriceSelector = createSelector(cachedPrice, w => w);
+
+const latestPrice = state => get(state, 'oracle.latestPrice', 0);
+export const latestPriceSelector = createSelector(latestPrice, w => w);
+
+const rawETHPrice = state => get(state, 'oracle.rawEthPrice', 0);
+export const rawETHPriceSelector = createSelector(rawETHPrice, w => w);
+
+const rawSYNTHPrice = state => get(state, 'oracle.rawSynthPrice', 0);
+export const rawSYNTHPriceSelector = createSelector(rawSYNTHPrice, w => w);

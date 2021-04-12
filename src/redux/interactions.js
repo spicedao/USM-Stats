@@ -1,30 +1,52 @@
 import { ethers } from "ethers"
-import { fum, usm } from "../tokens"
-import { fumLoaded, metamaskError, metamaskLoaded, networkLoaded, usmLoaded } from "./actions"
+import { fum, usm, usmview, diaOracle } from "../tokens"
+import { fumLoaded, metamaskError, metamaskLoaded, networkLoaded, usmLoaded, usmViewLoaded, rawOracleLoaded } from "./actions"
 import { loadCollateralData } from "./interactions/cdp"
 import { loadERC20Data } from "./interactions/erc20"
 import { loadOracleData } from "./interactions/oracles"
 
+const getNetwork = async() => ({chainId: '42'})
+
 export const loadNetwork = async (dispatch) => {
-  const provider = new ethers.providers.JsonRpcProvider("https://mainnet.infura.io/v3/1be1f8b7b85a47e4949bc1057660a81d")
+  const provider = new ethers.providers.JsonRpcProvider("https://kovan.infura.io/v3/1be1f8b7b85a47e4949bc1057660a81d")
   dispatch(networkLoaded(provider))
-  loadUSM(dispatch, provider)
+  const usmContract = await loadUSM(dispatch, provider)
+  const rawOracleContract = await loadRawOracle(dispatch, provider)
+  loadOracleData(dispatch, usmContract, rawOracleContract)
+  loadUSMView(dispatch, provider, usmContract)
   loadFUM(dispatch, provider)
 }
 
+export const loadRawOracle = async (dispatch, provider) => {
+  const network = await getNetwork()
+  const abi = diaOracle.abi
+  const address = diaOracle.address[network.chainId]
+  const rawOracleContract = new ethers.Contract(address, abi, provider)
+  dispatch(rawOracleLoaded(rawOracleContract))
+  return rawOracleContract
+}
+
 export const loadUSM = async (dispatch, provider) => {
-  const network = await provider.getNetwork()
+  const network = await getNetwork()
   const abi = usm.abi
   const address = usm.address[network.chainId]
   const usmContract = new ethers.Contract(address, abi, provider)
   dispatch(usmLoaded(usmContract))
   loadERC20Data(dispatch, usm, usmContract)
-  loadCollateralData(dispatch, usmContract)
-  loadOracleData(dispatch, usmContract)
+  return usmContract
+}
+
+export const loadUSMView = async (dispatch, provider, usmContract) => {
+  const network = await getNetwork()
+  const abi = usmview.abi
+  const address = usmview.address[network.chainId]
+  const usmViewContract = new ethers.Contract(address, abi, provider)
+  dispatch(usmViewLoaded(usmViewContract))
+  loadCollateralData(dispatch, usmViewContract, usmContract)
 }
 
 export const loadFUM = async (dispatch, provider) => {
-  const network = await provider.getNetwork()
+  const network = await getNetwork()
   const abi = fum.abi
   const address = fum.address[network.chainId]
   const fumContract = new ethers.Contract(address, abi, provider)
@@ -37,10 +59,10 @@ export const loadMetamask = async (dispatch) => {
     await window.ethereum.enable()
     const provider = await new ethers.providers.Web3Provider(window.ethereum)
     const signer = await provider.getSigner()
-    const network = await provider.getNetwork()
+    const network = await getNetwork()
 
-    if (network.chainId != 1) {
-      throw new Error("Must be on mainnet. Please alter Metamask network and refresh the page.")
+    if (network.chainId != 42) {
+      throw new Error("Must be on kovan. Please alter Metamask network and refresh the page.")
     }
 
     //load USM with Metamask
