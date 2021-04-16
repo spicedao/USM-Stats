@@ -43,7 +43,7 @@ const FUMCard = ({
       <Card.Header as="h5">
         {fum.name}
         <BlockchainWriteButtons
-          {...{ buy: buy(dispatch), sell: sell(dispatch), connect, metamaskConnected }}
+          {...{ buy: buy(dispatch), sell: sell(dispatch), connect, metamaskConnected, buttonLabel: fum.name }}
         />
       </Card.Header>
       <Card.Body>
