@@ -21,12 +21,6 @@ export const ecosystemSelector = createSelector(ecosystem, w => w);
 const usmSupply = state => get(state, `${state.app.ecosystem}.usm.supply`, 0);
 export const usmSupplySelector = createSelector(usmSupply, w => w);
 
-const usmMints = state => get(state, `${state.app.ecosystem}.usm.mints`, 0);
-export const usmMintsSelector = createSelector(usmMints, w => w);
-
-const usmBurns = state => get(state, `${state.app.ecosystem}.usm.burns`, 0);
-export const usmBurnsSelector = createSelector(usmBurns, w => w);
-
 const usmCollateral = state => get(state, `${state.app.ecosystem}.usm.collateral`, 0);
 export const usmCollateralSelector = createSelector(usmCollateral, w => w);
 
@@ -45,12 +39,6 @@ export const usmSellPriceSelector = createSelector(usmSellPrice, w => w);
 //FUM
 const fumSupply = state => get(state, `${state.app.ecosystem}.fum.supply`, 0);
 export const fumSupplySelector = createSelector(fumSupply, w => w);
-
-const fumMints = state => get(state, `${state.app.ecosystem}.fum.mints`, 0);
-export const fumMintsSelector = createSelector(fumMints, w => w);
-
-const fumBurns = state => get(state, `${state.app.ecosystem}.fum.burns`, 0);
-export const fumBurnsSelector = createSelector(fumBurns, w => w);
 
 const fumBuyPrice = state => get(state, `${state.app.ecosystem}.fum.buyPrice`, 0);
 export const fumBuyPriceSelector = createSelector(fumBuyPrice, w => w);

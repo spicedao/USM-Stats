@@ -132,37 +132,3 @@ export function setTotalSupply(tokenName, supply) {
       break;
   }
 }
-
-export function setMints(tokenName, mints) {
-  switch (tokenName) {
-    case usm:
-      return {
-        type: 'USM_MINTS',
-        mints
-      }
-    case fum:
-      return {
-        type: 'FUM_MINTS',
-        mints
-      }
-    default:
-      break;
-  }
-}
-
-export function setBurns(tokenName, burns) {
-  switch (tokenName) {
-    case usm:
-      return {
-        type: 'USM_BURNS',
-        burns
-      }
-    case fum:
-      return {
-        type: 'FUM_BURNS',
-        burns
-      }
-    default:
-      break;
-  }
-}

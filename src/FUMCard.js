@@ -4,9 +4,7 @@ import {
   coingeckoETHPriceSelector,
   networkProviderSelector,
   ecosystemSelector,
-  fumBurnsSelector,
   fumBuyPriceSelector,
-  fumMintsSelector,
   fumSellPriceSelector,
   fumSupplySelector,
   metamaskSelector,
@@ -26,8 +24,6 @@ const FUMCard = ({
   fumMarketCap,
   fumMarketCapUSD,
   fumSupply,
-  fumMints,
-  fumBurns,
   fumBuyPrice,
   fumBuyPriceUSD,
   fumSellPrice,
@@ -73,16 +69,6 @@ const FUMCard = ({
               <td>-</td>
               <td>{decimalPlaces(fumSupply)}</td>
             </tr>
-            <tr>
-              <td>No. of Mints</td>
-              <td>-</td>
-              <td>{fumMints}</td>
-            </tr>
-            <tr>
-              <td>No. of Burns</td>
-              <td>-</td>
-              <td>{fumBurns}</td>
-            </tr>
           </tbody>
         </Table>
       </Card.Body>
@@ -114,8 +100,6 @@ function mapStateToProps(state) {
     fumMarketCap,
     fumMarketCapUSD,
     fumSupply,
-    fumMints: fumMintsSelector(state),
-    fumBurns: fumBurnsSelector(state),
     fumBuyPrice,
     fumBuyPriceUSD,
     fumSellPrice,

@@ -7,9 +7,7 @@ import {
   ecosystemSelector,
   networkProviderSelector,
   metamaskSignerSelector,
-  usmBurnsSelector,
   usmBuyPriceSelector,
-  usmMintsSelector,
   usmSellPriceSelector,
   usmSupplySelector,
 } from "./redux/selectors";
@@ -27,8 +25,6 @@ const USMCard = ({
   sell,
   ecosystem,
   usmSupply,
-  usmMints,
-  usmBurns,
   usmMarketCap,
   usmMarketCapUSD,
   usmBuyPrice,
@@ -90,16 +86,6 @@ const USMCard = ({
               <td>-</td>
               <td>{decimalPlaces(usmSupply)}</td>
             </tr>
-            <tr>
-              <td>No. of Mints</td>
-              <td>-</td>
-              <td>{usmMints}</td>
-            </tr>
-            <tr>
-              <td>No. of Burns</td>
-              <td>-</td>
-              <td>{usmBurns}</td>
-            </tr>
           </tbody>
         </Table>
       </Card.Body>
@@ -131,8 +117,6 @@ function mapStateToProps(state) {
     usmMarketCap,
     usmMarketCapUSD,
     usmSupply,
-    usmMints: usmMintsSelector(state),
-    usmBurns: usmBurnsSelector(state),
     usmBuyPrice,
     usmBuyPriceUSD,
     usmSellPrice,
