@@ -5,9 +5,6 @@ import {createSelector} from 'reselect';
 const networkProvider = state => get(state, 'app.provider', null);
 export const networkProviderSelector = createSelector(networkProvider, w => w);
 
-const usmContract = state => get(state, 'app.usm', null);
-export const usmContractSelector = createSelector(usmContract, w => w);
-
 const metamask = state => get(state, 'app.metamask', null);
 export const metamaskSelector = createSelector(metamask, w => w);
 
@@ -17,77 +14,56 @@ export const metamaskSignerSelector = createSelector(metamaskSigner, w => w);
 const metamaskError = state => get(state, 'app.metamaskError', null);
 export const metamaskErrorSelector = createSelector(metamaskError, w => w);
 
-const metamaskUSM = state => get(state, 'app.metamaskUSM', null);
-export const metamaskUSMSelector = createSelector(metamaskUSM, w => w);
-
-const metamaskFUM = state => get(state, 'app.metamaskFUM', null);
-export const metamaskFUMSelector = createSelector(metamaskFUM, w => w);
-
-const usmInputAmount = state => get(state, 'app.usmInputAmount', null);
-export const usmInputAmountSelector = createSelector(usmInputAmount, w => w);
-
-const fumInputAmount = state => get(state, 'app.fumInputAmount', null);
-export const fumInputAmountSelector = createSelector(fumInputAmount, w => w);
+const ecosystem = state => get(state, 'app.ecosystem', null);
+export const ecosystemSelector = createSelector(ecosystem, w => w);
 
 //USM
-const usmSupply = state => get(state, 'usm.supply', 0);
+const usmSupply = state => get(state, `${state.app.ecosystem}.usm.supply`, 0);
 export const usmSupplySelector = createSelector(usmSupply, w => w);
 
-const usmMints = state => get(state, 'usm.mints', 0);
-export const usmMintsSelector = createSelector(usmMints, w => w);
-
-const usmBurns = state => get(state, 'usm.burns', 0);
-export const usmBurnsSelector = createSelector(usmBurns, w => w);
-
-const usmCollateral = state => get(state, 'usm.collateral', 0);
+const usmCollateral = state => get(state, `${state.app.ecosystem}.usm.collateral`, 0);
 export const usmCollateralSelector = createSelector(usmCollateral, w => w);
 
-const usmDebtRatio = state => get(state, 'usm.debtRatio', 0);
+const usmDebtRatio = state => get(state, `${state.app.ecosystem}.usm.debtRatio`, 0);
 export const usmDebtRatioSelector = createSelector(usmDebtRatio, w => w);
 
-const usmEthBuffer = state => get(state, 'usm.ethBuffer', 0);
+const usmEthBuffer = state => get(state, `${state.app.ecosystem}.usm.ethBuffer`, 0);
 export const usmEthBufferSelector = createSelector(usmEthBuffer, w => w);
 
-const usmBuyPrice = state => get(state, 'usm.buyPrice', 0);
+const usmBuyPrice = state => get(state, `${state.app.ecosystem}.usm.buyPrice`, 0);
 export const usmBuyPriceSelector = createSelector(usmBuyPrice, w => w);
 
-const usmSellPrice = state => get(state, 'usm.sellPrice', 0);
+const usmSellPrice = state => get(state, `${state.app.ecosystem}.usm.sellPrice`, 0);
 export const usmSellPriceSelector = createSelector(usmSellPrice, w => w);
 
 //FUM
-const fumSupply = state => get(state, 'fum.supply', 0);
+const fumSupply = state => get(state, `${state.app.ecosystem}.fum.supply`, 0);
 export const fumSupplySelector = createSelector(fumSupply, w => w);
 
-const fumMints = state => get(state, 'fum.mints', 0);
-export const fumMintsSelector = createSelector(fumMints, w => w);
-
-const fumBurns = state => get(state, 'fum.burns', 0);
-export const fumBurnsSelector = createSelector(fumBurns, w => w);
-
-const fumBuyPrice = state => get(state, 'fum.buyPrice', 0);
+const fumBuyPrice = state => get(state, `${state.app.ecosystem}.fum.buyPrice`, 0);
 export const fumBuyPriceSelector = createSelector(fumBuyPrice, w => w);
 
-const fumSellPrice = state => get(state, 'fum.sellPrice', 0);
+const fumSellPrice = state => get(state, `${state.app.ecosystem}.fum.sellPrice`, 0);
 export const fumSellPriceSelector = createSelector(fumSellPrice, w => w);
 
 //ORACLE
-const coingeckoPrice = state => get(state, 'oracle.coingeckoPrice', 0);
+const coingeckoPrice = state => get(state, `${state.app.ecosystem}.oracle.coingeckoPrice`, 0);
 export const coingeckoPriceSelector = createSelector(coingeckoPrice, w => w);
 
-const coingeckoETHPrice = state => get(state, 'oracle.coingeckoETHPrice', 0);
+const coingeckoETHPrice = state => get(state, `${state.app.ecosystem}.oracle.coingeckoETHPrice`, 0);
 export const coingeckoETHPriceSelector = createSelector(coingeckoETHPrice, w => w);
 
-const coingeckoSYNTHPrice = state => get(state, 'oracle.coingeckoSYNTHPrice', 0);
+const coingeckoSYNTHPrice = state => get(state, `${state.app.ecosystem}.oracle.coingeckoSYNTHPrice`, 0);
 export const coingeckoSYNTHPriceSelector = createSelector(coingeckoSYNTHPrice, w => w);
 
-const cachedPrice = state => get(state, 'oracle.cachedPrice', 0);
+const cachedPrice = state => get(state, `${state.app.ecosystem}.oracle.cachedPrice`, 0);
 export const cachedPriceSelector = createSelector(cachedPrice, w => w);
 
-const latestPrice = state => get(state, 'oracle.latestPrice', 0);
+const latestPrice = state => get(state, `${state.app.ecosystem}.oracle.latestPrice`, 0);
 export const latestPriceSelector = createSelector(latestPrice, w => w);
 
-const rawETHPrice = state => get(state, 'oracle.rawEthPrice', 0);
+const rawETHPrice = state => get(state, `${state.app.ecosystem}.oracle.rawEthPrice`, 0);
 export const rawETHPriceSelector = createSelector(rawETHPrice, w => w);
 
-const rawSYNTHPrice = state => get(state, 'oracle.rawSynthPrice', 0);
+const rawSYNTHPrice = state => get(state, `${state.app.ecosystem}.oracle.rawSynthPrice`, 0);
 export const rawSYNTHPriceSelector = createSelector(rawSYNTHPrice, w => w);

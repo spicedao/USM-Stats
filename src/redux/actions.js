@@ -1,31 +1,19 @@
 import { rawETH, rawSYNTH, coingecko, coingeckoETH, cachedInContract, coingeckoSYNTH, latestFromContract } from "../oracles";
-import { fum, usm } from "../tokens";
+const usm = 'usm'
+const fum ='fum'
 
-export function setInputAmount(token, amount) {
-  switch (token) {
-    case usm.name:
-      return {
-        type: 'SET_USM_INPUT_AMOUNT',
-        amount
-      }
-    case fum.name:
-      return {
-        type: 'SET_FUM_INPUT_AMOUNT',
-        amount
-      }
-    default:
-      break;
-  }
-  
-}
-
-export function metamaskLoaded(metamask, signer, usm, fum) {
+export function metamaskLoaded(metamask, signer) {
   return {
     type: 'METAMASK_LOADED',
     metamask,
-    signer,
-    usm,
-    fum
+    signer
+  }
+}
+
+export function ecosystemChanged(ecosystem) {
+  return {
+    type: 'ECOSYSTEM_CHANGED',
+    ecosystem
   }
 }
 
@@ -46,34 +34,6 @@ export function networkLoaded(provider){
   return {
     type: 'NETWORK_LOADED',
     provider
-  }
-}
-
-export function usmLoaded(usm) {
-  return {
-    type: 'USM_LOADED',
-    usm
-  }
-}
-
-export function rawOracleLoaded(rawOracle) {
-  return {
-    type: 'RAW_ORACLE_LOADED',
-    rawOracle
-  }
-}
-
-export function usmViewLoaded(usmView) {
-  return {
-    type: 'USMVIEW_LOADED',
-    usmView
-  }
-}
-
-export function fumLoaded(fum) {
-  return {
-    type: 'FUM_LOADED',
-    fum
   }
 }
 
@@ -158,49 +118,15 @@ export function setFUMPrice(buyPrice, sellPrice) {
 
 export function setTotalSupply(tokenName, supply) {
   switch (tokenName) {
-    case usm.name:
+    case usm:
       return {
         type: 'USM_TOTAL_SUPPLY',
         supply
       }
-    case fum.name:
+    case fum:
       return {
         type: 'FUM_TOTAL_SUPPLY',
         supply
-      }
-    default:
-      break;
-  }
-}
-
-export function setMints(tokenName, mints) {
-  switch (tokenName) {
-    case usm.name:
-      return {
-        type: 'USM_MINTS',
-        mints
-      }
-    case fum.name:
-      return {
-        type: 'FUM_MINTS',
-        mints
-      }
-    default:
-      break;
-  }
-}
-
-export function setBurns(tokenName, burns) {
-  switch (tokenName) {
-    case usm.name:
-      return {
-        type: 'USM_BURNS',
-        burns
-      }
-    case fum.name:
-      return {
-        type: 'FUM_BURNS',
-        burns
       }
     default:
       break;
