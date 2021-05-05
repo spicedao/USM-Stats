@@ -23,7 +23,7 @@ const callFunctionOnUsm = (functionName, provider, signer, ecosystem, dispatch) 
   }
   return contract[functionName](...args)
       .then(() => console.log(`${functionName} on ${ecosystem} usm of ${amount} succesfull`))
-      .catch((error) => dispatch(metamaskError(error)))
+      .catch((error) => dispatch(metamaskError(JSON.stringify(error.message))))
 }
 
 

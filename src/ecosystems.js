@@ -4,6 +4,9 @@ const { abi: FUMABI } = require("./external/abi/FUM.json");
 const { abi: OracleABI } = require("./external/abi/Oracle.json");
 const { abi: DiaOracleABI } = require("./external/abi/DiaOracle.json");
 
+ // Here are different contracts used by the app containing the name, ABI and the deployed addresses denominated in their network ID. 42 rrefers to KOVAN
+
+
 const ecosystems = {
   SPICE: {
     usm: {
