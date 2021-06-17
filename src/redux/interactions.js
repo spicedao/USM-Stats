@@ -59,7 +59,7 @@ export const loadMetamask = async (dispatch) => {
     const signer = await provider.getSigner();
     const network = await getNetwork();
 
-    if (network.chainId != 42) {
+    if (network.chainId !== 42) {
       throw new Error(
         "Must be on kovan. Please alter Metamask network and refresh the page."
       );
