@@ -1,0 +1,199 @@
+{
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "contract DiaOracle",
+          "name": "oracle_",
+          "type": "address"
+        },
+        {
+          "internalType": "string",
+          "name": "syntheticFeed_",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "collateralFeed_",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [],
+      "name": "DECIMAL_CORRECTION",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "WAD",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "collateralFeed",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "latestPrice",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "price",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "updateTime",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "oracle",
+      "outputs": [
+        {
+          "internalType": "contract DiaOracle",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "refreshPrice",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "price",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "updateTime",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "syntheticFeed",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0xe0ff30ef6ea7b8a16dfacde81b71324af625a29bd9d494d28122a7a8cb1b0e6d",
+  "receipt": {
+    "to": null,
+    "from": "0x6b6d51559192B458420E678A543B3383668a360a",
+    "contractAddress": "0x0Ee0c86353f54654303Ad1efdA6f388C6DcB11BA",
+    "transactionIndex": 0,
+    "gasUsed": "441338",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0xa02bb2776872afccfbca05afa55f365a418ea29d05ab38adc9f6ee8846fa778b",
+    "transactionHash": "0xe0ff30ef6ea7b8a16dfacde81b71324af625a29bd9d494d28122a7a8cb1b0e6d",
+    "logs": [],
+    "blockNumber": 25501674,
+    "cumulativeGasUsed": "441338",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [
+    "0xF4d75170864E72f134590459a064F7E4A8e8de33",
+    "CVI",
+    "ETH"
+  ],
+  "solcInputHash": "abb1f64be19454ed92e8aad1010010f4",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.0+commit.c7dfd78e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"contract DiaOracle\",\"name\":\"oracle_\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"syntheticFeed_\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"collateralFeed_\",\"type\":\"string\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[],\"name\":\"DECIMAL_CORRECTION\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"WAD\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"collateralFeed\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"latestPrice\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"updateTime\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"oracle\",\"outputs\":[{\"internalType\":\"contract DiaOracle\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"refreshPrice\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"updateTime\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"syntheticFeed\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"latestPrice()\":{\"returns\":{\"price\":\"price\"}}},\"title\":\"DiaOracleAdapter\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"latestPrice()\":{\"notice\":\"Retrieve the latest price of the price oracle.\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/oracles/DiaOracleAdapter.sol\":\"DiaOracleAdapter\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":20000},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/utils/math/Math.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n\\npragma solidity ^0.8.0;\\n\\n/**\\n * @dev Standard math utilities missing in the Solidity language.\\n */\\nlibrary Math {\\n    /**\\n     * @dev Returns the largest of two numbers.\\n     */\\n    function max(uint256 a, uint256 b) internal pure returns (uint256) {\\n        return a >= b ? a : b;\\n    }\\n\\n    /**\\n     * @dev Returns the smallest of two numbers.\\n     */\\n    function min(uint256 a, uint256 b) internal pure returns (uint256) {\\n        return a < b ? a : b;\\n    }\\n\\n    /**\\n     * @dev Returns the average of two numbers. The result is rounded towards\\n     * zero.\\n     */\\n    function average(uint256 a, uint256 b) internal pure returns (uint256) {\\n        // (a + b) / 2 can overflow, so we distribute\\n        return (a / 2) + (b / 2) + ((a % 2 + b % 2) / 2);\\n    }\\n}\\n\",\"keccak256\":\"0xa1477864def7febd9826918e50482a1ee7068b337b03804a7e0e98c674ac57c2\",\"license\":\"MIT\"},\"@openzeppelin/contracts/utils/math/SafeMath.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n\\npragma solidity ^0.8.0;\\n\\n// CAUTION\\n// This version of SafeMath should only be used with Solidity 0.8 or later,\\n// because it relies on the compiler's built in overflow checks.\\n\\n/**\\n * @dev Wrappers over Solidity's arithmetic operations.\\n *\\n * NOTE: `SafeMath` is no longer needed starting with Solidity 0.8. The compiler\\n * now has built in overflow checking.\\n */\\nlibrary SafeMath {\\n    /**\\n     * @dev Returns the addition of two unsigned integers, with an overflow flag.\\n     *\\n     * _Available since v3.4._\\n     */\\n    function tryAdd(uint256 a, uint256 b) internal pure returns (bool, uint256) {\\n        unchecked {\\n            uint256 c = a + b;\\n            if (c < a) return (false, 0);\\n            return (true, c);\\n        }\\n    }\\n\\n    /**\\n     * @dev Returns the substraction of two unsigned integers, with an overflow flag.\\n     *\\n     * _Available since v3.4._\\n     */\\n    function trySub(uint256 a, uint256 b) internal pure returns (bool, uint256) {\\n        unchecked {\\n            if (b > a) return (false, 0);\\n            return (true, a - b);\\n        }\\n    }\\n\\n    /**\\n     * @dev Returns the multiplication of two unsigned integers, with an overflow flag.\\n     *\\n     * _Available since v3.4._\\n     */\\n    function tryMul(uint256 a, uint256 b) internal pure returns (bool, uint256) {\\n        unchecked {\\n            // Gas optimization: this is cheaper than requiring 'a' not being zero, but the\\n            // benefit is lost if 'b' is also tested.\\n            // See: https://github.com/OpenZeppelin/openzeppelin-contracts/pull/522\\n            if (a == 0) return (true, 0);\\n            uint256 c = a * b;\\n            if (c / a != b) return (false, 0);\\n            return (true, c);\\n        }\\n    }\\n\\n    /**\\n     * @dev Returns the division of two unsigned integers, with a division by zero flag.\\n     *\\n     * _Available since v3.4._\\n     */\\n    function tryDiv(uint256 a, uint256 b) internal pure returns (bool, uint256) {\\n        unchecked {\\n            if (b == 0) return (false, 0);\\n            return (true, a / b);\\n        }\\n    }\\n\\n    /**\\n     * @dev Returns the remainder of dividing two unsigned integers, with a division by zero flag.\\n     *\\n     * _Available since v3.4._\\n     */\\n    function tryMod(uint256 a, uint256 b) internal pure returns (bool, uint256) {\\n        unchecked {\\n            if (b == 0) return (false, 0);\\n            return (true, a % b);\\n        }\\n    }\\n\\n    /**\\n     * @dev Returns the addition of two unsigned integers, reverting on\\n     * overflow.\\n     *\\n     * Counterpart to Solidity's `+` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - Addition cannot overflow.\\n     */\\n    function add(uint256 a, uint256 b) internal pure returns (uint256) {\\n        return a + b;\\n    }\\n\\n    /**\\n     * @dev Returns the subtraction of two unsigned integers, reverting on\\n     * overflow (when the result is negative).\\n     *\\n     * Counterpart to Solidity's `-` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - Subtraction cannot overflow.\\n     */\\n    function sub(uint256 a, uint256 b) internal pure returns (uint256) {\\n        return a - b;\\n    }\\n\\n    /**\\n     * @dev Returns the multiplication of two unsigned integers, reverting on\\n     * overflow.\\n     *\\n     * Counterpart to Solidity's `*` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - Multiplication cannot overflow.\\n     */\\n    function mul(uint256 a, uint256 b) internal pure returns (uint256) {\\n        return a * b;\\n    }\\n\\n    /**\\n     * @dev Returns the integer division of two unsigned integers, reverting on\\n     * division by zero. The result is rounded towards zero.\\n     *\\n     * Counterpart to Solidity's `/` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - The divisor cannot be zero.\\n     */\\n    function div(uint256 a, uint256 b) internal pure returns (uint256) {\\n        return a / b;\\n    }\\n\\n    /**\\n     * @dev Returns the remainder of dividing two unsigned integers. (unsigned integer modulo),\\n     * reverting when dividing by zero.\\n     *\\n     * Counterpart to Solidity's `%` operator. This function uses a `revert`\\n     * opcode (which leaves remaining gas untouched) while Solidity uses an\\n     * invalid opcode to revert (consuming all remaining gas).\\n     *\\n     * Requirements:\\n     *\\n     * - The divisor cannot be zero.\\n     */\\n    function mod(uint256 a, uint256 b) internal pure returns (uint256) {\\n        return a % b;\\n    }\\n\\n    /**\\n     * @dev Returns the subtraction of two unsigned integers, reverting with custom message on\\n     * overflow (when the result is negative).\\n     *\\n     * CAUTION: This function is deprecated because it requires allocating memory for the error\\n     * message unnecessarily. For custom revert reasons use {trySub}.\\n     *\\n     * Counterpart to Solidity's `-` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - Subtraction cannot overflow.\\n     */\\n    function sub(uint256 a, uint256 b, string memory errorMessage) internal pure returns (uint256) {\\n        unchecked {\\n            require(b <= a, errorMessage);\\n            return a - b;\\n        }\\n    }\\n\\n    /**\\n     * @dev Returns the integer division of two unsigned integers, reverting with custom message on\\n     * division by zero. The result is rounded towards zero.\\n     *\\n     * Counterpart to Solidity's `%` operator. This function uses a `revert`\\n     * opcode (which leaves remaining gas untouched) while Solidity uses an\\n     * invalid opcode to revert (consuming all remaining gas).\\n     *\\n     * Counterpart to Solidity's `/` operator. Note: this function uses a\\n     * `revert` opcode (which leaves remaining gas untouched) while Solidity\\n     * uses an invalid opcode to revert (consuming all remaining gas).\\n     *\\n     * Requirements:\\n     *\\n     * - The divisor cannot be zero.\\n     */\\n    function div(uint256 a, uint256 b, string memory errorMessage) internal pure returns (uint256) {\\n        unchecked {\\n            require(b > 0, errorMessage);\\n            return a / b;\\n        }\\n    }\\n\\n    /**\\n     * @dev Returns the remainder of dividing two unsigned integers. (unsigned integer modulo),\\n     * reverting with custom message when dividing by zero.\\n     *\\n     * CAUTION: This function is deprecated because it requires allocating memory for the error\\n     * message unnecessarily. For custom revert reasons use {tryMod}.\\n     *\\n     * Counterpart to Solidity's `%` operator. This function uses a `revert`\\n     * opcode (which leaves remaining gas untouched) while Solidity uses an\\n     * invalid opcode to revert (consuming all remaining gas).\\n     *\\n     * Requirements:\\n     *\\n     * - The divisor cannot be zero.\\n     */\\n    function mod(uint256 a, uint256 b, string memory errorMessage) internal pure returns (uint256) {\\n        unchecked {\\n            require(b > 0, errorMessage);\\n            return a % b;\\n        }\\n    }\\n}\\n\",\"keccak256\":\"0x2526b7c6a366fc211bbc176078ab02b83833e7682abcc5b3bed9d700b34e2a3e\",\"license\":\"MIT\"},\"contracts/external/DiaOracle.sol\":{\"content\":\"// SPDX-License-Identifier: GPL-3.0-or-later\\npragma solidity ^0.8.0;\\n\\ncontract DiaOracle {\\n    mapping (string => uint256) public values;\\n    address oracleUpdater;\\n    \\n    event OracleUpdate(string key, uint128 value, uint128 timestamp);\\n    event UpdaterAddressChange(address newUpdater);\\n    \\n    constructor() {\\n        oracleUpdater = msg.sender;\\n    }\\n    \\n    function setValue(string memory key, uint128 value, uint128 timestamp) public {\\n        require(msg.sender == oracleUpdater);\\n        uint256 cValue = (((uint256)(value)) << 128) + timestamp;\\n        values[key] = cValue;\\n        emit OracleUpdate(key, value, timestamp);\\n    }\\n    \\n    function getValue(string memory key) public view returns (uint128, uint128) {\\n        uint256 cValue = values[key];\\n        uint128 timestamp = (uint128)(cValue % 2**128);\\n        uint128 value = (uint128)(cValue >> 128);\\n        return (value, timestamp);\\n    }\\n    \\n    function updateOracleUpdaterAddress(address newOracleUpdaterAddress) public {\\n        require(msg.sender == oracleUpdater);\\n        oracleUpdater = newOracleUpdaterAddress;\\n        emit UpdaterAddressChange(newOracleUpdaterAddress);\\n    }\\n}\\n\",\"keccak256\":\"0x7e05fc3265888b9d351677e054d46f332e81d5038a38d274931c5398945a070d\",\"license\":\"GPL-3.0-or-later\"},\"contracts/oracles/DiaOracleAdapter.sol\":{\"content\":\"// SPDX-License-Identifier: GPL-3.0-or-later\\npragma solidity ^0.8.0;\\n\\nimport \\\"@openzeppelin/contracts/utils/math/SafeMath.sol\\\";\\nimport \\\"@openzeppelin/contracts/utils/math/Math.sol\\\";\\nimport \\\"../external/DiaOracle.sol\\\";\\nimport \\\"./Oracle.sol\\\";\\n\\n/**\\n * @title DiaOracleAdapter\\n */\\ncontract DiaOracleAdapter is Oracle {\\n    using SafeMath for uint;\\n    uint public constant WAD = 10 ** 18;\\n    uint256 public constant DECIMAL_CORRECTION = 10**13;\\n\\n    DiaOracle public immutable oracle;\\n    string public syntheticFeed;\\n    string public collateralFeed;\\n\\n    constructor(DiaOracle oracle_, string memory syntheticFeed_, string memory collateralFeed_) {\\n        oracle = oracle_;\\n        syntheticFeed = syntheticFeed_;\\n        collateralFeed = collateralFeed_;\\n    }\\n\\n    /**\\n     * @notice Retrieve the latest price of the price oracle.\\n     * @return price\\n     */\\n    function latestPrice() public virtual override view returns (uint price, uint updateTime) {\\n        (uint256 collateralPrice, uint256 collateralUpdateTime) = getDiaPrice(collateralFeed);\\n        (uint256 syntheticPrice, uint256 syntheticUpdateTime) = getDiaPrice(syntheticFeed);\\n        price = collateralPrice.mul(WAD).div(syntheticPrice);\\n        // TODO return time\\n        updateTime = Math.max(collateralUpdateTime, syntheticUpdateTime);\\n    }\\n\\n    /**\\n     * @notice Retrieve the latest price of the price oracle.\\n     * @return price\\n     */\\n    function getDiaPrice(string memory ticker) private view returns(uint256, uint256) {\\n      (uint256 price, uint256 time) = oracle.getValue(ticker);\\n      return (price.mul(DECIMAL_CORRECTION), time);\\n    }\\n}\\n\",\"keccak256\":\"0xfe5711a13cdb9ff8071a202e18c51ecfaf7f0ca9d7954fbeaaa7fda710a3329f\",\"license\":\"GPL-3.0-or-later\"},\"contracts/oracles/Oracle.sol\":{\"content\":\"// SPDX-License-Identifier: GPL-3.0-or-later\\npragma solidity ^0.8.0;\\n\\nabstract contract Oracle {\\n    function latestPrice() public virtual view returns (uint price, uint updateTime);    // Prices WAD-scaled - 18 dec places\\n\\n    function refreshPrice() public virtual returns (uint price, uint updateTime) {\\n        (price, updateTime) = latestPrice();    // Default implementation doesn't do any cacheing.  But override as needed\\n    }\\n}\\n\",\"keccak256\":\"0x1c7595e9502ebf6a97f054f4b23788ba659785a0987fa750affa373077d917d3\",\"license\":\"GPL-3.0-or-later\"}},\"version\":1}",
+  "bytecode": "0x60a060405234801561001057600080fd5b50604051620008a5380380620008a5833981016040819052610031916101ac565b6001600160601b0319606084901b166080528151610056906000906020850190610073565b50805161006a906001906020840190610073565b5050505061027b565b82805461007f9061022a565b90600052602060002090601f0160209004810192826100a157600085556100e7565b82601f106100ba57805160ff19168380011785556100e7565b828001600101855582156100e7579182015b828111156100e75782518255916020019190600101906100cc565b506100f39291506100f7565b5090565b5b808211156100f357600081556001016100f8565b600082601f83011261011c578081fd5b81516001600160401b038082111561013657610136610265565b6040516020601f8401601f191682018101838111838210171561015b5761015b610265565b6040528382528584018101871015610171578485fd5b8492505b838310156101925785830181015182840182015291820191610175565b838311156101a257848185840101525b5095945050505050565b6000806000606084860312156101c0578283fd5b83516001600160a01b03811681146101d6578384fd5b60208501519093506001600160401b03808211156101f2578384fd5b6101fe8783880161010c565b93506040860151915080821115610213578283fd5b506102208682870161010c565b9150509250925092565b60028104600182168061023e57607f821691505b6020821081141561025f57634e487b7160e01b600052602260045260246000fd5b50919050565b634e487b7160e01b600052604160045260246000fd5b60805160601c610604620002a1600039600081816101a801526102d001526106046000f3fe608060405234801561001057600080fd5b506004361061007d5760003560e01c80637dc0d1d01161005b5780637dc0d1d0146100cb578063a3e6ba94146100e0578063c8aa4d05146100e8578063dd645127146100f05761007d565b806314139c62146100825780633c67a5b2146100a05780636a146024146100b6575b600080fd5b61008a6100f8565b6040516100979190610457565b60405180910390f35b6100a8610186565b6040516100979291906104d1565b6100be61019a565b60405161009791906104c8565b6100d36101a6565b6040516100979190610436565b6100a86101ca565b61008a6102b1565b6100be6102be565b600180546101059061057a565b80601f01602080910402602001604051908101604052809291908181526020018280546101319061057a565b801561017e5780601f106101535761010080835404028352916020019161017e565b820191906000526020600020905b81548152906001019060200180831161016157829003601f168201915b505050505081565b6000806101916101ca565b90939092509050565b670de0b6b3a764000081565b7f000000000000000000000000000000000000000000000000000000000000000081565b600080600080610263600180546101e09061057a565b80601f016020809104026020016040519081016040528092919081815260200182805461020c9061057a565b80156102595780601f1061022e57610100808354040283529160200191610259565b820191906000526020600020905b81548152906001019060200180831161023c57829003601f168201915b50505050506102c8565b9150915060008061027a600080546101e09061057a565b909250905061029b8261029586670de0b6b3a76400006103a9565b906103bc565b95506102a783826103c8565b9450505050509091565b600080546101059061057a565b6509184e72a00081565b6000806000807f000000000000000000000000000000000000000000000000000000000000000073ffffffffffffffffffffffffffffffffffffffff1663960384a0866040518263ffffffff1660e01b81526004016103279190610457565b604080518083038186803b15801561033e57600080fd5b505afa158015610352573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906103769190610404565b6fffffffffffffffffffffffffffffffff918216935016905061039f826509184e72a0006103a9565b9350915050915091565b60006103b58284610518565b9392505050565b60006103b582846104df565b6000818310156103d857816103b5565b5090919050565b80516fffffffffffffffffffffffffffffffff811681146103ff57600080fd5b919050565b60008060408385031215610416578182fd5b61041f836103df565b915061042d602084016103df565b90509250929050565b73ffffffffffffffffffffffffffffffffffffffff91909116815260200190565b6000602080835283518082850152825b8181101561048357858101830151858201604001528201610467565b818111156104945783604083870101525b50601f017fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe016929092016040019392505050565b90815260200190565b918252602082015260400190565b600082610513577f4e487b710000000000000000000000000000000000000000000000000000000081526012600452602481fd5b500490565b6000817fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0483118215151615610575577f4e487b710000000000000000000000000000000000000000000000000000000081526011600452602481fd5b500290565b60028104600182168061058e57607f821691505b602082108114156105c8577f4e487b7100000000000000000000000000000000000000000000000000000000600052602260045260246000fd5b5091905056fea2646970667358221220d859365e61698ac16e78b2977acd2e699c9e3964622c020a0d8a13c631a6b74864736f6c63430008000033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b506004361061007d5760003560e01c80637dc0d1d01161005b5780637dc0d1d0146100cb578063a3e6ba94146100e0578063c8aa4d05146100e8578063dd645127146100f05761007d565b806314139c62146100825780633c67a5b2146100a05780636a146024146100b6575b600080fd5b61008a6100f8565b6040516100979190610457565b60405180910390f35b6100a8610186565b6040516100979291906104d1565b6100be61019a565b60405161009791906104c8565b6100d36101a6565b6040516100979190610436565b6100a86101ca565b61008a6102b1565b6100be6102be565b600180546101059061057a565b80601f01602080910402602001604051908101604052809291908181526020018280546101319061057a565b801561017e5780601f106101535761010080835404028352916020019161017e565b820191906000526020600020905b81548152906001019060200180831161016157829003601f168201915b505050505081565b6000806101916101ca565b90939092509050565b670de0b6b3a764000081565b7f000000000000000000000000000000000000000000000000000000000000000081565b600080600080610263600180546101e09061057a565b80601f016020809104026020016040519081016040528092919081815260200182805461020c9061057a565b80156102595780601f1061022e57610100808354040283529160200191610259565b820191906000526020600020905b81548152906001019060200180831161023c57829003601f168201915b50505050506102c8565b9150915060008061027a600080546101e09061057a565b909250905061029b8261029586670de0b6b3a76400006103a9565b906103bc565b95506102a783826103c8565b9450505050509091565b600080546101059061057a565b6509184e72a00081565b6000806000807f000000000000000000000000000000000000000000000000000000000000000073ffffffffffffffffffffffffffffffffffffffff1663960384a0866040518263ffffffff1660e01b81526004016103279190610457565b604080518083038186803b15801561033e57600080fd5b505afa158015610352573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906103769190610404565b6fffffffffffffffffffffffffffffffff918216935016905061039f826509184e72a0006103a9565b9350915050915091565b60006103b58284610518565b9392505050565b60006103b582846104df565b6000818310156103d857816103b5565b5090919050565b80516fffffffffffffffffffffffffffffffff811681146103ff57600080fd5b919050565b60008060408385031215610416578182fd5b61041f836103df565b915061042d602084016103df565b90509250929050565b73ffffffffffffffffffffffffffffffffffffffff91909116815260200190565b6000602080835283518082850152825b8181101561048357858101830151858201604001528201610467565b818111156104945783604083870101525b50601f017fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe016929092016040019392505050565b90815260200190565b918252602082015260400190565b600082610513577f4e487b710000000000000000000000000000000000000000000000000000000081526012600452602481fd5b500490565b6000817fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0483118215151615610575577f4e487b710000000000000000000000000000000000000000000000000000000081526011600452602481fd5b500290565b60028104600182168061058e57607f821691505b602082108114156105c8577f4e487b7100000000000000000000000000000000000000000000000000000000600052602260045260246000fd5b5091905056fea2646970667358221220d859365e61698ac16e78b2977acd2e699c9e3964622c020a0d8a13c631a6b74864736f6c63430008000033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {
+      "latestPrice()": {
+        "returns": {
+          "price": "price"
+        }
+      }
+    },
+    "title": "DiaOracleAdapter",
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {
+      "latestPrice()": {
+        "notice": "Retrieve the latest price of the price oracle."
+      }
+    },
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 8244,
+        "contract": "contracts/oracles/DiaOracleAdapter.sol:DiaOracleAdapter",
+        "label": "syntheticFeed",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 8246,
+        "contract": "contracts/oracles/DiaOracleAdapter.sol:DiaOracleAdapter",
+        "label": "collateralFeed",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_string_storage"
+      }
+    ],
+    "types": {
+      "t_string_storage": {
+        "encoding": "bytes",
+        "label": "string",
+        "numberOfBytes": "32"
+      }
+    }
+  }
+}

@@ -1,0 +1,132 @@
+import React from "react";
+import { connect } from "react-redux";
+import {
+  coingeckoETHPriceSelector,
+  coingeckoSYNTHPriceSelector,
+  metamaskSelector,
+  ecosystemSelector,
+  networkProviderSelector,
+  metamaskSignerSelector,
+  usmBuyPriceSelector,
+  usmSellPriceSelector,
+  usmSupplySelector,
+} from "./redux/selectors";
+import { Card, Table } from "react-bootstrap";
+import { decimalPlaces, stringMul, usmPriceHighlight } from "./utils";
+import { loadMetamask } from "./redux/interactions";
+import { buyUsmBuilder, sellUsmBuilder } from "./blockchainInteractions";
+import ecosystems from "./ecosystems";
+import BlockchainWriteButtons from "./BlockchainWriteButtons";
+
+const USMCard = ({
+  dispatch,
+  usm,
+  buy,
+  sell,
+  ecosystem,
+  usmSupply,
+  usmMarketCap,
+  usmMarketCapUSD,
+  usmBuyPrice,
+  usmBuyPriceUSD,
+  usmSellPrice,
+  usmSellPriceUSD,
+  metamaskSigner,
+  metamaskConnected,
+  coingeckoSYNTHPrice,
+}) => {
+  const connect = (e) => {
+    loadMetamask(dispatch);
+  };
+
+  return (
+    <Card>
+      <Card.Header as="h5">
+        <span>{usm.name} synth</span>
+        <BlockchainWriteButtons
+          {...{ buy: buy(dispatch), sell: sell(dispatch), connect, metamaskConnected, buttonLabel: usm.name }}
+        />
+      </Card.Header>
+      <Card.Body>
+        <Table striped hover size="sm">
+          <tbody>
+            <tr>
+              <td>Market Cap</td>
+              <td>Ξ {decimalPlaces(usmMarketCap)}</td>
+              <td>$ {decimalPlaces(usmMarketCapUSD)}</td>
+            </tr>
+            <tr
+              className="text-dark"
+              style={{
+                backgroundColor: usmPriceHighlight(
+                  usmBuyPriceUSD,
+                  coingeckoSYNTHPrice
+                ),
+              }}
+            >
+              <td>Mint Price</td>
+              <td>Ξ {decimalPlaces(usmBuyPrice, 5)}</td>
+              <td>$ {decimalPlaces(usmBuyPriceUSD)}</td>
+            </tr>
+            <tr
+              className="text-dark"
+              style={{
+                backgroundColor: usmPriceHighlight(
+                  usmSellPriceUSD,
+                  coingeckoSYNTHPrice
+                ),
+              }}
+            >
+              <td>Burn Price</td>
+              <td>Ξ {decimalPlaces(usmSellPrice, 5)}</td>
+              <td>$ {decimalPlaces(usmSellPriceUSD)}</td>
+            </tr>
+            <tr>
+              <td>Total Supply</td>
+              <td>-</td>
+              <td>{decimalPlaces(usmSupply)}</td>
+            </tr>
+          </tbody>
+        </Table>
+      </Card.Body>
+    </Card>
+  );
+};
+
+function mapStateToProps(state) {
+  const coingeckoSYNTHPrice = coingeckoSYNTHPriceSelector(state);
+  const coingeckoETHPrice = coingeckoETHPriceSelector(state);
+
+  const usmSupply = usmSupplySelector(state);
+  const usmBuyPrice = usmBuyPriceSelector(state);
+  const usmSellPrice = usmSellPriceSelector(state);
+  const usmMarketCap = usmSupply * usmBuyPrice;
+  const usmBuyPriceUSD = stringMul(usmBuyPrice, coingeckoETHPrice);
+  const usmSellPriceUSD = stringMul(usmSellPrice, coingeckoETHPrice);
+  const usmMarketCapUSD = stringMul(usmMarketCap, coingeckoETHPrice);
+
+  const metamask = metamaskSelector(state);
+  const metamaskConnected = metamask != null;
+  const ecosystem = ecosystemSelector(state);
+  const provider = networkProviderSelector(state);
+  const usm = ecosystems[ecosystem].usm;
+  const metamaskSigner = metamaskSignerSelector(state);
+  return {
+    usm,
+    ecosystem,
+    usmMarketCap,
+    usmMarketCapUSD,
+    usmSupply,
+    usmBuyPrice,
+    usmBuyPriceUSD,
+    usmSellPrice,
+    usmSellPriceUSD,
+    metamaskConnected,
+    coingeckoSYNTHPrice,
+    buy: buyUsmBuilder(provider, metamaskSigner, ecosystem),
+    sell : sellUsmBuilder(provider, metamaskSigner, ecosystem),
+    metamaskSigner,
+  };
+}
+
+export default connect(mapStateToProps)(USMCard);

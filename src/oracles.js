@@ -1,0 +1,7 @@
+export const coingecko = "coingecko"
+export const coingeckoETH = "coingeckoETH"
+export const coingeckoSYNTH = "coingeckoSYNTH"
+export const cachedInContract = "cachedInContract"
+export const latestFromContract = "latestFromContract"
+export const rawSYNTH = "rawSYNTH"
+export const rawETH = "rawETH"
