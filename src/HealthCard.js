@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import { coingeckoETHPriceSelector, usmCollateralSelector, usmDebtRatioSelector, usmEthBufferSelector } from './redux/selectors';
-import { Button, Card, Table } from 'react-bootstrap';
+import { /*Button, */Card, Table } from 'react-bootstrap';
 import { debtRatioHighlight, decimalPlaces, toPercentage } from './utils';
 
 class HealthCard extends Component {
