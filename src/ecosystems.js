@@ -11,7 +11,7 @@ const { abi: DiaOracleABI } = require("./external/abi/test/DiaOracle.json");
 
 
 const ecosystems = {
-  DANI_TEST: {
+  SIMLATE_CVI: {
     usm: {
       name: "SPICE",
       abi: USMABI,
