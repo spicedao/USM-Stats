@@ -22,7 +22,7 @@ const App = ({ dispatch, networkProvider, metamaskError, ecosystem }) => {
 
   const onEcosystemChanged = ({target: { value }}) => {
     dispatch(ecosystemChanged(value))
-    loadNetwork(dispatch, ecosystem)
+    loadNetwork(dispatch, value)
   }
 
   if (metamaskError) {

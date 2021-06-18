@@ -44,7 +44,7 @@ const getPricesFromUSMContract = async (dispatch, usmContract) => {
 
 const getPricesFromRawOracle = async (dispatch, rawOracleContract) => {
   const rawEth = (await rawOracleContract.getValue('ETH'))[0].toNumber()
-  const rawSynth = (await rawOracleContract.getValue('SPICE'))[0].toNumber()
+  const rawSynth = (await rawOracleContract.getValue('CVI'))[0].toNumber()
   dispatch(setLatestOraclePrice(rawETH, rawEth/(10**5)))
   dispatch(setLatestOraclePrice(rawSYNTH, rawSynth/(10**5)))
 }
