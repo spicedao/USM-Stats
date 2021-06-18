@@ -162,4 +162,4 @@ const ecosystems = {
 };
 
 export default ecosystems;
-export const defaultEcosystem = "SPICE";
+export const defaultEcosystem = "SIMULATE_CVI";
