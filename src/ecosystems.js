@@ -16,21 +16,21 @@ const ecosystems = {
       name: "CVI",
       abi: USMABI,
       address: {
-        42: "0x6A518F9d1D55bFBC6f04EF071e18a5b01EEE434B",
+        42: "0x91D58FE9594dc149cb7335771fb7e1b0440A8E55",
       },
     },
     usmview: {
       name: "USMView",
       abi: USMViewABI,
       address: {
-        42: "0xedC56544fF87EB840B1a4D8F929dB442Ffc912Fb",
+        42: "0x2aeeB1610c2F1cf3d477B946Ed015Bd196C400Ac",
       },
     },
     oracle: {
       name: "oracle",
       abi: OracleABI,
       address: {
-        42: "0x0Ee0c86353f54654303Ad1efdA6f388C6DcB11BA",
+        42: "0x0af596567a9b07018F258A669633237A54067f2c",
       },
     },
     diaOracle: {
@@ -44,7 +44,7 @@ const ecosystems = {
       name: "CVI funder",
       abi: FUMABI,
       address: {
-        42: "0x891e84BFDE45D64B4af2b0A3c4031b222a33BFCd",
+        42: "0x457354225f6292E05d23976eB7BB053a0E9C3389",
       },
     },
   },
