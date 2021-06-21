@@ -11,9 +11,9 @@ const { abi: DiaOracleABI } = require("./external/abi/test/DiaOracle.json");
 
 
 const ecosystems = {
-  SIMULATE_CVI: {
+  SIMULATE_BTC: {
     usm: {
-      name: "CVI",
+      name: "BTC",
       abi: USMABI,
       address: {
         42: "0x91D58FE9594dc149cb7335771fb7e1b0440A8E55",
@@ -41,7 +41,7 @@ const ecosystems = {
       },
     },
     fum: {
-      name: "CVI funder",
+      name: "BTC funder",
       abi: FUMABI,
       address: {
         42: "0x457354225f6292E05d23976eB7BB053a0E9C3389",
