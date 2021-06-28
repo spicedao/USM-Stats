@@ -31,6 +31,7 @@ const loadUSM = async (dispatch, provider, ecosystem) => {
   const network = await getNetwork();
   const abi = ecosystem.usm.abi;
   const address = ecosystem.usm.address[network.chainId];
+  console.log("Address: ", address)
   const usmContract = new ethers.Contract(address, abi, provider);
   loadERC20Data(dispatch, "usm", usmContract);
   return usmContract;
