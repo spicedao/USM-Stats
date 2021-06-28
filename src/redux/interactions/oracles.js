@@ -6,7 +6,7 @@ import axios from 'axios'
 export const loadOracleData = async (dispatch, usmContract, rawOracle) => {
   const ethprice = await getCoingeckoETHPrice(dispatch)
   const synthprice = await getCoingeckoSYNTHPrice(dispatch)
-  dispatch(setLatestOraclePrice(coingecko, ethprice/synthprice))
+  dispatch(setLatestOraclePrice(coingecko, synthprice/ethprice))
   getPricesFromUSMContract(dispatch, usmContract)
   getPricesFromRawOracle(dispatch, rawOracle)
 }
@@ -22,9 +22,9 @@ const getCoingeckoETHPrice = (dispatch) => axios.get('https://api.coingecko.com/
   })
 
 
-const getCoingeckoSYNTHPrice = (dispatch) => axios.get('https://api.coingecko.com/api/v3/simple/price?ids=spice-finance&vs_currencies=usd')
+const getCoingeckoSYNTHPrice = (dispatch) => axios.get('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd')
   .then(function (response) {
-    const price = response.data["spice-finance"].usd
+    const price = response.data["bitcoin"].usd
     console.log(response.data)
     console.log(price)
     dispatch(setLatestOraclePrice(coingeckoSYNTH, price))
@@ -37,9 +37,9 @@ const getCoingeckoSYNTHPrice = (dispatch) => axios.get('https://api.coingecko.co
 const getPricesFromUSMContract = async (dispatch, usmContract) => {
   // TODO: show latest price update time, perhaps?
   const cachedPrice = (await usmContract.latestPrice())[0]
-  const latestPrice = (await usmContract.latestOraclePrice())[0]
-  dispatch(setLatestOraclePrice(cachedInContract, ethers.utils.formatEther(cachedPrice)))
-  dispatch(setLatestOraclePrice(latestFromContract, ethers.utils.formatEther(latestPrice)))
+  const latestOraclePrice = (await usmContract.latestOraclePrice())[0]
+  dispatch(setLatestOraclePrice(cachedInContract, 1 / ethers.utils.formatEther(cachedPrice)))
+  dispatch(setLatestOraclePrice(latestFromContract, 1 / ethers.utils.formatEther(latestOraclePrice)))
 }
 
 const getPricesFromRawOracle = async (dispatch, rawOracleContract) => {

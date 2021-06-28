@@ -44,7 +44,7 @@ const USMCard = ({
       <Card.Header as="h5">
         <span>{usm.name} synth</span>
         <BlockchainWriteButtons
-          {...{ buy: buy(dispatch), sell: sell(dispatch), connect, metamaskConnected, buttonLabel: usm.name }}
+          {...{ buy: buy(dispatch), sell: sell(dispatch), connect, metamaskConnected, buttonLabel: usm.name, buyLabel: "Mint", sellLabel: "Burn" }}
         />
       </Card.Header>
       <Card.Body>

@@ -43,7 +43,7 @@ const FUMCard = ({
       <Card.Header as="h5">
         {fum.name}
         <BlockchainWriteButtons
-          {...{ buy: buy(dispatch), sell: sell(dispatch), connect, metamaskConnected, buttonLabel: fum.name }}
+          {...{ buy: buy(dispatch), sell: sell(dispatch), connect, metamaskConnected, buttonLabel: fum.name, buyLabel: "Fund", sellLabel: "Defund" }}
         />
       </Card.Header>
       <Card.Body>
@@ -55,12 +55,12 @@ const FUMCard = ({
               <td>$ {decimalPlaces(fumMarketCapUSD)}</td>
             </tr>
             <tr>
-              <td>Mint Price</td>
+              <td>Fund Price</td>
               <td>Ξ {decimalPlaces(fumBuyPrice, 5)}</td>
               <td>$ {decimalPlaces(fumBuyPriceUSD)}</td>
             </tr>
             <tr>
-              <td>Burn Price</td>
+              <td>Defund Price</td>
               <td>Ξ {decimalPlaces(fumSellPrice, 5)}</td>
               <td>$ {decimalPlaces(fumSellPriceUSD)}</td>
             </tr>

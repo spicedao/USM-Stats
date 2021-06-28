@@ -46,7 +46,7 @@ class OracleCard extends Component {
               </tr>
               <tr>
                 <td>Coingecko - expected price from oracle</td>
-                <td>$ {decimalPlaces(coingeckoPrice)}</td>
+                <td>Ξ {decimalPlaces(coingeckoPrice)}</td>
               </tr>
               <tr>
                 <th colSpan={2}>{synthName} ETH Price</th>
@@ -58,7 +58,7 @@ class OracleCard extends Component {
                 }}
               >
                 <td>Price cached in the contract</td>
-                <td>$ {decimalPlaces(cachedPrice)}</td>
+                <td>Ξ {decimalPlaces(cachedPrice)}</td>
               </tr>
               <tr
                 className="text-dark"
@@ -67,7 +67,7 @@ class OracleCard extends Component {
                 }}
               >
                 <td>Price straight from the oracle</td>
-                <td>$ {decimalPlaces(latestPrice)}</td>
+                <td>Ξ {decimalPlaces(latestPrice)}</td>
               </tr>
               <tr>
                 <th colSpan={2}>Raw prices from DIA oracle</th>

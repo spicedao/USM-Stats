@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 
-const BlockchainWriteButtons = ({ metamaskConnected, buy, sell, connect, buttonLabel }) => {
+const BlockchainWriteButtons = ({ metamaskConnected, buy, sell, connect, buttonLabel, buyLabel, sellLabel }) => {
   const [amount, setAmount] = useState(0);
   if (metamaskConnected) {
     return (
@@ -12,7 +12,7 @@ const BlockchainWriteButtons = ({ metamaskConnected, buy, sell, connect, buttonL
           size="sm"
           className="float-right ml-1"
         >
-          Burn ({buttonLabel})
+          {sellLabel} ({buttonLabel})
         </Button>
         <Button
           onClick={() => buy(amount)}
@@ -20,7 +20,7 @@ const BlockchainWriteButtons = ({ metamaskConnected, buy, sell, connect, buttonL
           size="sm"
           className="float-right ml-1"
         >
-          Mint (ETH)
+          {buyLabel} (ETH)
         </Button>
         <input
           style={{ width: 100 }}
