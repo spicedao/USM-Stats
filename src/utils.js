@@ -7,7 +7,7 @@ export const colours = [
   '#ff9d00',
   '#ff8400',
   '#ff5900',
-  '#ff0000'
+  '#d6363680'
 ]
 
 export const colorisor = (actualNumber, ranges) => {
