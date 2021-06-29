@@ -84,7 +84,7 @@ const USMCard = ({
             <tr>
               <td>Total Supply</td>
               <td>-</td>
-              <td>{decimalPlaces(usmSupply)}</td>
+              <td>{decimalPlaces(usmSupply, 5)}</td>
             </tr>
           </tbody>
         </Table>

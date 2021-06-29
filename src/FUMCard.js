@@ -67,7 +67,7 @@ const FUMCard = ({
             <tr>
               <td>Total Supply</td>
               <td>-</td>
-              <td>{decimalPlaces(fumSupply)}</td>
+              <td>{decimalPlaces(fumSupply, 5)}</td>
             </tr>
           </tbody>
         </Table>
