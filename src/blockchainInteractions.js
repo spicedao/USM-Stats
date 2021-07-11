@@ -1,16 +1,19 @@
-import { ethers } from "ethers"
+import { BigNumber, ethers } from "ethers"
 import ecosystems from './ecosystems';
 import {curry} from 'lodash';
 import { metamaskError } from "./redux/actions"
-export const getNetwork = async() => ({chainId: '42'})
+import { decimalPlaces, wtoe } from "./utils";
+
+export const getNetwork = async() => ({chainId: '42'});
+
 
 const callFunctionOnUsm = (functionName, provider, signer, ecosystem, dispatch) => async (amount) => {
   const weiAmount = ethers.utils.parseEther(amount)
   console.log(`attempting to ${functionName} on usm in ${ecosystem} for ${amount}`)
   const address = await signer.getAddress()
+  const network = await getNetwork()
   const contractInfo = ecosystems[ecosystem].usm;
   const abi = contractInfo.abi
-  const network = await getNetwork()
   const contractAddress = contractInfo.address[network.chainId]
   const contract = new ethers.Contract(contractAddress, abi, signer)
   let args;
@@ -26,6 +29,22 @@ const callFunctionOnUsm = (functionName, provider, signer, ecosystem, dispatch) 
       .catch((error) => dispatch(metamaskError(error)))
 }
 
+export const ethToUsm = (functionName, provider, signer, ecosystem, dispatch) => async (amount) => {
+  const weiAmount = ethers.utils.parseEther(amount)
+
+  const network = await getNetwork()
+  const contractInfoView = ecosystems[ecosystem].usmview;
+  const abiView = contractInfoView.abi
+  const contractAddressView = contractInfoView.address[network.chainId]
+  const contractView = new ethers.Contract(contractAddressView, abiView, signer)
+
+  const usm = await contractView.ethToUsm(weiAmount, 0);
+  const usmOverWad = wtoe(usm);
+  const usmOverWadWithDecimals = decimalPlaces(usmOverWad, 7);
+  return usmOverWadWithDecimals;
+}
+
+export const ethToUsmBuilder = curry(ethToUsm)('mint')
 
 export const buyUsmBuilder = curry(callFunctionOnUsm)('mint')
 

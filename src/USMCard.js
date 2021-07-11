@@ -14,13 +14,15 @@ import {
 import { Card, Table } from "react-bootstrap";
 import { decimalPlaces, stringMul, usmPriceHighlight } from "./utils";
 import { loadMetamask } from "./redux/interactions";
-import { buyUsmBuilder, sellUsmBuilder } from "./blockchainInteractions";
+import { ethToUsmBuilder, buyUsmBuilder, sellUsmBuilder } from "./blockchainInteractions";
 import ecosystems from "./ecosystems";
 import BlockchainWriteButtons from "./BlockchainWriteButtons";
+
 
 const USMCard = ({
   dispatch,
   usm,
+  ethToUsm,
   buy,
   sell,
   ecosystem,
@@ -44,7 +46,7 @@ const USMCard = ({
       <Card.Header as="h5">
         <span>{usm.name} synth</span>
         <BlockchainWriteButtons
-          {...{ buy: buy(dispatch), sell: sell(dispatch), connect, metamaskConnected, buttonLabel: usm.name, buyLabel: "Mint", sellLabel: "Burn" }}
+          {...{ ethToUsm: ethToUsm(dispatch), buy: buy(dispatch), sell: sell(dispatch), connect, metamaskConnected, buttonLabel: usm.name, buyLabel: "Mint", sellLabel: "Burn" }}
         />
       </Card.Header>
       <Card.Body>
@@ -123,6 +125,7 @@ function mapStateToProps(state) {
     usmSellPriceUSD,
     metamaskConnected,
     coingeckoSYNTHPrice,
+    ethToUsm: ethToUsmBuilder(provider, metamaskSigner, ecosystem),
     buy: buyUsmBuilder(provider, metamaskSigner, ecosystem),
     sell : sellUsmBuilder(provider, metamaskSigner, ecosystem),
     metamaskSigner,

@@ -71,3 +71,9 @@ export const toPercentage = (decimalString) => {
 export const stringMul = (a, b) => {
   return (Number.parseFloat(a) * Number.parseFloat(b))
 }
+
+export function wtoe(yoctoString) {
+  let result = (yoctoString + "").padStart(19, "0")
+  result = result.slice(0, -18) + "." + result.slice(-18)
+  return result
+}
