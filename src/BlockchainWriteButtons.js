@@ -78,8 +78,4 @@ const popupOptions = async (ethToUsm, amount, coinUnit, title, message, callback
   }
 };
 
-const handleYes = (callback, amount) => {
-  callback(amount);
-}
-
 export default BlockchainWriteButtons;

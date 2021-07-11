@@ -1,4 +1,4 @@
-import { BigNumber, ethers } from "ethers"
+import { ethers } from "ethers"
 import ecosystems from './ecosystems';
 import {curry} from 'lodash';
 import { metamaskError } from "./redux/actions"
