@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 
 const BlockchainWriteButtons = ({ metamaskConnected, ethToUsm, buy, sell, connect, buttonLabel, buyLabel, sellLabel }) => {
   const [amount, setAmount] = useState(0);
-  let timeoutId = null;
   
   if (metamaskConnected) {
     return (
