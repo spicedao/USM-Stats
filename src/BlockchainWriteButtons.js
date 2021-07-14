@@ -3,7 +3,7 @@ import { Button } from "react-bootstrap";
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 
-const BlockchainWriteButtons = ({ metamaskConnected, ethToUsm, buy, sell, connect, buttonLabel, buyLabel, sellLabel }) => {
+const BlockchainWriteButtons = ({ metamaskConnected, buyConvertFunction, sellConvertFunction, buy, sell, connect, buttonLabel, coinUnit, buyLabel, sellLabel }) => {
   const [amount, setAmount] = useState(0);
   
   if (metamaskConnected) {
@@ -11,7 +11,7 @@ const BlockchainWriteButtons = ({ metamaskConnected, ethToUsm, buy, sell, connec
       <>
         
         <Button
-          onClick={() => sell(amount)}
+          onClick={async () => confirmAlert(await popupOptions(sellConvertFunction, amount, "ETH", sell))}
           variant="warning"
           size="sm"
           className="float-right ml-1"
@@ -19,7 +19,7 @@ const BlockchainWriteButtons = ({ metamaskConnected, ethToUsm, buy, sell, connec
           {sellLabel} ({buttonLabel})
         </Button>
         <Button
-          onClick={async () => confirmAlert(await popupOptions(ethToUsm, amount, "usm", "You would receive ", "Do you want to proceed?", buy))}
+          onClick={async () => confirmAlert(await popupOptions(buyConvertFunction, amount, coinUnit, buy))}
           //onClick={() => buy(amount)}
           variant="success"
           size="sm"
@@ -52,26 +52,34 @@ const BlockchainWriteButtons = ({ metamaskConnected, ethToUsm, buy, sell, connec
   }
 };
 
-const popupOptions = async (ethToUsm, amount, coinUnit, title, message, callback) => {
-  const usm = await ethToUsm(amount);
+const popupOptions = async (convertFunction, amount, coinUnit, callback) => {
+  const amountConverted = await convertFunction(amount);
+  var timerId = null;
   return {
     customUI: ({ onClose }) => {
-      setTimeout(() => {
+      timerId = setTimeout(() => {
         onClose();
+        clearTimeout(timerId);
       }, 10000);
       return (
         <div className='text-dark'>
-          <h1>{ title + usm + coinUnit }</h1>
+          <h1>You would receive { amountConverted + coinUnit }</h1>
           <p>Do you want to proceed?</p>
-          <Button onClick={onClose} >No</Button>
           <Button
             onClick={() => {
               callback(amount);
               onClose();
+              clearTimeout(timerId);
             }}
           >
             Yes
           </Button>
+          <Button 
+            onClick={() => {
+              onClose();
+              clearTimeout(timerId);
+            }
+          } >No</Button>
         </div>
       );
     }

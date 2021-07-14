@@ -1,3 +1,5 @@
+//import { BigNumber } from "ethers"
+
 export const colours = [
   '#00ff44',
   '#aaff00',
@@ -9,6 +11,8 @@ export const colours = [
   '#ff5900',
   '#d6363680'
 ]
+
+//export const maximumApprove = "115792089237316195423570985008687907853269984665640564039457"; // Equivalent to (2^256 - 1)
 
 export const colorisor = (actualNumber, ranges) => {
   if (actualNumber <= ranges[0]) {

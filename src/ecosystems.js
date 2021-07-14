@@ -16,21 +16,21 @@ const ecosystems = {
       name: "BTC",
       abi: USMABI,
       address: {
-        42: "0xe57498ECAeAeBF993d9b887bbe75DEaE8fB8CFa1",
+        42: "0x790A0e77EF04ccEc4c79E10cbf5e8810F756C017",
       },
     },
     usmview: {
       name: "USMView",
       abi: USMViewABI,
       address: {
-        42: "0x56E175976379f92329a1D6e8950adfE02f9d06d6",
+        42: "0xbE74702a7d4587C7c631B3CC30e787EBA263c0A2",
       },
     },
     oracle: {
       name: "oracle",
       abi: OracleABI,
       address: {
-        42: "0xFFC7F646644B90a3fba3E6a90334F346DA4D5c19",
+        42: "0xf933d3C7aB0839d90EE32A743feBAAb90D69Dc7b",
       },
     },
     diaOracle: {
@@ -44,7 +44,7 @@ const ecosystems = {
       name: "BTC funder",
       abi: FUMABI,
       address: {
-        42: "0xE472CC21ae28ceFdb2bFA00f549771E99d89f4a1",
+        42: "0x3C824F2aa457e1d9a2be54e5DD62058A08e06aB7",
       },
     },
   },

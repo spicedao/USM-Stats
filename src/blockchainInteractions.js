@@ -6,7 +6,6 @@ import { decimalPlaces, wtoe } from "./utils";
 
 export const getNetwork = async() => ({chainId: '42'});
 
-
 const callFunctionOnUsm = (functionName, provider, signer, ecosystem, dispatch) => async (amount) => {
   const weiAmount = ethers.utils.parseEther(amount)
   console.log(`attempting to ${functionName} on usm in ${ecosystem} for ${amount}`)
@@ -16,6 +15,7 @@ const callFunctionOnUsm = (functionName, provider, signer, ecosystem, dispatch) 
   const abi = contractInfo.abi
   const contractAddress = contractInfo.address[network.chainId]
   const contract = new ethers.Contract(contractAddress, abi, signer)
+
   let args;
   if(['mint','fund'].includes(functionName)){
     args = [address, 0, {value: weiAmount}]
@@ -24,12 +24,13 @@ const callFunctionOnUsm = (functionName, provider, signer, ecosystem, dispatch) 
   } else {
     throw new Error('invalid method')
   }
+  
   return contract[functionName](...args)
       .then(() => console.log(`${functionName} on ${ecosystem} usm of ${amount} succesfull`))
       .catch((error) => dispatch(metamaskError(error)))
 }
 
-export const ethToUsm = (functionName, provider, signer, ecosystem, dispatch) => async (amount) => {
+export const exchangeCalculationFunction = (functionName, provider, signer, ecosystem, dispatch) => async (amount) => {
   const weiAmount = ethers.utils.parseEther(amount)
 
   const network = await getNetwork()
@@ -38,13 +39,30 @@ export const ethToUsm = (functionName, provider, signer, ecosystem, dispatch) =>
   const contractAddressView = contractInfoView.address[network.chainId]
   const contractView = new ethers.Contract(contractAddressView, abiView, signer)
 
-  const usm = await contractView.ethToUsm(weiAmount, 0);
+  let args;
+  if(functionName.toLowerCase().includes('usm')){
+    args = [weiAmount, 0]
+  } else if (functionName.toLowerCase().includes('fum')){
+    args = [weiAmount]
+  } else {
+    throw new Error('invalid method')
+  }
+  
+  const usm = await contractView[functionName](...args)
+    .catch((error) => dispatch(metamaskError(error)))
+  
   const usmOverWad = wtoe(usm);
   const usmOverWadWithDecimals = decimalPlaces(usmOverWad, 7);
   return usmOverWadWithDecimals;
 }
 
-export const ethToUsmBuilder = curry(ethToUsm)('mint')
+export const ethToUsmBuilder = curry(exchangeCalculationFunction)('ethToUsm')
+
+export const usmToEthBuilder = curry(exchangeCalculationFunction)('usmToEth')
+
+export const ethToFumBuilder = curry(exchangeCalculationFunction)('ethToFum')
+
+export const fumToEthBuilder = curry(exchangeCalculationFunction)('fumToEth')
 
 export const buyUsmBuilder = curry(callFunctionOnUsm)('mint')
 
