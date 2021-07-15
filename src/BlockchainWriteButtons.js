@@ -1,32 +1,30 @@
 import React, { useState } from "react";
+import { OperationButton } from './shared/components/OperationButton';
 import { Button } from "react-bootstrap";
-import { confirmAlert } from 'react-confirm-alert'; // Import
-import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 
 const BlockchainWriteButtons = ({ metamaskConnected, buyConvertFunction, sellConvertFunction, buy, sell, connect, buttonLabel, coinUnit, buyLabel, sellLabel }) => {
   const [amount, setAmount] = useState(0);
-  
-  if (metamaskConnected) {
-    return (
+
+  return (
+    <>
+      {metamaskConnected ?
       <>
-        
-        <Button
-          onClick={async () => confirmAlert(await popupOptions(sellConvertFunction, amount, "ETH", sell))}
+        <OperationButton
+          convertFunction={sellConvertFunction}
+          amount={amount}
+          coinUnit="ETH"
+          operationCallback={sell}
           variant="warning"
-          size="sm"
-          className="float-right ml-1"
-        >
-          {sellLabel} ({buttonLabel})
-        </Button>
-        <Button
-          onClick={async () => confirmAlert(await popupOptions(buyConvertFunction, amount, coinUnit, buy))}
-          //onClick={() => buy(amount)}
+          label={`${sellLabel} (${buttonLabel})`}
+        />
+        <OperationButton
+          convertFunction={buyConvertFunction}
+          amount={amount}
+          coinUnit={coinUnit}
+          operationCallback={buy}
           variant="success"
-          size="sm"
-          className="float-right ml-1"
-        >
-          {buyLabel} (ETH)
-        </Button>
+          label={`${buyLabel} (ETH)`}
+        />
         <input
           style={{ width: 100 }}
           onChange={({ target: { value } }) => setAmount(value)}
@@ -37,9 +35,7 @@ const BlockchainWriteButtons = ({ metamaskConnected, buyConvertFunction, sellCon
           className="form-control float-right ml-1"
         ></input>
       </>
-    );
-  } else {
-    return (
+      :
       <Button
         onClick={connect}
         variant="success"
@@ -48,42 +44,9 @@ const BlockchainWriteButtons = ({ metamaskConnected, buyConvertFunction, sellCon
       >
         Connect
       </Button>
-    );
-  }
-};
-
-const popupOptions = async (convertFunction, amount, coinUnit, callback) => {
-  const amountConverted = await convertFunction(amount);
-  var timerId = null;
-  return {
-    customUI: ({ onClose }) => {
-      timerId = setTimeout(() => {
-        onClose();
-        clearTimeout(timerId);
-      }, 10000);
-      return (
-        <div className='text-dark'>
-          <h1>You would receive { amountConverted + coinUnit }</h1>
-          <p>Do you want to proceed?</p>
-          <Button
-            onClick={() => {
-              callback(amount);
-              onClose();
-              clearTimeout(timerId);
-            }}
-          >
-            Yes
-          </Button>
-          <Button 
-            onClick={() => {
-              onClose();
-              clearTimeout(timerId);
-            }
-          } >No</Button>
-        </div>
-      );
-    }
-  }
+      }
+    </>
+  )
 };
 
 export default BlockchainWriteButtons;
