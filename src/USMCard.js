@@ -13,7 +13,6 @@ import {
 } from "./redux/selectors";
 import { Card, Table } from "react-bootstrap";
 import { decimalPlaces, stringMul, usmPriceHighlight } from "./utils";
-import { loadMetamask } from "./redux/interactions";
 import { ethToUsmBuilder, usmToEthBuilder, buyUsmBuilder, sellUsmBuilder } from "./blockchainInteractions";
 import ecosystems from "./ecosystems";
 import BlockchainWriteButtons from "./BlockchainWriteButtons";
@@ -37,17 +36,23 @@ const USMCard = ({
   metamaskSigner,
   metamaskConnected,
   coingeckoSYNTHPrice,
+  allowanceProcessEnded,
 }) => {
-  const connect = (e) => {
-    loadMetamask(dispatch);
-  };
-
   return (
     <Card>
       <Card.Header as="h5">
         <span>{usm.name} synth</span>
         <BlockchainWriteButtons
-          {...{ buyConvertFunction: ethToUsm(dispatch), sellConvertFunction: usmToEth(dispatch), buy: buy(dispatch), sell: sell(dispatch), connect, metamaskConnected, buttonLabel: usm.name, coinUnit: usm.name + " synth", buyLabel: "Mint", sellLabel: "Burn" }}
+          buyConvertFunction={ethToUsm(dispatch)}
+          sellConvertFunction={usmToEth(dispatch)}
+          buy={buy(dispatch)}
+          sell={sell(dispatch)}
+          allowanceProcessEnded={allowanceProcessEnded}
+          metamaskConnected={metamaskConnected}
+          buttonLabel={usm.name}
+          coinUnit={usm.name + " synth"}
+          buyLabel="Mint"
+          sellLabel="Burn"
         />
       </Card.Header>
       <Card.Body>
@@ -110,6 +115,8 @@ function mapStateToProps(state) {
 
   const metamask = metamaskSelector(state);
   const metamaskConnected = metamask != null;
+  // TODO change this!!
+  const allowanceProcessEnded = false;
   const ecosystem = ecosystemSelector(state);
   const provider = networkProviderSelector(state);
   const usm = ecosystems[ecosystem].usm;
@@ -131,6 +138,7 @@ function mapStateToProps(state) {
     buy: buyUsmBuilder(provider, metamaskSigner, ecosystem),
     sell : sellUsmBuilder(provider, metamaskSigner, ecosystem),
     metamaskSigner,
+    allowanceProcessEnded,
   };
 }
 

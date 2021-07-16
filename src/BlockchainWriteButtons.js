@@ -1,13 +1,24 @@
 import React, { useState } from "react";
 import { OperationButton } from './shared/components/OperationButton';
-import { Button } from "react-bootstrap";
+import { ConnectButton } from './shared/components/ConnectButton';
 
-const BlockchainWriteButtons = ({ metamaskConnected, buyConvertFunction, sellConvertFunction, buy, sell, connect, buttonLabel, coinUnit, buyLabel, sellLabel }) => {
+const BlockchainWriteButtons = ({
+  allowanceProcessEnded,
+  metamaskConnected,
+  buyConvertFunction,
+  sellConvertFunction,
+  buy,
+  sell,
+  buttonLabel,
+  coinUnit,
+  buyLabel,
+  sellLabel
+}) => {
   const [amount, setAmount] = useState(0);
 
   return (
     <>
-      {metamaskConnected ?
+      {allowanceProcessEnded ?
       <>
         <OperationButton
           convertFunction={sellConvertFunction}
@@ -36,14 +47,7 @@ const BlockchainWriteButtons = ({ metamaskConnected, buyConvertFunction, sellCon
         ></input>
       </>
       :
-      <Button
-        onClick={connect}
-        variant="success"
-        size="sm"
-        className="float-right ml-1"
-      >
-        Connect
-      </Button>
+      <ConnectButton />
       }
     </>
   )
