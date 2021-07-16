@@ -5,6 +5,9 @@ import {createSelector} from 'reselect';
 const networkProvider = state => get(state, 'app.provider', null);
 export const networkProviderSelector = createSelector(networkProvider, w => w);
 
+const allowance = state => get(state, 'app.allowance', null);
+export const allowanceSelector = createSelector(allowance, w => w);
+
 const metamask = state => get(state, 'app.metamask', null);
 export const metamaskSelector = createSelector(metamask, w => w);
 
