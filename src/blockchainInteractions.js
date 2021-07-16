@@ -41,15 +41,19 @@ export const exchangeCalculationFunction = (functionName, provider, signer, ecos
 
   let args;
   if(functionName.toLowerCase().includes('usm')){
-    args = [weiAmount, 0]
+    args = [weiAmount.toString(), 0]
   } else if (functionName.toLowerCase().includes('fum')){
-    args = [weiAmount]
+    args = [weiAmount.toString()]
   } else {
     throw new Error('invalid method')
   }
-  
-  const usm = await contractView[functionName](...args)
-    .catch((error) => dispatch(metamaskError(error)))
+
+  let usm;
+  try {
+    usm = await contractView[functionName](...args)
+  } catch(error) {
+    dispatch(metamaskError(JSON.stringify(error)))
+  }
   
   const usmOverWad = wtoe(usm);
   const usmOverWadWithDecimals = decimalPlaces(usmOverWad, 7);
