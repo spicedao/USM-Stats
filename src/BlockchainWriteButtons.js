@@ -63,7 +63,7 @@ const popupOptions = async (convertFunction, amount, coinUnit, callback) => {
       }, 10000);
       return (
         <>
-          { amountConverted != -1 ? 
+          { amountConverted !== -1 ? 
           <>
             <div className='text-dark'>
               <h1>You would receive { amountConverted + coinUnit }</h1>
