@@ -52,7 +52,7 @@ export const exchangeCalculationFunction = (functionName, provider, signer, ecos
   try {
     usm = await contractView[functionName](...args)
   } catch(error) {
-    dispatch(metamaskError(JSON.stringify(error)))
+    return -1;
   }
   
   const usmOverWad = wtoe(usm);

@@ -62,25 +62,45 @@ const popupOptions = async (convertFunction, amount, coinUnit, callback) => {
         clearTimeout(timerId);
       }, 10000);
       return (
-        <div className='text-dark'>
-          <h1>You would receive { amountConverted + coinUnit }</h1>
-          <p>Do you want to proceed?</p>
-          <Button
-            onClick={() => {
-              callback(amount);
-              onClose();
-              clearTimeout(timerId);
-            }}
-          >
-            Yes
-          </Button>
-          <Button 
-            onClick={() => {
-              onClose();
-              clearTimeout(timerId);
-            }
-          } >No</Button>
-        </div>
+        <>
+          { amountConverted != -1 ? 
+          <>
+            <div className='text-dark'>
+              <h1>You would receive { amountConverted + coinUnit }</h1>
+              <p>Do you want to proceed?</p>
+              <Button
+                onClick={() => {
+                  callback(amount);
+                  onClose();
+                  clearTimeout(timerId);
+                }}
+              >
+                Yes
+              </Button>
+              <Button 
+                onClick={() => {
+                  onClose();
+                  clearTimeout(timerId);
+                }
+              } >No</Button>
+            </div>
+          </>
+        :
+          <>
+            <div className='text-dark'>
+              <h1>Error</h1>
+              <p>This operation with this amount would put the contract underwater</p>
+              <Button 
+                onClick={() => {
+                  onClose();
+                  clearTimeout(timerId);
+                }
+              } >Ok</Button>
+            </div>
+          </>
+        }
+        </>
+        
       );
     }
   }
