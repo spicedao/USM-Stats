@@ -59,13 +59,11 @@ export const loadMetamask = async (dispatch) => {
     const provider = await new ethers.providers.Web3Provider(window.ethereum);
     const signer = await provider.getSigner();
     const network = await getNetwork();
-
     if (network.chainId !== "42") {
       throw new Error(
         "Must be on kovan. Please alter Metamask network and refresh the page."
       );
     }
-
     dispatch(metamaskLoaded(provider, signer));
   } catch (e) {
     dispatch(metamaskError(e));

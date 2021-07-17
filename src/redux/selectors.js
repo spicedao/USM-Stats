@@ -20,6 +20,12 @@ export const metamaskErrorSelector = createSelector(metamaskError, w => w);
 const ecosystem = state => get(state, 'app.ecosystem', null);
 export const ecosystemSelector = createSelector(ecosystem, w => w);
 
+const erc20Contract = state => get(state, 'app.erc20Contract', null);
+export const erc20ContractSelector = createSelector(erc20Contract, w => w);
+
+const address = state => get(state, 'app.address', null);
+export const addressSelector = createSelector(address, w => w);
+
 //USM
 const usmSupply = state => get(state, `${state.app.ecosystem}.usm.supply`, 0);
 export const usmSupplySelector = createSelector(usmSupply, w => w);

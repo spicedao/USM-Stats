@@ -37,6 +37,15 @@ export function networkLoaded(provider){
   }
 }
 
+export function allowanceLoaded(allowance, erc20Contract, address) {
+  return {
+    type: 'ALLOWANCE_LOADED',
+    allowance,
+    erc20Contract,
+    address,
+  };
+}
+
 export function setLatestOraclePrice(source, price) {
   switch (source) {
     case coingecko:

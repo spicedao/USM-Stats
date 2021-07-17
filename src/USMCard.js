@@ -10,6 +10,7 @@ import {
   usmBuyPriceSelector,
   usmSellPriceSelector,
   usmSupplySelector,
+  allowanceSelector,
 } from "./redux/selectors";
 import { Card, Table } from "react-bootstrap";
 import { decimalPlaces, stringMul, usmPriceHighlight } from "./utils";
@@ -36,18 +37,22 @@ const USMCard = ({
   metamaskSigner,
   metamaskConnected,
   coingeckoSYNTHPrice,
-  allowanceProcessEnded,
+  allowance,
+  allowanceLoaded,
 }) => {
   return (
     <Card>
       <Card.Header as="h5">
         <span>{usm.name} synth</span>
         <BlockchainWriteButtons
+          ecosystem={ecosystem}
+          metamaskSigner={metamaskSigner}
           buyConvertFunction={ethToUsm(dispatch)}
           sellConvertFunction={usmToEth(dispatch)}
           buy={buy(dispatch)}
           sell={sell(dispatch)}
-          allowanceProcessEnded={allowanceProcessEnded}
+          allowance={allowance}
+          allowanceLoaded={allowanceLoaded}
           metamaskConnected={metamaskConnected}
           buttonLabel={usm.name}
           coinUnit={usm.name + " synth"}
@@ -115,12 +120,11 @@ function mapStateToProps(state) {
 
   const metamask = metamaskSelector(state);
   const metamaskConnected = metamask != null;
-  // TODO change this!!
-  const allowanceProcessEnded = false;
   const ecosystem = ecosystemSelector(state);
   const provider = networkProviderSelector(state);
   const usm = ecosystems[ecosystem].usm;
   const metamaskSigner = metamaskSignerSelector(state);
+  const allowance = allowanceSelector(state);
   return {
     usm,
     ecosystem,
@@ -138,7 +142,8 @@ function mapStateToProps(state) {
     buy: buyUsmBuilder(provider, metamaskSigner, ecosystem),
     sell : sellUsmBuilder(provider, metamaskSigner, ecosystem),
     metamaskSigner,
-    allowanceProcessEnded,
+    allowance,
+    allowanceLoaded: allowance !== null,
   };
 }
 

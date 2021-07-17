@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import { OperationButton } from './shared/components/OperationButton';
 import { ConnectButton } from './shared/components/ConnectButton';
+import { ApproveButton } from './shared/components/ApproveButton';
 
 const BlockchainWriteButtons = ({
-  allowanceProcessEnded,
+  ecosystem,
+  allowance,
+  allowanceLoaded,
+  metamaskSigner,
   metamaskConnected,
   buyConvertFunction,
   sellConvertFunction,
@@ -18,7 +22,7 @@ const BlockchainWriteButtons = ({
 
   return (
     <>
-      {allowanceProcessEnded ?
+      {allowanceLoaded && allowance.toNumber() > 0 &&
       <>
         <OperationButton
           convertFunction={sellConvertFunction}
@@ -44,9 +48,15 @@ const BlockchainWriteButtons = ({
           type="number"
           size="sm"
           className="form-control float-right ml-1"
-        ></input>
+        />
       </>
-      :
+      }
+
+      {allowanceLoaded && allowance.toNumber() === 0 &&
+      <ApproveButton />
+      }
+
+      {!allowanceLoaded &&
       <ConnectButton />
       }
     </>

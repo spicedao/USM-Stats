@@ -13,6 +13,13 @@ function app(state = { ecosystem: defaultEcosystem }, action) {
       };
     case "METAMASK_ERROR":
       return { ...state, metamaskError: action.error };
+    case 'ALLOWANCE_LOADED':
+      return {
+        ...state,
+        allowance: action.allowance,
+        erc20Contract: action.erc20Contract,
+        address: action.address,
+      };
     case "ECOSYSTEM_CHANGED":
       return { ...state, ecosystem: action.ecosystem };
     case "CLEAR_METAMASK_ERROR":

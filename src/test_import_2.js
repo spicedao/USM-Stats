@@ -1,0 +1,1 @@
+import { name } from './test_import';
