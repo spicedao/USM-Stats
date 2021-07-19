@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from "react-bootstrap";
 import { erc20ContractSelector, addressSelector, usmContractAddressSelector } from '../../redux/selectors';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { maximumApprove } from '../../utils';
 
 export function ApproveButton(props) {
-  const dispatch = useDispatch();
   const erc20Contract = useSelector(erc20ContractSelector);
   const usmContractAddress = useSelector(usmContractAddressSelector);
   const address = useSelector((state) => addressSelector(state));
@@ -29,7 +28,7 @@ export function ApproveButton(props) {
       };
       request();
     }
-  }, [approve, address, erc20Contract]);
+  }, [approve, address, erc20Contract, usmContractAddress]);
 
   return (
     <Button
