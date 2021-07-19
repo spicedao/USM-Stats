@@ -9,10 +9,10 @@ import {
   fumSupplySelector,
   metamaskSelector,
   metamaskSignerSelector,
+  allowanceSelector,
 } from "./redux/selectors";
 import { Card, Table } from "react-bootstrap";
 import { decimalPlaces, stringMul } from "./utils";
-import { loadMetamask } from "./redux/interactions";
 import { ethToFumBuilder, fumToEthBuilder, buyFumBuilder, sellFumBuilder } from "./blockchainInteractions";
 import ecosystems from "./ecosystems";
 import BlockchainWriteButtons from "./BlockchainWriteButtons";
@@ -23,6 +23,7 @@ const FUMCard = ({
   fumToEth,
   buy,
   sell,
+  ecosystem,
   fumMarketCap,
   fumMarketCapUSD,
   fumSupply,
@@ -34,18 +35,29 @@ const FUMCard = ({
   metamaskSigner,
   metamaskConnected,
   metamaskUSM,
-  ecosystem,
+  allowance,
+  allowanceLoaded,
 }) => {
-  const connect = (e) => {
-    loadMetamask(dispatch);
-  };
-
   return (
     <Card>
       <Card.Header as="h5">
         {fum.name}
         <BlockchainWriteButtons
-          {...{ buyConvertFunction: ethToFum(dispatch), sellConvertFunction: fumToEth(dispatch), buy: buy(dispatch), sell: sell(dispatch), connect, metamaskConnected, buttonLabel: fum.name, coinUnit: fum.name, buyLabel: "Fund", sellLabel: "Defund" }}
+          ecosystem={ecosystem}
+          metamaskSigner={metamaskSigner}
+          buyConvertFunction={ethToFum(dispatch)}
+          sellConvertFunction={fumToEth(dispatch)}
+          buy={buy(dispatch)}
+          sell={sell(dispatch)}
+          connect={connect}
+          allowance={allowance}
+          allowanceLoaded={allowanceLoaded}
+          collateralUnit="Tether"
+          metamaskConnected={metamaskConnected}
+          buttonLabel={fum.name}
+          coinUnit={fum.name}
+          buyLabel="Fund"
+          sellLabel="Defund"
         />
       </Card.Header>
       <Card.Body>
@@ -96,6 +108,7 @@ function mapStateToProps(state) {
   const metamaskSigner = metamaskSignerSelector(state);
   const fum = ecosystems[ecosystem].fum;
   const provider = networkProviderSelector(state);
+  const allowance = allowanceSelector(state);
   return {
     ecosystem,
     fum,
@@ -112,6 +125,8 @@ function mapStateToProps(state) {
     fumToEth: fumToEthBuilder(provider, metamaskSigner, ecosystem),
     buy: buyFumBuilder(provider, metamaskSigner, ecosystem),
     sell: sellFumBuilder(provider, metamaskSigner, ecosystem),
+    allowance,
+    allowanceLoaded: allowance !== null,
   };
 }
 

@@ -16,7 +16,8 @@ const BlockchainWriteButtons = ({
   buttonLabel,
   coinUnit,
   buyLabel,
-  sellLabel
+  sellLabel,
+  collateralUnit,
 }) => {
   const [amount, setAmount] = useState(0);
   
@@ -38,7 +39,7 @@ const BlockchainWriteButtons = ({
           coinUnit={coinUnit}
           operationCallback={buy}
           variant="success"
-          label={`${buyLabel} (ETH)`}
+          label={`${buyLabel} (${collateralUnit})`}
         />
         <input
           style={{ width: 100 }}

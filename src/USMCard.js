@@ -53,6 +53,7 @@ const USMCard = ({
           sell={sell(dispatch)}
           allowance={allowance}
           allowanceLoaded={allowanceLoaded}
+          collateralUnit="Tether"
           metamaskConnected={metamaskConnected}
           buttonLabel={usm.name}
           coinUnit={usm.name + " synth"}

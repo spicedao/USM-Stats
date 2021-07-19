@@ -18,7 +18,7 @@ const callFunctionOnUsm = (functionName, provider, signer, ecosystem, dispatch) 
 
   let args;
   if(['mint','fund'].includes(functionName)){
-    args = [address, 0, {value: weiAmount}]
+    args = [address, weiAmount, 0]
   } else if (['burn', 'defund'].includes(functionName) ){
     args = [address, address, weiAmount, 0]
   } else {
@@ -47,9 +47,12 @@ export const exchangeCalculationFunction = (functionName, provider, signer, ecos
   } else {
     throw new Error('invalid method')
   }
-  
-  const usm = await contractView[functionName](...args)
-    .catch((error) => dispatch(metamaskError(error)))
+  let usm;
+  try {
+    usm = await contractView[functionName](...args)
+  } catch(error) {
+    return -1;
+  }
   
   const usmOverWad = wtoe(usm);
   const usmOverWadWithDecimals = decimalPlaces(usmOverWad, 7);
