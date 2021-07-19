@@ -8,6 +8,7 @@ const { abi: USMViewABI } = require("./external/abi/test/USMView.json");
 const { abi: FUMABI } = require("./external/abi/test/FUM.json");
 const { abi: OracleABI } = require("./external/abi/test/DiaOracleAdapter.json");
 const { abi: DiaOracleABI } = require("./external/abi/test/DiaOracle.json");
+const { abi: MockABI } = require("./external/abi/test/MockToken.json");
 
 
 const ecosystems = {
@@ -16,21 +17,21 @@ const ecosystems = {
       name: "BTC",
       abi: USMABI,
       address: {
-        42: "0x790A0e77EF04ccEc4c79E10cbf5e8810F756C017",
+        42: "0x05D61818Da3a60BDCd831086Bf510c3f04c0b8A2",
       },
     },
     usmview: {
       name: "USMView",
       abi: USMViewABI,
       address: {
-        42: "0xbE74702a7d4587C7c631B3CC30e787EBA263c0A2",
+        42: "0x3AB47293127c1D82c0477F6B50bdCb3475601e97",
       },
     },
     oracle: {
       name: "oracle",
       abi: OracleABI,
       address: {
-        42: "0xf933d3C7aB0839d90EE32A743feBAAb90D69Dc7b",
+        42: "0x834C6bc8b88e1D13CDd1e37992255a7413bdf934",
       },
     },
     diaOracle: {
@@ -44,7 +45,14 @@ const ecosystems = {
       name: "BTC funder",
       abi: FUMABI,
       address: {
-        42: "0x3C824F2aa457e1d9a2be54e5DD62058A08e06aB7",
+        42: "0xAdc68F673A2dC4b1F1CaF279554405966A1cC861",
+      },
+    },
+    mockToken: {
+      name: "Mock token",
+      abi: MockABI,
+      address: {
+        42: "0xB03ddd933E8e5114a0c3FbD9a0F4d26569A05FA1",
       },
     },
   },

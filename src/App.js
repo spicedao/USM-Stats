@@ -41,9 +41,12 @@ const App = ({
     if (metamaskConnected) {
       const request = async () => {
         const network = await getNetwork();
-        const erc20ContractInfo = ecosystems[ecosystem].usm;
+        const erc20ContractInfo = ecosystems[ecosystem].mockToken;
         const erc20abi = erc20ContractInfo.abi;
         const erc20ContractAddress = erc20ContractInfo.address[network.chainId];
+
+        const usmContractInfo = ecosystems[ecosystem].usm;
+        const usmContractAddress = usmContractInfo.address[network.chainId];
         try {
           const erc20Contract = new ethers.Contract(
             erc20ContractAddress,
@@ -56,10 +59,9 @@ const App = ({
           const address = addresses[0];
           const allowance = await erc20Contract.allowance(
             address, // 0x0a4f3e05e9f4c84a3891fb349c5fe463b65b9df7
-            erc20ContractAddress // 0x790A0e77EF04ccEc4c79E10cbf5e8810F756C017
+            usmContractAddress 
           );
-          console.log(allowance)
-          dispatch(allowanceLoaded(allowance, erc20Contract, address));
+          dispatch(allowanceLoaded(allowance, erc20Contract, address, erc20ContractAddress, usmContractAddress));
         } catch(error) {
           console.log(error);
         }

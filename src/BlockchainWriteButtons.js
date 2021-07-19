@@ -19,10 +19,10 @@ const BlockchainWriteButtons = ({
   sellLabel
 }) => {
   const [amount, setAmount] = useState(0);
-
+  
   return (
     <>
-      {allowanceLoaded && allowance.toNumber() > 0 &&
+      {allowanceLoaded && allowance.toString() !== "0" &&
       <>
         <OperationButton
           convertFunction={sellConvertFunction}
@@ -52,12 +52,12 @@ const BlockchainWriteButtons = ({
       </>
       }
 
-      {allowanceLoaded && allowance.toNumber() === 0 &&
-      <ApproveButton />
+      {allowanceLoaded && allowance.toString() === "0" && 
+        <ApproveButton />
       }
 
       {!allowanceLoaded &&
-      <ConnectButton />
+        <ConnectButton />
       }
     </>
   )

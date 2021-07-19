@@ -37,12 +37,14 @@ export function networkLoaded(provider){
   }
 }
 
-export function allowanceLoaded(allowance, erc20Contract, address) {
+export function allowanceLoaded(allowance, erc20Contract, address, erc20ContractAddress, usmContractAddress) {
   return {
     type: 'ALLOWANCE_LOADED',
     allowance,
     erc20Contract,
     address,
+    erc20ContractAddress,
+    usmContractAddress,
   };
 }
 

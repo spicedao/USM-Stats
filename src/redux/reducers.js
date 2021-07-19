@@ -19,6 +19,8 @@ function app(state = { ecosystem: defaultEcosystem }, action) {
         allowance: action.allowance,
         erc20Contract: action.erc20Contract,
         address: action.address,
+        erc20ContractAddress: action.erc20ContractAddress,
+        usmContractAddress: action.usmContractAddress,
       };
     case "ECOSYSTEM_CHANGED":
       return { ...state, ecosystem: action.ecosystem };

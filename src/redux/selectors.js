@@ -23,6 +23,12 @@ export const ecosystemSelector = createSelector(ecosystem, w => w);
 const erc20Contract = state => get(state, 'app.erc20Contract', null);
 export const erc20ContractSelector = createSelector(erc20Contract, w => w);
 
+const erc20ContractAddress = state => get(state, 'app.erc20ContractAddress', null);
+export const erc20ContractAddressSelector = createSelector(erc20ContractAddress, w => w);
+
+const usmContractAddress = state => get(state, 'app.usmContractAddress', null);
+export const usmContractAddressSelector = createSelector(usmContractAddress, w => w);
+
 const address = state => get(state, 'app.address', null);
 export const addressSelector = createSelector(address, w => w);
 
