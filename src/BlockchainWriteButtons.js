@@ -28,7 +28,7 @@ const BlockchainWriteButtons = ({
         <OperationButton
           convertFunction={sellConvertFunction}
           amount={amount}
-          coinUnit="ETH"
+          coinUnit={collateralUnit}
           operationCallback={sell}
           variant="warning"
           label={`${sellLabel} (${buttonLabel})`}

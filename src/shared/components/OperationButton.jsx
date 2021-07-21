@@ -60,7 +60,7 @@ const popupOptions = async (convertFunction, amount, coinUnit, callback) => {
           { amountConverted !== -1 ?
             <>
               <div className='text-dark'>
-                <h1>You would receive { amountConverted + coinUnit }</h1>
+                <h1>You would receive { amountConverted } { coinUnit }</h1>
                 <p>Do you want to proceed?</p>
                 <BootstrapButton
                   onClick={() => {
