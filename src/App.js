@@ -72,7 +72,7 @@ const App = ({
     metamaskConnected,
     metamaskSigner,
     ecosystem,
-    dispatch
+    dispatch,
   ]);
 
   return (

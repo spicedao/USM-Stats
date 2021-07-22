@@ -37,7 +37,7 @@ class OracleCard extends Component {
                 <th colSpan={2}>Off Chain Reference (not used)</th>
               </tr>
               <tr>
-                <td>Coingecko - ETH</td>
+                <td>Coingecko - Tether</td>
                 <td>$ {decimalPlaces(coingeckoETHPrice)}</td>
               </tr>
               <tr>
@@ -49,7 +49,7 @@ class OracleCard extends Component {
                 <td>Ξ {decimalPlaces(coingeckoPrice)}</td>
               </tr>
               <tr>
-                <th colSpan={2}>{synthName} ETH Price</th>
+                <th colSpan={2}>{synthName} Tether Price</th>
               </tr>
               <tr
                 className="text-dark"
@@ -78,7 +78,7 @@ class OracleCard extends Component {
                   backgroundColor: oracleHighlight(coingeckoETHPrice, rawETHPrice),
                 }}
               >
-                <td>oracle ETH price</td>
+                <td>oracle Tether price</td>
                 <td>$ {decimalPlaces(rawETHPrice)}</td>
               </tr>
               <tr
