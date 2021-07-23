@@ -11,9 +11,9 @@ export const loadOracleData = async (dispatch, usmContract, rawOracle) => {
   getPricesFromRawOracle(dispatch, rawOracle)
 }
 
-const getCoingeckoETHPrice = (dispatch) => axios.get('https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd')
+const getCoingeckoETHPrice = (dispatch) => axios.get('https://api.coingecko.com/api/v3/simple/price?ids=tether&vs_currencies=usd')
   .then(function (response) {
-    const price = response.data.ethereum.usd
+    const price = response.data.tether.usd
     dispatch(setLatestOraclePrice(coingeckoETH, price))
     return price
   })
@@ -38,12 +38,13 @@ const getPricesFromUSMContract = async (dispatch, usmContract) => {
   // TODO: show latest price update time, perhaps?
   const cachedPrice = (await usmContract.latestPrice())[0]
   const latestOraclePrice = (await usmContract.latestOraclePrice())[0]
+  console.log("A: ", cachedPrice.toString(), latestOraclePrice.toString());
   dispatch(setLatestOraclePrice(cachedInContract, 1 / ethers.utils.formatEther(cachedPrice)))
   dispatch(setLatestOraclePrice(latestFromContract, 1 / ethers.utils.formatEther(latestOraclePrice)))
 }
 
 const getPricesFromRawOracle = async (dispatch, rawOracleContract) => {
-  const rawEth = (await rawOracleContract.getCoinInfo('Ethereum'))[0].toNumber()
+  const rawEth = (await rawOracleContract.getCoinInfo('Tether'))[0].toNumber()
   const rawSynth = (await rawOracleContract.getCoinInfo('Bitcoin'))[0].toNumber()
   dispatch(setLatestOraclePrice(rawETH, rawEth/(10**5)))
   dispatch(setLatestOraclePrice(rawSYNTH, rawSynth/(10**5)))
