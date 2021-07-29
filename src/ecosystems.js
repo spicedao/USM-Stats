@@ -1,14 +1,9 @@
-/*const { abi: USMABI } = require("./external/abi/USM.json");
+const { abi: USMABI } = require("./external/abi/USMDia.json");
 const { abi: USMViewABI } = require("./external/abi/USMView.json");
 const { abi: FUMABI } = require("./external/abi/FUM.json");
-const { abi: OracleABI } = require("./external/abi/Oracle.json");
-const { abi: DiaOracleABI } = require("./external/abi/DiaOracle.json");*/
-const { abi: USMABI } = require("./external/abi/test/USMDia.json");
-const { abi: USMViewABI } = require("./external/abi/test/USMView.json");
-const { abi: FUMABI } = require("./external/abi/test/FUM.json");
-const { abi: OracleABI } = require("./external/abi/test/DiaOracleAdapter.json");
-const { abi: DiaOracleABI } = require("./external/abi/test/DiaOracle.json");
-const { abi: MockABI } = require("./external/abi/test/MockToken.json");
+const { abi: OracleABI } = require("./external/abi/DiaOracleAdapter.json");
+const { abi: DiaOracleABI } = require("./external/abi/DiaOracle.json");
+const { abi: MockABI } = require("./external/abi/MockToken.json");
 
 
 const ecosystems = {
@@ -17,21 +12,21 @@ const ecosystems = {
       name: "BTC",
       abi: USMABI,
       address: {
-        42: "0x05D61818Da3a60BDCd831086Bf510c3f04c0b8A2",
+        42: "0x04B2E6e36F6E22A7859B603E2fD455039c2DD993",
       },
     },
     usmview: {
       name: "USMView",
       abi: USMViewABI,
       address: {
-        42: "0x3AB47293127c1D82c0477F6B50bdCb3475601e97",
+        42: "0x6dC747Bd08634AEd348d5DcCB71527Cd163a1eA2",
       },
     },
     oracle: {
       name: "oracle",
       abi: OracleABI,
       address: {
-        42: "0x834C6bc8b88e1D13CDd1e37992255a7413bdf934",
+        42: "0xb7a0fAABA2E120d1FFb57a086AcFF783e71CaBf8",
       },
     },
     diaOracle: {
@@ -45,14 +40,14 @@ const ecosystems = {
       name: "BTC funder",
       abi: FUMABI,
       address: {
-        42: "0xAdc68F673A2dC4b1F1CaF279554405966A1cC861",
+        42: "0xe9E62325B98f65316754209Dd442319d52B118C9",
       },
     },
     mockToken: {
       name: "Mock token",
       abi: MockABI,
       address: {
-        42: "0xB03ddd933E8e5114a0c3FbD9a0F4d26569A05FA1",
+        42: "0xb451c6835515f8a08ecc4cbc5C5dcb238A48f7B4",
       },
     },
   },
