@@ -1,0 +1,346 @@
+{
+  "address": "0xf21B470127Cf791553442B3Fef0d7eFeB7284fe0",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "contract IDiaOracle",
+          "name": "diaOracle_",
+          "type": "address"
+        },
+        {
+          "internalType": "string",
+          "name": "syntheticDiaFeed_",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "collateralDiaFeed_",
+          "type": "string"
+        },
+        {
+          "internalType": "contract ICoinGeckoOracle",
+          "name": "coinGeckoOracle_",
+          "type": "address"
+        },
+        {
+          "internalType": "string",
+          "name": "syntheticCoinGeckoFeed_",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "collateralCoinGeckoFeed_",
+          "type": "string"
+        },
+        {
+          "internalType": "contract ICoinMarketCapOracle",
+          "name": "coinMarketCapOracle_",
+          "type": "address"
+        },
+        {
+          "internalType": "string",
+          "name": "syntheticCoinMarketCapFeed_",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "collateralCoinMarketCapFeed_",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [],
+      "name": "DECIMAL_CORRECTION",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "WAD",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "coinGeckoOracle",
+      "outputs": [
+        {
+          "internalType": "contract ICoinGeckoOracle",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "coinMarketCapOracle",
+      "outputs": [
+        {
+          "internalType": "contract ICoinMarketCapOracle",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "collateralCoinGeckoFeed",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "collateralCoinMarketCapFeed",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "collateralDiaFeed",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "diaOracle",
+      "outputs": [
+        {
+          "internalType": "contract IDiaOracle",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "latestPrice",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "price",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "updateTime",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "refreshPrice",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "price",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "updateTime",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "syntheticCoinGeckoFeed",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "syntheticCoinMarketCapFeed",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "syntheticDiaFeed",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0xf6d367fb3668d83056133204ac69dbe10674383a3a85c2520b4dae88a70a0a35",
+  "receipt": {
+    "to": null,
+    "from": "0x6b6d51559192B458420E678A543B3383668a360a",
+    "contractAddress": "0xf21B470127Cf791553442B3Fef0d7eFeB7284fe0",
+    "transactionIndex": 0,
+    "gasUsed": "874087",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x67103bc58e552546df6c8d3bb170989061a8827635c60002484a35b8ba9da01e",
+    "transactionHash": "0xf6d367fb3668d83056133204ac69dbe10674383a3a85c2520b4dae88a70a0a35",
+    "logs": [],
+    "blockNumber": 26402139,
+    "cumulativeGasUsed": "874087",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [
+    "0xb73db1A6a85219742fbd0fC7cc275c62209aA660",
+    "Bitcoin",
+    "Ethereum",
+    "0x50e087d98A33cEB1CED159ad9255D6F228f2eF1C",
+    "BTC",
+    "ETH",
+    "0xc7a9b2332681ee3a82c6a90b87ec73388ef6b745",
+    "ETH",
+    "BTC"
+  ],
+  "solcInputHash": "cb5cc0fcaccff07d8f44f544a69fb220",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.0+commit.c7dfd78e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"contract IDiaOracle\",\"name\":\"diaOracle_\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"syntheticDiaFeed_\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"collateralDiaFeed_\",\"type\":\"string\"},{\"internalType\":\"contract ICoinGeckoOracle\",\"name\":\"coinGeckoOracle_\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"syntheticCoinGeckoFeed_\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"collateralCoinGeckoFeed_\",\"type\":\"string\"},{\"internalType\":\"contract ICoinMarketCapOracle\",\"name\":\"coinMarketCapOracle_\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"syntheticCoinMarketCapFeed_\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"collateralCoinMarketCapFeed_\",\"type\":\"string\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[],\"name\":\"DECIMAL_CORRECTION\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"WAD\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"coinGeckoOracle\",\"outputs\":[{\"internalType\":\"contract ICoinGeckoOracle\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"coinMarketCapOracle\",\"outputs\":[{\"internalType\":\"contract ICoinMarketCapOracle\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"collateralCoinGeckoFeed\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"collateralCoinMarketCapFeed\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"collateralDiaFeed\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"diaOracle\",\"outputs\":[{\"internalType\":\"contract IDiaOracle\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"latestPrice\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"updateTime\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"refreshPrice\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"updateTime\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"syntheticCoinGeckoFeed\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"syntheticCoinMarketCapFeed\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"syntheticDiaFeed\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"latestPrice()\":{\"returns\":{\"price\":\"price\"}}},\"title\":\"DiaOracleAdapter\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"latestPrice()\":{\"notice\":\"Retrieve the latest price of the price diaOracle.\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/oracles/ThreeOracleAdapter.sol\":\"ThreeOracleAdapter\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":20000},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/utils/math/Math.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n\\npragma solidity ^0.8.0;\\n\\n/**\\n * @dev Standard math utilities missing in the Solidity language.\\n */\\nlibrary Math {\\n    /**\\n     * @dev Returns the largest of two numbers.\\n     */\\n    function max(uint256 a, uint256 b) internal pure returns (uint256) {\\n        return a >= b ? a : b;\\n    }\\n\\n    /**\\n     * @dev Returns the smallest of two numbers.\\n     */\\n    function min(uint256 a, uint256 b) internal pure returns (uint256) {\\n        return a < b ? a : b;\\n    }\\n\\n    /**\\n     * @dev Returns the average of two numbers. The result is rounded towards\\n     * zero.\\n     */\\n    function average(uint256 a, uint256 b) internal pure returns (uint256) {\\n        // (a + b) / 2 can overflow, so we distribute\\n        return (a / 2) + (b / 2) + ((a % 2 + b % 2) / 2);\\n    }\\n}\\n\",\"keccak256\":\"0xa1477864def7febd9826918e50482a1ee7068b337b03804a7e0e98c674ac57c2\",\"license\":\"MIT\"},\"contracts/external/ICoinGeckoOracle.sol\":{\"content\":\"// SPDX-License-Identifier: GPL-3.0-or-later\\r\\npragma solidity 0.8.0;\\r\\n\\r\\ninterface ICoinGeckoOracle {\\r\\n    function getValue(string memory key) external view returns (uint128, uint128);\\r\\n}\\r\\n\",\"keccak256\":\"0x34cd2c04d29bd5045d7339c5fe3103225b9c32fe6a2976b7fce3606e253b5db1\",\"license\":\"GPL-3.0-or-later\"},\"contracts/external/ICoinMarketCapOracle.sol\":{\"content\":\"// SPDX-License-Identifier: GPL-3.0-or-later\\r\\npragma solidity 0.8.0;\\r\\n\\r\\ninterface ICoinMarketCapOracle {\\r\\n    function getValue(string memory key) external view returns (uint128, uint128);\\r\\n}\",\"keccak256\":\"0x6e54e2bab5a5f75edeeb4780a5b33873e353b5bc0d3ff9f8568294cb6a9be0e0\",\"license\":\"GPL-3.0-or-later\"},\"contracts/external/IDiaOracle.sol\":{\"content\":\"// SPDX-License-Identifier: GPL-3.0-or-later\\r\\npragma solidity 0.8.0;\\r\\n\\r\\ninterface IDiaOracle {\\r\\n    function getCoinInfo(string memory key) external view returns (uint256, uint256, uint256, string memory);\\r\\n}\",\"keccak256\":\"0xee56c2a5bba012ac9a1ae981d89a7f5e194cdc0e101655016b2518c14d2c9fd4\",\"license\":\"GPL-3.0-or-later\"},\"contracts/oracles/Oracle.sol\":{\"content\":\"// SPDX-License-Identifier: GPL-3.0-or-later\\r\\npragma solidity 0.8.0;\\r\\n\\r\\nabstract contract Oracle {\\r\\n    function latestPrice() public virtual view returns (uint price, uint updateTime);    // Prices WAD-scaled - 18 dec places\\r\\n\\r\\n    function refreshPrice() public virtual returns (uint price, uint updateTime) {\\r\\n        (price, updateTime) = latestPrice();    // Default implementation doesn't do any cacheing.  But override as needed\\r\\n    }\\r\\n}\\r\\n\",\"keccak256\":\"0x9dab0450cc50d969a47c6278ffa7df44251234b3c5a029e74bd38dce715d22dd\",\"license\":\"GPL-3.0-or-later\"},\"contracts/oracles/ThreeOracleAdapter.sol\":{\"content\":\"// SPDX-License-Identifier: GPL-3.0-or-later\\r\\npragma solidity 0.8.0;\\r\\n\\r\\nimport \\\"@openzeppelin/contracts/utils/math/Math.sol\\\";\\r\\nimport \\\"../external/IDiaOracle.sol\\\";\\r\\nimport \\\"../external/ICoinGeckoOracle.sol\\\";\\r\\nimport \\\"../external/ICoinMarketCapOracle.sol\\\";\\r\\nimport \\\"./Oracle.sol\\\";\\r\\n\\r\\n/**\\r\\n * @title DiaOracleAdapter\\r\\n */\\r\\ncontract ThreeOracleAdapter is Oracle {\\r\\n    uint public constant WAD = 10 ** 18;\\r\\n    uint256 public constant DECIMAL_CORRECTION = 10**13;\\r\\n\\r\\n    IDiaOracle public immutable diaOracle;\\r\\n    ICoinGeckoOracle public immutable coinGeckoOracle;\\r\\n    ICoinMarketCapOracle public immutable coinMarketCapOracle;\\r\\n    string public syntheticDiaFeed;\\r\\n    string public collateralDiaFeed;\\r\\n    string public syntheticCoinGeckoFeed;\\r\\n    string public collateralCoinGeckoFeed;\\r\\n    string public syntheticCoinMarketCapFeed;\\r\\n    string public collateralCoinMarketCapFeed;\\r\\n\\r\\n    constructor(\\r\\n        IDiaOracle diaOracle_, \\r\\n        string memory syntheticDiaFeed_, \\r\\n        string memory collateralDiaFeed_,\\r\\n        ICoinGeckoOracle coinGeckoOracle_,\\r\\n        string memory syntheticCoinGeckoFeed_, \\r\\n        string memory collateralCoinGeckoFeed_,\\r\\n        ICoinMarketCapOracle coinMarketCapOracle_,\\r\\n        string memory syntheticCoinMarketCapFeed_, \\r\\n        string memory collateralCoinMarketCapFeed_\\r\\n    ) {\\r\\n        diaOracle = diaOracle_;\\r\\n        coinGeckoOracle = coinGeckoOracle_;\\r\\n        coinMarketCapOracle = coinMarketCapOracle_;\\r\\n        syntheticDiaFeed = syntheticDiaFeed_;\\r\\n        collateralDiaFeed = collateralDiaFeed_;\\r\\n        syntheticCoinGeckoFeed = syntheticCoinGeckoFeed_;\\r\\n        collateralCoinGeckoFeed = collateralCoinGeckoFeed_;\\r\\n        syntheticCoinMarketCapFeed = syntheticCoinMarketCapFeed_;\\r\\n        collateralCoinMarketCapFeed = collateralCoinMarketCapFeed_;\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @notice Retrieve the latest price of the price diaOracle.\\r\\n     * @return price\\r\\n     */\\r\\n    function latestPrice() public virtual override view returns (uint price, uint updateTime) {\\r\\n        (uint256 collateralPrice, uint256 collateralUpdateTime) = getPrice(collateralDiaFeed, collateralCoinGeckoFeed, collateralCoinMarketCapFeed);\\r\\n        (uint256 syntheticPrice, uint256 syntheticUpdateTime) = getPrice(syntheticDiaFeed, syntheticCoinGeckoFeed, syntheticCoinMarketCapFeed);\\r\\n        price = collateralPrice * WAD / syntheticPrice;\\r\\n        // TODO return time\\r\\n        updateTime = Math.max(collateralUpdateTime, syntheticUpdateTime);\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @notice Retrieve the latest price of the price diaOracle.\\r\\n     * @return price\\r\\n     */\\r\\n    function getPrice(string memory diaTicker, string memory coinGeckoTicker, string memory coinMarketCapTicker) private view returns(uint256 price, uint256 updateTime) {\\r\\n        (uint256 diaPrice, ,uint256 diaTime, ) = diaOracle.getCoinInfo(diaTicker);\\r\\n        (uint256 coinGeckoPrice, uint256 coinGeckoTime) = coinGeckoOracle.getValue(coinGeckoTicker);\\r\\n        (uint256 coinMarketCapPrice, uint256 coinMarketCapTime) = coinMarketCapOracle.getValue(coinMarketCapTicker);\\r\\n\\r\\n        bool p1gtp2 = diaPrice > coinGeckoPrice; // if price 1 is greater than price 2\\r\\n        bool p2gtp3 = coinGeckoPrice > coinMarketCapPrice;\\r\\n        bool p3gtp1 = coinMarketCapPrice > diaPrice;\\r\\n\\r\\n        (price, updateTime) = (p3gtp1 == p1gtp2 ? \\r\\n            (diaPrice, diaTime) : \\r\\n            (p1gtp2 == p2gtp3 ? \\r\\n                (coinGeckoPrice, coinGeckoTime) : \\r\\n                (coinMarketCapPrice, coinMarketCapTime)\\r\\n            )\\r\\n        );\\r\\n    }\\r\\n}\",\"keccak256\":\"0x7d06a1b32c5ba9a4af08fb3bad2a6f1a783661730a88943d0c1534ec8c8ff9fe\",\"license\":\"GPL-3.0-or-later\"}},\"version\":1}",
+  "bytecode": "0x60e06040523480156200001157600080fd5b506040516200104138038062001041833981016040819052620000349162000257565b6001600160601b031960608a811b821660805287811b821660a05284901b1660c05287516200006b9060009060208b0190620000e9565b508651620000819060019060208a0190620000e9565b50845162000097906002906020880190620000e9565b508351620000ad906003906020870190620000e9565b508151620000c3906004906020850190620000e9565b508051620000d9906005906020840190620000e9565b50505050505050505050620003e5565b828054620000f79062000392565b90600052602060002090601f0160209004810192826200011b576000855562000166565b82601f106200013657805160ff191683800117855562000166565b8280016001018555821562000166579182015b828111156200016657825182559160200191906001019062000149565b506200017492915062000178565b5090565b5b8082111562000174576000815560010162000179565b80516001600160a01b0381168114620001a757600080fd5b919050565b600082601f830112620001bd578081fd5b81516001600160401b0380821115620001da57620001da620003cf565b6040516020601f8401601f1916820181018381118382101715620002025762000202620003cf565b604052838252858401810187101562000219578485fd5b8492505b838310156200023c57858301810151828401820152918201916200021d565b838311156200024d57848185840101525b5095945050505050565b60008060008060008060008060006101208a8c03121562000276578485fd5b620002818a6200018f565b60208b01519099506001600160401b03808211156200029e578687fd5b620002ac8d838e01620001ac565b995060408c0151915080821115620002c2578687fd5b620002d08d838e01620001ac565b9850620002e060608d016200018f565b975060808c0151915080821115620002f6578687fd5b620003048d838e01620001ac565b965060a08c01519150808211156200031a578586fd5b620003288d838e01620001ac565b95506200033860c08d016200018f565b945060e08c01519150808211156200034e578384fd5b6200035c8d838e01620001ac565b93506101008c015191508082111562000373578283fd5b50620003828c828d01620001ac565b9150509295985092959850929598565b600281046001821680620003a757607f821691505b60208210811415620003c957634e487b7160e01b600052602260045260246000fd5b50919050565b634e487b7160e01b600052604160045260246000fd5b60805160601c60a05160601c60c05160601c610c0e62000433600039600081816105bd01526107b201526000818161028501526106df015260008181610227015261060b0152610c0e6000f3fe608060405234801561001057600080fd5b50600436106100df5760003560e01c80637d31fab11161008c578063c302c2bd11610066578063c302c2bd1461016a578063d3203a7f14610172578063d5f1ca5b1461017a578063dd64512714610182576100df565b80637d31fab114610152578063a346409a1461015a578063a3e6ba9414610162576100df565b80633c67a5b2116100bd5780633c67a5b21461011f5780636a14602414610135578063759f81db1461014a576100df565b80632a54c91d146100e45780632b73e9d4146101025780632ce773cd1461010a575b600080fd5b6100ec61018a565b6040516100f99190610a22565b60405180910390f35b6100ec610218565b610112610225565b6040516100f99190610a01565b610127610249565b6040516100f9929190610a7c565b61013d61025d565b6040516100f99190610a73565b6100ec610269565b6100ec610276565b610112610283565b6101276102a7565b6101126105bb565b6100ec6105df565b6100ec6105ec565b61013d6105f9565b6004805461019790610b55565b80601f01602080910402602001604051908101604052809291908181526020018280546101c390610b55565b80156102105780601f106101e557610100808354040283529160200191610210565b820191906000526020600020905b8154815290600101906020018083116101f357829003601f168201915b505050505081565b6001805461019790610b55565b7f000000000000000000000000000000000000000000000000000000000000000081565b6000806102546102a7565b90939092509050565b670de0b6b3a764000081565b6005805461019790610b55565b6000805461019790610b55565b7f000000000000000000000000000000000000000000000000000000000000000081565b600080600080610456600180546102bd90610b55565b80601f01602080910402602001604051908101604052809291908181526020018280546102e990610b55565b80156103365780601f1061030b57610100808354040283529160200191610336565b820191906000526020600020905b81548152906001019060200180831161031957829003601f168201915b50505050506003805461034890610b55565b80601f016020809104026020016040519081016040528092919081815260200182805461037490610b55565b80156103c15780601f10610396576101008083540402835291602001916103c1565b820191906000526020600020905b8154815290600101906020018083116103a457829003601f168201915b5050505050600580546103d390610b55565b80601f01602080910402602001604051908101604052809291908181526020018280546103ff90610b55565b801561044c5780601f106104215761010080835404028352916020019161044c565b820191906000526020600020905b81548152906001019060200180831161042f57829003601f168201915b5050505050610603565b915091506000806105836000805461046d90610b55565b80601f016020809104026020016040519081016040528092919081815260200182805461049990610b55565b80156104e65780601f106104bb576101008083540402835291602001916104e6565b820191906000526020600020905b8154815290600101906020018083116104c957829003601f168201915b5050505050600280546104f890610b55565b80601f016020809104026020016040519081016040528092919081815260200182805461052490610b55565b80156105715780601f1061054657610100808354040283529160200191610571565b820191906000526020600020905b81548152906001019060200180831161055457829003601f168201915b5050505050600480546103d390610b55565b90925090508161059b670de0b6b3a764000086610ac3565b6105a59190610a8a565b95506105b183826108b3565b9450505050509091565b7f000000000000000000000000000000000000000000000000000000000000000081565b6003805461019790610b55565b6002805461019790610b55565b6509184e72a00081565b6000806000807f000000000000000000000000000000000000000000000000000000000000000073ffffffffffffffffffffffffffffffffffffffff1663e1221400886040518263ffffffff1660e01b81526004016106629190610a22565b60006040518083038186803b15801561067a57600080fd5b505afa15801561068e573d6000803e3d6000fd5b505050506040513d6000823e601f3d9081017fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe01682016040526106d49190810190610923565b5092505091506000807f000000000000000000000000000000000000000000000000000000000000000073ffffffffffffffffffffffffffffffffffffffff1663960384a0896040518263ffffffff1660e01b81526004016107369190610a22565b604080518083038186803b15801561074d57600080fd5b505afa158015610761573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061078591906108f1565b6fffffffffffffffffffffffffffffffff1691506fffffffffffffffffffffffffffffffff1691506000807f000000000000000000000000000000000000000000000000000000000000000073ffffffffffffffffffffffffffffffffffffffff1663960384a08a6040518263ffffffff1660e01b81526004016108099190610a22565b604080518083038186803b15801561082057600080fd5b505afa158015610834573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061085891906108f1565b6fffffffffffffffffffffffffffffffff918216935016905083861182851187841180831461089b5781151583151514610893578484610896565b86865b61089e565b88885b909f909e509c50505050505050505050505050565b6000818310156108c357816108c5565b825b9392505050565b80516fffffffffffffffffffffffffffffffff811681146108ec57600080fd5b919050565b60008060408385031215610903578182fd5b61090c836108cc565b915061091a602084016108cc565b90509250929050565b60008060008060808587031215610938578182fd5b845193506020850151925060408501519150606085015167ffffffffffffffff80821115610964578283fd5b818701915087601f830112610977578283fd5b81518181111561098957610989610ba9565b60405160207fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe0601f84011682010181811084821117156109cb576109cb610ba9565b6040528181528382016020018a10156109e2578485fd5b6109f3826020830160208701610b25565b969995985093965050505050565b73ffffffffffffffffffffffffffffffffffffffff91909116815260200190565b6000602082528251806020840152610a41816040850160208701610b25565b601f017fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe0169190910160400192915050565b90815260200190565b918252602082015260400190565b600082610abe577f4e487b710000000000000000000000000000000000000000000000000000000081526012600452602481fd5b500490565b6000817fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0483118215151615610b20577f4e487b710000000000000000000000000000000000000000000000000000000081526011600452602481fd5b500290565b60005b83811015610b40578181015183820152602001610b28565b83811115610b4f576000848401525b50505050565b600281046001821680610b6957607f821691505b60208210811415610ba3577f4e487b7100000000000000000000000000000000000000000000000000000000600052602260045260246000fd5b50919050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052604160045260246000fdfea2646970667358221220c32ada575ac77231f33361cb72f72680c3885dc8d01bcc4566c669c2824a86dc64736f6c63430008000033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100df5760003560e01c80637d31fab11161008c578063c302c2bd11610066578063c302c2bd1461016a578063d3203a7f14610172578063d5f1ca5b1461017a578063dd64512714610182576100df565b80637d31fab114610152578063a346409a1461015a578063a3e6ba9414610162576100df565b80633c67a5b2116100bd5780633c67a5b21461011f5780636a14602414610135578063759f81db1461014a576100df565b80632a54c91d146100e45780632b73e9d4146101025780632ce773cd1461010a575b600080fd5b6100ec61018a565b6040516100f99190610a22565b60405180910390f35b6100ec610218565b610112610225565b6040516100f99190610a01565b610127610249565b6040516100f9929190610a7c565b61013d61025d565b6040516100f99190610a73565b6100ec610269565b6100ec610276565b610112610283565b6101276102a7565b6101126105bb565b6100ec6105df565b6100ec6105ec565b61013d6105f9565b6004805461019790610b55565b80601f01602080910402602001604051908101604052809291908181526020018280546101c390610b55565b80156102105780601f106101e557610100808354040283529160200191610210565b820191906000526020600020905b8154815290600101906020018083116101f357829003601f168201915b505050505081565b6001805461019790610b55565b7f000000000000000000000000000000000000000000000000000000000000000081565b6000806102546102a7565b90939092509050565b670de0b6b3a764000081565b6005805461019790610b55565b6000805461019790610b55565b7f000000000000000000000000000000000000000000000000000000000000000081565b600080600080610456600180546102bd90610b55565b80601f01602080910402602001604051908101604052809291908181526020018280546102e990610b55565b80156103365780601f1061030b57610100808354040283529160200191610336565b820191906000526020600020905b81548152906001019060200180831161031957829003601f168201915b50505050506003805461034890610b55565b80601f016020809104026020016040519081016040528092919081815260200182805461037490610b55565b80156103c15780601f10610396576101008083540402835291602001916103c1565b820191906000526020600020905b8154815290600101906020018083116103a457829003601f168201915b5050505050600580546103d390610b55565b80601f01602080910402602001604051908101604052809291908181526020018280546103ff90610b55565b801561044c5780601f106104215761010080835404028352916020019161044c565b820191906000526020600020905b81548152906001019060200180831161042f57829003601f168201915b5050505050610603565b915091506000806105836000805461046d90610b55565b80601f016020809104026020016040519081016040528092919081815260200182805461049990610b55565b80156104e65780601f106104bb576101008083540402835291602001916104e6565b820191906000526020600020905b8154815290600101906020018083116104c957829003601f168201915b5050505050600280546104f890610b55565b80601f016020809104026020016040519081016040528092919081815260200182805461052490610b55565b80156105715780601f1061054657610100808354040283529160200191610571565b820191906000526020600020905b81548152906001019060200180831161055457829003601f168201915b5050505050600480546103d390610b55565b90925090508161059b670de0b6b3a764000086610ac3565b6105a59190610a8a565b95506105b183826108b3565b9450505050509091565b7f000000000000000000000000000000000000000000000000000000000000000081565b6003805461019790610b55565b6002805461019790610b55565b6509184e72a00081565b6000806000807f000000000000000000000000000000000000000000000000000000000000000073ffffffffffffffffffffffffffffffffffffffff1663e1221400886040518263ffffffff1660e01b81526004016106629190610a22565b60006040518083038186803b15801561067a57600080fd5b505afa15801561068e573d6000803e3d6000fd5b505050506040513d6000823e601f3d9081017fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe01682016040526106d49190810190610923565b5092505091506000807f000000000000000000000000000000000000000000000000000000000000000073ffffffffffffffffffffffffffffffffffffffff1663960384a0896040518263ffffffff1660e01b81526004016107369190610a22565b604080518083038186803b15801561074d57600080fd5b505afa158015610761573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061078591906108f1565b6fffffffffffffffffffffffffffffffff1691506fffffffffffffffffffffffffffffffff1691506000807f000000000000000000000000000000000000000000000000000000000000000073ffffffffffffffffffffffffffffffffffffffff1663960384a08a6040518263ffffffff1660e01b81526004016108099190610a22565b604080518083038186803b15801561082057600080fd5b505afa158015610834573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061085891906108f1565b6fffffffffffffffffffffffffffffffff918216935016905083861182851187841180831461089b5781151583151514610893578484610896565b86865b61089e565b88885b909f909e509c50505050505050505050505050565b6000818310156108c357816108c5565b825b9392505050565b80516fffffffffffffffffffffffffffffffff811681146108ec57600080fd5b919050565b60008060408385031215610903578182fd5b61090c836108cc565b915061091a602084016108cc565b90509250929050565b60008060008060808587031215610938578182fd5b845193506020850151925060408501519150606085015167ffffffffffffffff80821115610964578283fd5b818701915087601f830112610977578283fd5b81518181111561098957610989610ba9565b60405160207fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe0601f84011682010181811084821117156109cb576109cb610ba9565b6040528181528382016020018a10156109e2578485fd5b6109f3826020830160208701610b25565b969995985093965050505050565b73ffffffffffffffffffffffffffffffffffffffff91909116815260200190565b6000602082528251806020840152610a41816040850160208701610b25565b601f017fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe0169190910160400192915050565b90815260200190565b918252602082015260400190565b600082610abe577f4e487b710000000000000000000000000000000000000000000000000000000081526012600452602481fd5b500490565b6000817fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0483118215151615610b20577f4e487b710000000000000000000000000000000000000000000000000000000081526011600452602481fd5b500290565b60005b83811015610b40578181015183820152602001610b28565b83811115610b4f576000848401525b50505050565b600281046001821680610b6957607f821691505b60208210811415610ba3577f4e487b7100000000000000000000000000000000000000000000000000000000600052602260045260246000fd5b50919050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052604160045260246000fdfea2646970667358221220c32ada575ac77231f33361cb72f72680c3885dc8d01bcc4566c669c2824a86dc64736f6c63430008000033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {
+      "latestPrice()": {
+        "returns": {
+          "price": "price"
+        }
+      }
+    },
+    "title": "DiaOracleAdapter",
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {
+      "latestPrice()": {
+        "notice": "Retrieve the latest price of the price diaOracle."
+      }
+    },
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 9515,
+        "contract": "contracts/oracles/ThreeOracleAdapter.sol:ThreeOracleAdapter",
+        "label": "syntheticDiaFeed",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 9517,
+        "contract": "contracts/oracles/ThreeOracleAdapter.sol:ThreeOracleAdapter",
+        "label": "collateralDiaFeed",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 9519,
+        "contract": "contracts/oracles/ThreeOracleAdapter.sol:ThreeOracleAdapter",
+        "label": "syntheticCoinGeckoFeed",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 9521,
+        "contract": "contracts/oracles/ThreeOracleAdapter.sol:ThreeOracleAdapter",
+        "label": "collateralCoinGeckoFeed",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 9523,
+        "contract": "contracts/oracles/ThreeOracleAdapter.sol:ThreeOracleAdapter",
+        "label": "syntheticCoinMarketCapFeed",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 9525,
+        "contract": "contracts/oracles/ThreeOracleAdapter.sol:ThreeOracleAdapter",
+        "label": "collateralCoinMarketCapFeed",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_string_storage"
+      }
+    ],
+    "types": {
+      "t_string_storage": {
+        "encoding": "bytes",
+        "label": "string",
+        "numberOfBytes": "32"
+      }
+    }
+  }
+}

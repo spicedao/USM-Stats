@@ -1,13 +1,8 @@
-/*const { abi: USMABI } = require("./external/abi/USM.json");
+const { abi: USMABI } = require("./external/abi/USMDia.json");
 const { abi: USMViewABI } = require("./external/abi/USMView.json");
 const { abi: FUMABI } = require("./external/abi/FUM.json");
-const { abi: OracleABI } = require("./external/abi/Oracle.json");
-const { abi: DiaOracleABI } = require("./external/abi/DiaOracle.json");*/
-const { abi: USMABI } = require("./external/abi/test/USMDia.json");
-const { abi: USMViewABI } = require("./external/abi/test/USMView.json");
-const { abi: FUMABI } = require("./external/abi/test/FUM.json");
-const { abi: OracleABI } = require("./external/abi/test/DiaOracleAdapter.json");
-const { abi: DiaOracleABI } = require("./external/abi/test/DiaOracle.json");
+const { abi: OracleABI } = require("./external/abi/DiaOracleAdapter.json");
+const { abi: DiaOracleABI } = require("./external/abi/DiaOracle.json");
 
 
 const ecosystems = {
@@ -16,21 +11,21 @@ const ecosystems = {
       name: "BTC",
       abi: USMABI,
       address: {
-        42: "0x790A0e77EF04ccEc4c79E10cbf5e8810F756C017",
+        42: "0xc0Fe2111Ac4f3bDDA377624C0d343FFEa217266c",
       },
     },
     usmview: {
       name: "USMView",
       abi: USMViewABI,
       address: {
-        42: "0xbE74702a7d4587C7c631B3CC30e787EBA263c0A2",
+        42: "0x2EE78ee62c889E6aA05417cE2756548742bbc7FE",
       },
     },
     oracle: {
       name: "oracle",
       abi: OracleABI,
       address: {
-        42: "0xf933d3C7aB0839d90EE32A743feBAAb90D69Dc7b",
+        42: "0xf21B470127Cf791553442B3Fef0d7eFeB7284fe0",
       },
     },
     diaOracle: {
@@ -44,7 +39,7 @@ const ecosystems = {
       name: "BTC funder",
       abi: FUMABI,
       address: {
-        42: "0x3C824F2aa457e1d9a2be54e5DD62058A08e06aB7",
+        42: "0x6fd232561D9fC6d360A161be7b76acf6d51Aa64F",
       },
     },
   },
